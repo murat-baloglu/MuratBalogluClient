@@ -1,0 +1,19 @@
+footer{background-color: var(--main-color); padding:50px 0 0 0;}
+.footer-logo{max-width:300px; }
+.footer-menu-head{font-family: "OPS Bold"; font-size:1rem; color:#fff; position:relative; width: fit-content;}
+.footer-menu-head:after{background-color:var(--light-blue); content:""; height: 4px; position:absolute; bottom:-10px; width:50%; left:0; }
+.footer-menu-list{margin-top:25px;}
+.footer-menu-list li a{color:#fff; font-size:.9rem; padding:5px 0; display: block; border-bottom:1px dashed #575757; }
+.footer-menu-list li a:hover{color:var(--light-blue)}
+.footer-menu-list li a i{margin-right:8px; color:var(--light-blue)}
+.footer-social-media a {color:var(--light-blue); margin-right:10px;}
+
+.copyright{background-color: #163035; min-height: 60px; display: flex; align-items: center; color:#fff;}
+.copyright ul{text-align: right;}
+.copyright ul li{display: inline-block;}
+.copyright ul li a{margin-left:30px; font-size:.95rem}
+.copyright ul li a.footer-text-link{display: inline-block; color:#fff;}
+
+.scrollTop{width:55px; height:55px; display: flex; justify-content: center; align-items: center; position: fixed;  bottom:95px; right:30px; border-radius: 50%; background-color: var(--light-blue); opacity:.5; cursor: pointer;}
+.scrollTop:hover{ opacity:1}
+.scrollTop i{color:#fff; font-size:30px;}

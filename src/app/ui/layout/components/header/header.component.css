@@ -1,0 +1,8 @@
+/* HEADER */
+.head-top{background-color:var(--main-color); color:#fff; min-height: 62px; }
+.quick-menu{display:flex; align-items: center; min-height: 62px;  font-family: 'OPS'; font-size:.8rem;}
+.quick-menu i{color:#BD2B35; font-size:17px; }
+.quick-menu .ht-item-head{color:var(--light-blue)}
+.social-media li{display: inline; }
+.social-media li i{font-size:20px; color:var(--dark-blue); margin-left:10px; transition: .2s;}
+.social-media li i:hover{color:#fff;}

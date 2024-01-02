@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --main-color: #172224;
+    --sky-blue:#f3fbfb;
+    --light-blue: #51E2FF;
+    --dark-blue:#0297ae;
+    --bs-dropdown-link-active-color: #212E34!important;
+    --bs-dropdown-link-active-bg: #EEFCFD!important;
+}
+ul{margin:0; padding:0; list-style: none;}
+.brd-lblue{border:2px solid #21CDD0!important;}
+.brd-lblue:hover{border:2px solid #21CDD0!important;}
+.btn-dark{background-color:var(--main-color); border:none;  border-radius:5px; font-size:.9rem!important; padding:8px 16px!important;}
+.btn-dark:hover{background-color:var(--dark-blue);  border-radius:5px;}
+img{max-width:100%;}
+a{text-decoration: none!important;}
+section{padding:40px 0 40px 0;}
+
+@font-face {
+    font-family: 'OPS';
+    src: url(assets/fonts/OpenSans-Regular.ttf);
+}
+@font-face {
+    font-family: 'OPS Bold';
+    src: url(assets/fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'OPS Light';
+    src: url(assets/fonts/OpenSans-Light.ttf);
+}
+
+@font-face {
+    font-family: 'OPS Semibold';
+    src: url(assets/fonts/OpenSans-SemiBold.ttf);
+}
+
+body{font-family: 'OPS'; font-size:16px;}
+.main-h1{display: none;}
+
+
+
+.writeUs{width:55px; height:55px; display: flex; justify-content: center; align-items: center; position: fixed;  bottom:30px; right:30px; border-radius: 50%; background-color: #1ab495; opacity:.5; cursor: pointer;}
+.writeUs:hover{ opacity:1}
+.writeUs i{color:#fff; font-size:25px;}
+
+.navbar-toggler-icon{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-toggler{border-color:#fff}
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+@media (min-width:1200px){
+    .navbar .container{padding-left:0;}
+    .about-section img{margin-left:-125px!important;}
+}
+@media (min-width:768px) and (max-width:992px){
+    .spc-card-desc{min-height:150px}
+}
+
+@media (max-width:1200px){
+
+    .navbar .nav-link{color:#fff; font-size:.9rem; padding:10px 20px!important; border-bottom:1px dashed #58d1e4}
+    .navbar .nav-item:last-child .nav-link{border-bottom:none}
+    .navbar-collapse{padding-bottom:20px;}
+    .dropdown-menu.show{background-color: #cfe8ec30!important; border-top:0; box-shadow: none;}
+
+}
+@media (max-width:992px){
+    .quick-menu .col-10{display: none;}
+    .spc-card-desc{min-height:145px}
+}
+
+@media (min-width:1200px) and (max-width:1400px){
+    .cpad{padding-left:50px;}
+    .spc-card-desc{min-height:170px}
+}
+
+.section-title{font-size:1.6rem; font-family: "OPS Bold"; width:fit-content; margin:0 auto; position:relative; }
+.section-title::after{position:absolute; height:4px; background-color: #BD2B35; content:""; width:100%; max-width:60px; left:0; right:0; bottom:-8px; margin:0 auto;} 
