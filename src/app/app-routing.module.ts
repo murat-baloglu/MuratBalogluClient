@@ -12,6 +12,7 @@ import { SpecialtiesComponent } from './ui/components/specialties/specialties.co
 import { VideosComponent } from './ui/components/videos/videos.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { LayoutComponent as AdminLayoutComponent } from './admin/layout/layout.component';
+import { SpecialtiesDetailComponent } from './ui/components/specialties/components/specialties-detail/specialties-detail.component';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routes: Routes = [
       { path: "sikca-sorulan-sorular", component: FaqComponent },
       { path: "hasta-yorumlari", component: PatientCommentsComponent },
       { path: "uzmanliklarim", component: SpecialtiesComponent },
-      { path: "videolar", component: VideosComponent }
+      { path: "videolar", component: VideosComponent },
+      { path: "uzmanliklarim/robotic-diz-ve-kalca-protezi", component: SpecialtiesDetailComponent }
     ]
   }
 ];
