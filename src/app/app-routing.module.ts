@@ -5,6 +5,7 @@ import { HomeComponent } from './ui/components/home/home.component';
 import { AboutMeComponent } from './ui/components/about-me/about-me.component';
 import { AcademicComponent } from './ui/components/academic/academic.component';
 import { BlogsComponent } from './ui/components/blogs/blogs.component';
+import { BlogsComponent as AdminBlogsComponent } from './admin/components/blogs/blogs.component';
 import { ContactComponent } from './ui/components/contact/contact.component';
 import { FaqComponent } from './ui/components/faq/faq.component';
 import { PatientCommentsComponent } from './ui/components/patient-comments/patient-comments.component';
@@ -17,7 +18,8 @@ import { SpecialtiesDetailComponent } from './ui/components/specialties/componen
 const routes: Routes = [
   {
     path: "admin", component: AdminLayoutComponent, children: [
-      { path: "", component: DashboardComponent }
+      { path: "", component: DashboardComponent },
+      { path: "blogs", component: AdminBlogsComponent }
     ]
   },
 
