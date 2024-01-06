@@ -1,4 +1,3 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { HttpClientService } from '../../../services/common/http-client-service';
 
@@ -9,7 +8,7 @@ import { HttpClientService } from '../../../services/common/http-client-service'
 })
 export class BlogsComponent {
 
-  constructor(private httpClient: HttpClient, private httpClientService: HttpClientService) {
+  constructor(private httpClientService: HttpClientService) {
 
     // httpClient.get("https://jsonplaceholder.typicode.com/posts").subscribe(datas => console.log(datas))
     // httpClientService.get({fullEndPoint:"https://jsonplaceholder.typicode.com/posts"}).subscribe(datas=>console.log(datas))

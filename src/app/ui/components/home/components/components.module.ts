@@ -6,6 +6,7 @@ import { SpecialtiesSectionComponent } from './specialties-section/specialties-s
 import { BlogsSectionComponent } from './blogs-section/blogs-section.component';
 import { PatientCommentsSectionComponent } from './patient-comments-section/patient-comments-section.component';
 import { VideosSectionComponent } from './videos-section/videos-section.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ import { VideosSectionComponent } from './videos-section/videos-section.componen
     VideosSectionComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     CarouselSectionComponent,

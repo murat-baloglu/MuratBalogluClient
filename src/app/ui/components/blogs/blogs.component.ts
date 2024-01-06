@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BlogsComponent implements OnInit {
   ngOnInit(): void {
-    console.log("Vedat")
   }
 
 }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './ui/layout/layout.component';
+import { LayoutComponent as AdminLayoutComponent } from './admin/layout/layout.component';
 import { HomeComponent } from './ui/components/home/home.component';
 import { AboutMeComponent } from './ui/components/about-me/about-me.component';
 import { AcademicComponent } from './ui/components/academic/academic.component';
@@ -12,8 +13,8 @@ import { PatientCommentsComponent } from './ui/components/patient-comments/patie
 import { SpecialtiesComponent } from './ui/components/specialties/specialties.component';
 import { VideosComponent } from './ui/components/videos/videos.component';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
-import { LayoutComponent as AdminLayoutComponent } from './admin/layout/layout.component';
 import { SpecialtiesDetailComponent } from './ui/components/specialties/components/specialties-detail/specialties-detail.component';
+import { BlogsDetailComponent } from './ui/components/blogs/components/blogs-detail/blogs-detail.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,8 @@ const routes: Routes = [
       { path: "hasta-yorumlari", component: PatientCommentsComponent },
       { path: "uzmanliklarim", component: SpecialtiesComponent },
       { path: "videolar", component: VideosComponent },
-      { path: "uzmanliklarim/robotic-diz-ve-kalca-protezi", component: SpecialtiesDetailComponent }
+      { path: "uzmanliklarim/robotik-diz-ve-kalca-protezi", component: SpecialtiesDetailComponent },
+      { path: "blog/diz-protezi-ameliyati-nasil-yapilir", component: BlogsDetailComponent }
     ]
   }
 ];
