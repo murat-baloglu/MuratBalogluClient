@@ -27,7 +27,7 @@ export class HttpClientService {
 
   }
 
-  post<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+  post<T>(requestParameters: Partial<RequestParameters>, body: any): Observable<T> {
     let url: string = "";
     if (requestParameters.fullEndPoint)
       url = requestParameters.fullEndPoint;
@@ -37,7 +37,7 @@ export class HttpClientService {
     return this.httpClient.post<T>(url, body, { headers: requestParameters.headers });
   }
 
-  put<T>(requestParameters: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
+  put<T>(requestParameters: Partial<RequestParameters>, body: any): Observable<T> {
     let url: string = "";
 
     if (requestParameters.fullEndPoint)

@@ -1,20 +1,19 @@
-
 $(".scrollTop").on("click", function () {
     $("html, body").animate({ "scrollTop": 0 }, 500);
 });
 
-$(".select-language .dropdown-item").on("click",function(){
+$(".select-language .dropdown-item").on("click", function () {
     let clickedFlagAttr = $(this).find("img").attr("src");
     $(".currentFlag").attr("src", clickedFlagAttr)
 })
 
 
-$(".whatsapp-widget").on("click", function(){
+$(".whatsapp-widget").on("click", function () {
     $(".whatsapp-widget-panel").show();
-    $(".whatsapp-widget-panel").animate({"opacity":"1", "z-index":"101", "bottom":"60"}, 50)
+    $(".whatsapp-widget-panel").animate({ "opacity": "1", "z-index": "101", "bottom": "60" }, 50)
 });
-$(".wwp-close").on("click", function(){
-    $(".whatsapp-widget-panel").animate({"opacity":"0", "z-index":"99", "bottom":"50"}, 50)
+$(".wwp-close").on("click", function () {
+    $(".whatsapp-widget-panel").animate({ "opacity": "0", "z-index": "99", "bottom": "50" }, 50)
     $(".whatsapp-widget-panel").hide();
 });
 function patientCommentsCarousel() {
@@ -35,7 +34,7 @@ function patientCommentsCarousel() {
 
 }
 
-function mainCarouselSetting(){
+function mainCarouselSetting() {
     $("#carouselExampleAutoplaying .carousel-item").each(function () {
         $(this).css({
             "background-image": "url(" + $(this).find("img").attr("src") + ")"
@@ -47,16 +46,15 @@ function mainCarouselSetting(){
 patientCommentsCarousel();
 mainCarouselSetting();
 navigation.addEventListener('navigate', () => {
-    window.scrollTo(0,0);
-  });
+    window.scrollTo(0, 0);
+});
 
-window.onpopstate = function() {
+window.onpopstate = function () {
     window.location.reload()
-  }
-window.onclick = function(e){
-    if(e.target.classList.contains("home")){
+}
+window.onclick = function (e) {
+    if (e.target.classList.contains("home")) {
         patientCommentsCarousel();
         mainCarouselSetting()
     }
 }
-

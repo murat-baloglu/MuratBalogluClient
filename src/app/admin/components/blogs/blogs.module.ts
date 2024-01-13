@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BlogsComponent } from './blogs.component';
+import { FormsModule } from '@angular/forms';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 
@@ -9,7 +11,12 @@ import { BlogsComponent } from './blogs.component';
     BlogsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    CKEditorModule
+  ],
+  exports: [
+    BlogsComponent
   ]
 })
 export class BlogsModule { }

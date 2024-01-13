@@ -1,1 +1,3 @@
-<p>admin blogs works!</p>
+<ckeditor *ngIf="isBrowser" [(ngModel)]="model.editorData" [editor]="Editor"></ckeditor>
+
+{{model.editorData}}

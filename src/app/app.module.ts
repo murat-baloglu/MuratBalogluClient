@@ -20,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     provideClientHydration(),
-    { provide: "baseUrl", useValue: "https://localhost:7070/api", multi: true }
+    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }
   ],
   bootstrap: [AppComponent]
 })
