@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClientService } from '../http-client-service';
-import { BlogCreateModel } from '../../../contracts/models/blog-create-model';
 import { Observable } from 'rxjs';
 import { BlogModel } from '../../../contracts/models/blog-model';
+import { BlogAddModel } from '../../../contracts/models/blog-add-model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class BlogService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  createBlog(blogCreateModel: BlogCreateModel): Observable<any> {
-    return this.httpClientService.post<any>({ controller: "blogs" }, blogCreateModel);
+  addBlog(blogAddModel: BlogAddModel): Observable<any> {
+    return this.httpClientService.post<any>({ controller: "blogs" }, blogAddModel);
   }
 
   getBlogs(): Observable<BlogModel[]> {

@@ -4,7 +4,7 @@
     <a href="index3.html" class="brand-link">
         <img src="assets/admin/images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">Admin Murat Baloğlu</span>
     </a>
 
     <!-- Sidebar -->
@@ -15,7 +15,7 @@
                 <img src="assets/admin/images/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">Vedat Aydoğan</a>
             </div>
         </div>
 
@@ -38,53 +38,161 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
                     <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-gear"></i>
                         <p>
-                            Starter Pages
+                            Sayfa Ayarları
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                            <!-- <a routerLink="/admin" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                                <p>Anasayfa</p>
+                            </a> -->
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Anasayfa
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/forms/general.html" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Slider/Carousel Ekle</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/forms/advanced.html" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Blogları Listele</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a routerLink="blogs" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Blogs</p>
+                            </a> -->
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Bloglar
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a routerLink="add-blog" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Blog Ekle</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a routerLink="list-blog" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Blogları Listele</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <!-- <a routerLink="specialties" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Uzmanlıklarım</p>
+                            </a> -->
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Uzmanlıklarım
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/forms/general.html" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Uzmanlık Ekle</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/forms/advanced.html" class="nav-link">
+                                        <i class="nav-icon far fa-circle text-info"></i>
+                                        <p>Uzmanlıklarımı Listele</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="about-me" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Hakkımda</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="contact" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>İletişim</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="faq" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Sık Sorulan Sorular</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="languages" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Dil Yönetimi</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="videos" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Videolar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
+                        <i class="nav-icon fas fa-gear"></i>
+                        <p>
+                            Kullanıcı Ayarları
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>General Elements</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Advanced Elements</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Editors</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Validation</p>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/admin" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            DashBoard
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="blogs" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Blogs
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Simple Link
-                            <span class="right badge badge-danger">New</span>
-                        </p>
-                    </a>
                 </li>
             </ul>
         </nav>

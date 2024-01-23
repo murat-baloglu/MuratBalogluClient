@@ -1,0 +1,123 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Bloglar > Blogları Listele</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
+                    <li class="breadcrumb-item active">Bloglar > Blogları Listele</li>
+                </ol>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="blog">
+    <div class="container">
+        <!-- <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    Blog Yazıları
+                </div>
+            </div>
+        </div> -->
+        <div class="row mt-5">
+
+            <!-- CARD ITEM -->
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogs">
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <!-- <img src="assets/images/blog-images/blog-image-1.jpg"
+                            alt="Diz Protezi Ameliyatı Nasıl Yapılır?"> -->
+                            <!-- <img  style="cursor: pointer;" src="assets/images/add-photo-1.png" data-target="#modal-blog-add" data-toggle="modal"
+                             alt="Diz Protezi Ameliyatı Nasıl Yapılır?"> -->
+                            
+                            <!-- <app-blog-image-add-modal [id]="blog.id"></app-blog-image-add-modal> -->
+
+                            <!-- <img  style="cursor: pointer;" src="assets/images/add-photo-1.png" (click)="addBlogImage(blog.id)"> -->
+                    </div>
+                    <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> {{blog.createdDate | date:
+                        "dd.MM.YYYY"}}</div>
+                    <div class="blog-card-title">{{blog.title}}</div>
+                    <div class="blog-card-desc">{{blog.cardContext}}…</div>
+                    <!-- <div class="blog-card-link">
+                        <a class="btn btn-dark" routerLink="/blog/{{blog.detailUrl}}">Devamını oku</a>
+                    </div> -->
+                    
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i> Edit</button>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- CARD ITEM -->
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="assets/images/blog-images/blog-image-2.jpg" alt="Hidrojel (Sıvı Diz Protezi) Nedir?">
+                    </div>
+                    <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
+                    <div class="blog-card-title">Hidrojel (Sıvı Diz Protezi) Nedir?</div>
+                    <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                    </div>
+                    <div class="blog-card-link">
+                        <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+
+            <!-- CARD ITEM -->
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="assets/images/blog-images/blog-image-3.jpeg"
+                            alt="Protez Ameliyatı Öncesi Hazırlıklar: Kapsamlı Rehber">
+                    </div>
+                    <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
+                    <div class="blog-card-title">Protez Ameliyatı Öncesi Hazırlıklar: Kapsamlı Rehber</div>
+                    <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                    </div>
+                    <div class="blog-card-link">
+                        <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
+                    </div>
+                </div>
+            </div> -->
+
+
+
+
+            <!-- CARD ITEM -->
+            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3">
+                <div class="blog-card">
+                    <div class="blog-card-img">
+                        <img src="assets/images/blog-images/blog-image-4.png"
+                            alt="En İyi Diz Protezi: Çapraz Bağları Koruyan Journey II XR">
+                    </div>
+                    <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
+                    <div class="blog-card-title">En İyi Diz Protezi: Çapraz Bağları Koruyan Journey II XR</div>
+                    <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                    </div>
+                    <div class="blog-card-link">
+                        <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</section>
