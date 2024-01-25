@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 import { MatDialog } from '@angular/material/dialog';
+import { BlogImageAddDialogComponent } from '../../../../dialogs/blog-image-add-dialog/blog-image-add-dialog.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -21,32 +22,17 @@ export class BlogListComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
-  // addBlogImage(id: string): void {
-  //   const dialogRef = this.dialog.open(BlogImageAddDialogComponent, {
-  //     data: {name: this.name, animal: this.animal},
-  //     data: id
-  //   });
+  addBlogImage(id: string): void {
+    const dialogRef = this.dialog.open(BlogImageAddDialogComponent, {
+      data: id
+    });
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //      console.log(`Dialog result: ${result}`);
-  //      console.log('The dialog was closed');
-     
-  //   });
-  // }
-
-  // @Output() fileUploadOptions: Partial<FileUploadOptions> = {
-  //   controller: "blogs",
-  //   action: "upload",
-  //   explanation: "Blog kartı için bir adet resim seçiniz veya sürükleyip bırakınız.",
-  //   accept: ".png, .jpg, jpeg, .gif",
-  //   // multiple: false
-  // };
+    dialogRef.afterClosed().subscribe(result => {
+      //Proje sonunda kullanilmazsa kaldir
+    });
+  }
 
   blogs: BlogModel[];
-
-  // toggleDisabled() {
-  //   this.isDisabled = !this.isDisabled
-  // }
 
   getBlogs() {
     // this.spinnerService.show();

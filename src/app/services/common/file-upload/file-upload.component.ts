@@ -3,6 +3,8 @@ import { HttpClientService } from '../http-client-service';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { NgxFileDropEntry } from 'ngx-file-drop';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { FileUploadDialogComponent } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
 
 @Component({
   selector: 'app-file-upload',
@@ -11,7 +13,10 @@ import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 })
 export class FileUploadComponent {
 
-  constructor(private httpClientService: HttpClientService, private alertifyService: AlertifyService) { }
+  constructor(
+    private httpClientService: HttpClientService,
+    private alertifyService: AlertifyService,
+    public dialog: MatDialog) { }
 
   @Input() options: Partial<FileUploadOptions>;
 
@@ -30,34 +35,40 @@ export class FileUploadComponent {
       });
 
     }
-    //console.log(fileData); console.log(files)
-    //Send to server
-    this.httpClientService.post({
-      controller: this.options.controller,
-      action: this.options.action,
-      queryString: this.options.queryString,
-      headers: new HttpHeaders({ "responseType": "blob" })
-    }, fileData).subscribe({
 
-      next: (data: any) => {
-        this.alertifyService.message("Yükleme işlemi basari ile gerçekleşmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopRight
-        });
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertifyService.message("Yükleme işlemi sırasında beklenmeyen bir hata ile karşılaşılmıştır.", {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
-        });
-      }
+    const dialogRef = this.dialog.open(FileUploadDialogComponent, {
 
     });
 
-  }
+    dialogRef.afterClosed().subscribe(result => {
 
+      if (result) {
+        this.httpClientService.post({
+          controller: this.options.controller,
+          action: this.options.action,
+          queryString: this.options.queryString,
+          headers: new HttpHeaders({ "responseType": "blob" })
+        }, fileData).subscribe({
+
+          next: (data: any) => {
+            this.alertifyService.message("Yükleme işlemi basari ile gerçekleşmiştir.", {
+              dismissOthers: true,
+              messageType: MessageType.Success,
+              position: Position.TopRight
+            });
+          },
+          error: (error: HttpErrorResponse) => {
+            this.alertifyService.message("Yükleme işlemi sırasında beklenmeyen bir hata ile karşılaşılmıştır.", {
+              dismissOthers: true,
+              messageType: MessageType.Error,
+              position: Position.TopRight
+            });
+          }
+
+        });
+      }
+    });
+  }
 }
 
 export class FileUploadOptions {
@@ -66,6 +77,5 @@ export class FileUploadOptions {
   queryString?: string;
   explanation?: string;
   accept?: string;
-  multiple?: boolean = true;
-  // isClickedModalSaveButton?: boolean = false;
+  multiple: boolean = true;
 }

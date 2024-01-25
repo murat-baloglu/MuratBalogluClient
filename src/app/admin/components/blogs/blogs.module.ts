@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 // import { FileUploadModule } from '../../../services/common/file-upload/file-upload.module';
 import { BlogAddComponent } from './blog-add/blog-add.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
-import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogsModule } from '../../../dialogs/dialogs.module';
 
 
 
@@ -25,7 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule,
     // FileUploadModule,
     //ModalsModule,
-    DialogModule,
+    DialogsModule,
     MatDialogModule,
     MatButtonModule
   ]
