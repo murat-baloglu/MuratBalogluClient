@@ -28,8 +28,8 @@ const routes: Routes = [
   {
     path: "admin", component: AdminLayoutComponent, children: [
       { path: "", component: DashboardComponent }, //DashboardComponent burada Ui daki HomeComponent kontrolü için kullanılıyor.
-      { path: "add-blog", component: BlogAddComponent },
-      { path: "list-blog", component: BlogListComponent },
+      { path: "blog-add", component: BlogAddComponent },
+      { path: "blog-list", component: BlogListComponent },
       { path: "specialties", component: AdminSpecialtiesComponent },
       { path: "about-me", component: AdminAboutMeComponent },
       { path: "contact", component: AdminContactComponent },

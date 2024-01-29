@@ -3,9 +3,9 @@ import { Component, Inject, OnInit, Output, PLATFORM_ID } from '@angular/core';
 import { BlogService } from '../../../../services/common/models/blog.service';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogAddModel } from '../../../../contracts/models/blog-add-model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-blog-add',
@@ -17,7 +17,8 @@ export class BlogAddComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private blogService: BlogService,
-    private alertify: AlertifyService,
+    private alertifyService: AlertifyService,
+    private spinnerService: NgxSpinnerService,
     private formbuilder: FormBuilder) {
 
     if (isPlatformBrowser(this.platformId)) {
@@ -33,14 +34,6 @@ export class BlogAddComponent implements OnInit {
     this.createBlogForm();
   }
 
-  // @Output() fileUploadOptions: Partial<FileUploadOptions> = {
-  //   controller: "blogs",
-  //   action: "upload",
-  //   explanation: "Blog kartı için bir adet resim seçiniz veya sürükleyip bırakınız.",
-  //   accept: ".png, .jpg, jpeg, .gif",
-  //   multiple: false
-  // };
-
   public Editor: any;
 
   public isDisabled = false;
@@ -52,17 +45,19 @@ export class BlogAddComponent implements OnInit {
   }
 
   public config = {
-    placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız!'
+    placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız. Boş bırakılamaz!'
   }
 
   blogForm: FormGroup
 
   createBlogForm(): void {
     this.blogForm = this.formbuilder.group({
+      ckEditor: ["", Validators.required],
       title: ["", Validators.required],
       cardContext: ["", [
         Validators.required,
-        Validators.minLength(50)
+        Validators.minLength(150),
+        Validators.maxLength(200)
       ]]
     });
   }
@@ -71,26 +66,42 @@ export class BlogAddComponent implements OnInit {
     const blogAddModel: BlogAddModel = new BlogAddModel();
     blogAddModel.title = this.blogForm.value.title;
     blogAddModel.cardContext = this.blogForm.value.cardContext;
-    blogAddModel.context = this.model.editorData;
+    blogAddModel.context = this.blogForm.value.ckEditor;
 
-    this.blogService.addBlog(blogAddModel).subscribe({
-      next: (data: any) => {
-        this.alertify.message("Başarı ile olusturulmustur.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopRight
-        });
-        console.log(data);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertify.message(error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
-        });
-        console.log(error.message);
-      }
-    });
+    if (this.blogForm.valid) {
+      this.spinnerService.show();
+
+      this.blogService.addBlog(blogAddModel).subscribe({
+        next: (data: any) => {
+          this.spinnerService.hide();
+
+          this.createBlogForm();
+
+          this.alertifyService.message("Blog başarılı bir şekilde ile oluşturulmuştur.", {
+            dismissOthers: true,
+            messageType: MessageType.Success,
+            position: Position.TopRight
+          });
+        },
+        error: (error: HttpErrorResponse) => {
+          this.spinnerService.hide();
+
+          this.alertifyService.message(error.error, {
+            dismissOthers: true,
+            messageType: MessageType.Error,
+            position: Position.TopRight
+          });
+        }
+      });
+    }
+    else {
+      this.alertifyService.message("Hiç bir alan boş bırakılamaz ve blog kartı içeriği en az 150, en fazla 200 karakter olmalıdır.", {
+        dismissOthers: true,
+        messageType: MessageType.Error,
+        position: Position.TopCenter,
+        delay: 7
+      });
+    }
 
   }
 

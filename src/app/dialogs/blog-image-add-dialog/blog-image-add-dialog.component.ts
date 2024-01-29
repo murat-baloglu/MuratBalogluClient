@@ -14,7 +14,7 @@ export class BlogImageAddDialogComponent {
 
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {
     controller: "blogs",
-    action: "upload",
+    action: "UploadBlogImageForBlogCard",
     explanation: "Blog kartı için bir adet resim seçiniz veya sürükleyip bırakınız.",
     accept: ".png, .jpg, jpeg, .gif",
     multiple: false,

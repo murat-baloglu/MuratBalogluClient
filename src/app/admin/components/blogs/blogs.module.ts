@@ -24,7 +24,6 @@ import { DialogsModule } from '../../../dialogs/dialogs.module';
     ReactiveFormsModule,
     RouterModule,
     // FileUploadModule,
-    //ModalsModule,
     DialogsModule,
     MatDialogModule,
     MatButtonModule

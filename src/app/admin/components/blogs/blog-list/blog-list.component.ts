@@ -35,28 +35,21 @@ export class BlogListComponent implements OnInit {
   blogs: BlogModel[];
 
   getBlogs() {
-    // this.spinnerService.show();
+    this.spinnerService.show();
+    
     this.blogService.getBlogs().subscribe({
       next: (data: BlogModel[]) => {
-        // this.spinnerService.hide();
-
-        // this.alertifyService.message("Blog listesi getirildi.", {
-        //   dismissOthers: true,
-        //   messageType: MessageType.Success,
-        //   position: Position.TopRight
-        // });
         this.blogs = data;
-        console.log(data);
+        this.spinnerService.hide();
       },
       error: (error: HttpErrorResponse) => {
-        // this.spinnerService.hide();
+        this.spinnerService.hide();
 
         this.alertifyService.message(error.message, {
           dismissOthers: true,
           messageType: MessageType.Error,
           position: Position.TopRight
         });
-        console.log(error.message);
       },
     });
   }
@@ -69,7 +62,7 @@ export class BlogListComponent implements OnInit {
           messageType: MessageType.Success,
           position: Position.TopRight
         });
-        console.log(data);
+        this.getBlogs();
       },
       error: (error: HttpErrorResponse) => {
         this.alertifyService.message(error.message, {
@@ -110,7 +103,6 @@ export class BlogListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.createBlog();
     this.getBlogs();
     //this.deleteBlog("04408AF4-E58B-413F-CBC4-08DC0FE49A25");
     //this.updateBlog();
