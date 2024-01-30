@@ -35,7 +35,7 @@
                             alt="Diz Protezi Ameliyatı Nasıl Yapılır?"> -->
 
                         <img style="cursor: pointer;" src="assets/images/add-photo-1.png"
-                            (click)="addBlogImage(blog.id)">
+                            (click)="addBlogImage(blog.id, blog.title)">
                     </div>
                     <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> {{blog.createdDate | date:
                         "dd.MM.YYYY"}}</div>
@@ -46,7 +46,8 @@
                     </div> -->
 
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteBlog(blog.id)"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteBlog(blog.id)"><i
+                                class="fas fa-trash"></i> Delete</button>
                         <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
                             Edit</button>
                     </div>

@@ -10,7 +10,7 @@ import { FileUploadOptions } from '../../services/common/file-upload/file-upload
 export class BlogImageAddDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<BlogImageAddDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+    public dialogRef: MatDialogRef<BlogImageAddDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: BlogDialogData) { }
 
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {
     controller: "blogs",
@@ -18,7 +18,13 @@ export class BlogImageAddDialogComponent {
     explanation: "Blog kartı için bir adet resim seçiniz veya sürükleyip bırakınız.",
     accept: ".png, .jpg, jpeg, .gif",
     multiple: false,
-    queryString: `id=${this.data}`
+    queryString: `id=${this.data.id}`,
+    optionalFileName: this.data.title
   };
 
+}
+
+export interface BlogDialogData {
+  id: string;
+  title: string;
 }

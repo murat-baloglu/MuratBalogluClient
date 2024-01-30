@@ -30,6 +30,11 @@ export class FileUploadComponent {
 
     for (const file of files) {
 
+      if (this.options.optionalFileName) {
+        const extension = file.relativePath.split('.').pop();
+        file.relativePath = `${this.options.optionalFileName}.${extension}`;
+      }
+
       (file.fileEntry as FileSystemFileEntry).file((_file: File) => {
         fileData.append(_file.name, _file, file.relativePath);
       });
@@ -41,7 +46,6 @@ export class FileUploadComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-
       if (result) {
         this.httpClientService.post({
           controller: this.options.controller,
@@ -58,7 +62,7 @@ export class FileUploadComponent {
             });
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message("Yükleme işlemi sırasında beklenmeyen bir hata ile karşılaşılmıştır.", {
+            this.alertifyService.message("Yükleme işlemi sırasında beklenmeyen bir hata oluştu.", {
               dismissOthers: true,
               messageType: MessageType.Error,
               position: Position.TopRight
@@ -78,4 +82,5 @@ export class FileUploadOptions {
   explanation?: string;
   accept?: string;
   multiple: boolean = true;
+  optionalFileName?: string; //relativePath yani orjinal file name i değiştirmek istiyorsan buraya atama yap. File name format işlemleri backend de yapılmaktadır.
 }

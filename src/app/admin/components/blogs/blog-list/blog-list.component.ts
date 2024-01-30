@@ -22,9 +22,9 @@ export class BlogListComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
-  addBlogImage(id: string): void {
+  addBlogImage(id: string, title: string): void {
     const dialogRef = this.dialog.open(BlogImageAddDialogComponent, {
-      data: id
+      data: { id: id, title: title }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -36,7 +36,7 @@ export class BlogListComponent implements OnInit {
 
   getBlogs() {
     this.spinnerService.show();
-    
+
     this.blogService.getBlogs().subscribe({
       next: (data: BlogModel[]) => {
         this.blogs = data;
