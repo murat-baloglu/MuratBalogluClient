@@ -29,6 +29,7 @@ export class BlogListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       //Proje sonunda kullanilmazsa kaldir
+      //this.getBlogs();
     });
   }
 
@@ -40,12 +41,13 @@ export class BlogListComponent implements OnInit {
     this.blogService.getBlogs().subscribe({
       next: (data: BlogModel[]) => {
         this.blogs = data;
+        
         this.spinnerService.hide();
       },
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.message, {
+        this.alertifyService.message(error.error, {
           dismissOthers: true,
           messageType: MessageType.Error,
           position: Position.TopRight
@@ -104,8 +106,6 @@ export class BlogListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBlogs();
-    //this.deleteBlog("04408AF4-E58B-413F-CBC4-08DC0FE49A25");
-    //this.updateBlog();
   }
 
 }

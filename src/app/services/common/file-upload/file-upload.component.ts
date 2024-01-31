@@ -5,6 +5,8 @@ import { NgxFileDropEntry } from 'ngx-file-drop';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { FileUploadDialogComponent } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ReloadService } from '../reload.service';
 
 @Component({
   selector: 'app-file-upload',
@@ -16,7 +18,10 @@ export class FileUploadComponent {
   constructor(
     private httpClientService: HttpClientService,
     private alertifyService: AlertifyService,
-    public dialog: MatDialog) { }
+    private spinnerService: NgxSpinnerService,
+    public dialog: MatDialog,
+    private reloadService: ReloadService
+  ) { }
 
   @Input() options: Partial<FileUploadOptions>;
 
@@ -47,22 +52,34 @@ export class FileUploadComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
+        this.spinnerService.show();
+
         this.httpClientService.post({
           controller: this.options.controller,
           action: this.options.action,
           queryString: this.options.queryString,
           headers: new HttpHeaders({ "responseType": "blob" })
         }, fileData).subscribe({
-
           next: (data: any) => {
-            this.alertifyService.message("Yükleme işlemi basari ile gerçekleşmiştir.", {
-              dismissOthers: true,
-              messageType: MessageType.Success,
-              position: Position.TopRight
-            });
+            //reload fonksiyonu geriye observable döndüreceği zaman if içindekilerin tamamını next içine at. if sil sonra
+            const result = this.reloadService.reload();
+            if (result) {
+              this.spinnerService.hide();
+
+              this.dialog.closeAll();
+
+              this.alertifyService.message("Yükleme işlemi basari ile gerçekleşmiştir.", {
+                dismissOthers: true,
+                messageType: MessageType.Success,
+                position: Position.TopRight
+              });
+            }
+
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message("Yükleme işlemi sırasında beklenmeyen bir hata oluştu.", {
+            this.spinnerService.hide();
+
+            this.alertifyService.message(error.error, {
               dismissOthers: true,
               messageType: MessageType.Error,
               position: Position.TopRight
