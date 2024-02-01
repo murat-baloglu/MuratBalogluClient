@@ -7,6 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BlogImageAddDialogComponent } from '../../../../dialogs/blog-image-add-dialog/blog-image-add-dialog.component';
+import { BlogWithCardImageModel } from '../../../../contracts/models/blog-with-card-image-model';
 
 @Component({
   selector: 'app-blog-list',
@@ -22,6 +23,9 @@ export class BlogListComponent implements OnInit {
     public dialog: MatDialog
   ) { }
 
+  blogs: BlogModel[];
+  blogWithCardImage: BlogWithCardImageModel[];
+
   addBlogImage(id: string, title: string): void {
     const dialogRef = this.dialog.open(BlogImageAddDialogComponent, {
       data: { id: id, title: title }
@@ -33,15 +37,34 @@ export class BlogListComponent implements OnInit {
     });
   }
 
-  blogs: BlogModel[];
-
   getBlogs() {
     this.spinnerService.show();
 
     this.blogService.getBlogs().subscribe({
       next: (data: BlogModel[]) => {
         this.blogs = data;
-        
+
+        this.spinnerService.hide();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.spinnerService.hide();
+
+        this.alertifyService.message(error.error, {
+          dismissOthers: true,
+          messageType: MessageType.Error,
+          position: Position.TopRight
+        });
+      },
+    });
+  }
+
+  getBlogsWithCardImage() {
+    this.spinnerService.show();
+
+    this.blogService.getBlogsWithCardImage().subscribe({
+      next: (data: BlogWithCardImageModel[]) => {
+        this.blogWithCardImage = data;
+
         this.spinnerService.hide();
       },
       error: (error: HttpErrorResponse) => {
@@ -105,7 +128,7 @@ export class BlogListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBlogs();
+    this.getBlogsWithCardImage();
   }
 
 }

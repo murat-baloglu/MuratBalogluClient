@@ -28,14 +28,16 @@
         <div class="row mt-5">
 
             <!-- CARD ITEM -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogs">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogWithCardImage">
                 <div class="blog-card">
                     <div class="blog-card-img">
-                        <!-- <img src="assets/images/blog-images/blog-image-1.jpg"
-                            alt="Diz Protezi Ameliyatı Nasıl Yapılır?"> -->
-
+                        @if (blog.blogImageFileId) {
+                        <img style="cursor: pointer;" src={{blog.path}} alt={{blog.title}}
+                            (click)="addBlogImage(blog.id, blog.title)">
+                        }@else {
                         <img style="cursor: pointer;" src="assets/images/add-photo-1.png"
                             (click)="addBlogImage(blog.id, blog.title)">
+                        }
                     </div>
                     <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> {{blog.createdDate | date:
                         "dd.MM.YYYY"}}</div>
@@ -67,7 +69,7 @@
                     <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
                     <div class="blog-card-title">Hidrojel (Sıvı Diz Protezi) Nedir?</div>
                     <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
-                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli...
                     </div>
                     <div class="blog-card-link">
                         <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
@@ -88,7 +90,7 @@
                     <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
                     <div class="blog-card-title">Protez Ameliyatı Öncesi Hazırlıklar: Kapsamlı Rehber</div>
                     <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
-                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli...
                     </div>
                     <div class="blog-card-link">
                         <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
@@ -109,7 +111,7 @@
                     <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> 20.12.2023</div>
                     <div class="blog-card-title">En İyi Diz Protezi: Çapraz Bağları Koruyan Journey II XR</div>
                     <div class="blog-card-desc">Diz protezi veya kalça protezi ameliyatı, birçok hasta için korkutucu
-                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli…
+                        olabilmektedir. Hastalar bu yüzden eklem protezi ameliyatlarını erteleyebilir ve şiddetli...
                     </div>
                     <div class="blog-card-link">
                         <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
