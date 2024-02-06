@@ -1,13 +1,14 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogService } from '../../../../services/common/models/blog.service';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { BlogModel } from '../../../../contracts/models/blog-model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { FileUploadOptions } from '../../../../services/common/file-upload/file-upload.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BlogImageAddDialogComponent } from '../../../../dialogs/blog-image-add-dialog/blog-image-add-dialog.component';
 import { BlogWithCardImageModel } from '../../../../contracts/models/blog-with-card-image-model';
+import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
+import { BlogImageListDialogComponent } from '../../../../dialogs/blog-image-list-dialog/blog-image-list-dialog.component';
 
 @Component({
   selector: 'app-blog-list',
@@ -34,6 +35,12 @@ export class BlogListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       //Proje sonunda kullanilmazsa kaldir
       //this.getBlogs();
+    });
+  }
+
+  uploadBlogImages(id: string, title: string) {
+    const dialogRef = this.dialog.open(BlogImageListDialogComponent, {
+      data: { id: id, title: title }
     });
   }
 
@@ -80,24 +87,36 @@ export class BlogListComponent implements OnInit {
   }
 
   deleteBlog(id: string) {
-    this.blogService.deleteBlog(id).subscribe({
-      next: (data: any) => {
-        this.alertifyService.message("Başarı ile silinmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopRight
-        });
-        this.getBlogs();
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertifyService.message(error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
-        });
-        console.log(error.message);
-      }
+
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: DeleteState.Yes
     });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result == DeleteState.Yes) {
+        this.blogService.deleteBlog(id).subscribe({
+          next: (data: any) => {
+            this.alertifyService.message("Silme işlemi başarı ile gerçekleşmiştir.", {
+              dismissOthers: true,
+              messageType: MessageType.Success,
+              position: Position.TopRight
+            });
+            this.getBlogsWithCardImage();
+          },
+          error: (error: HttpErrorResponse) => {
+            this.alertifyService.message(error.error, {
+              dismissOthers: true,
+              messageType: MessageType.Error,
+              position: Position.TopRight
+            });
+            console.log(error.message);
+          }
+        });
+      }
+
+    });
+
   }
 
   //BlogModel parametereden gonderilecek.

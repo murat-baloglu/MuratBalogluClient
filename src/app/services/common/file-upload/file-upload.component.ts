@@ -98,6 +98,6 @@ export class FileUploadOptions {
   queryString?: string;
   explanation?: string;
   accept?: string;
-  multiple: boolean = true;
+  multiple: boolean;
   optionalFileName?: string; //relativePath yani orjinal file name i değiştirmek istiyorsan buraya atama yap. File name format işlemleri backend de yapılmaktadır.
 }

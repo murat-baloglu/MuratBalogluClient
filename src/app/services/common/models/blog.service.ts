@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { BlogModel } from '../../../contracts/models/blog-model';
 import { BlogAddModel } from '../../../contracts/models/blog-add-model';
 import { BlogWithCardImageModel } from '../../../contracts/models/blog-with-card-image-model';
+import { BlogDetailModel } from '../../../contracts/models/blog-detail-model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,14 @@ export class BlogService {
 
   getBlogsWithCardImage(): Observable<BlogWithCardImageModel[]> {
     return this.httpClientService.get<BlogWithCardImageModel[]>({ controller: "blogs", action: "getblogswithcardimage" });
+  }
+
+  getBlogDetail(id: string): Observable<BlogDetailModel> {
+    return this.httpClientService.get<BlogDetailModel>({ controller: "blogs", action: "getblogdetail" }, id);
+  }
+
+  getBlogDetailByDetailUrl(detailUrl: string): Observable<BlogDetailModel> {
+    return this.httpClientService.get<BlogDetailModel>({ controller: "blogs", action: "getblogdetailbydetailurl" }, detailUrl);
   }
 
 }

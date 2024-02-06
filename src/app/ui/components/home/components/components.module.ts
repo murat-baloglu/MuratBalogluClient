@@ -7,6 +7,7 @@ import { BlogsSectionComponent } from './blogs-section/blogs-section.component';
 import { PatientCommentsSectionComponent } from './patient-comments-section/patient-comments-section.component';
 import { VideosSectionComponent } from './videos-section/videos-section.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     CarouselSectionComponent,

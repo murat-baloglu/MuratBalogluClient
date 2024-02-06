@@ -3,21 +3,21 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FileUploadOptions } from '../../services/common/file-upload/file-upload.component';
 
 @Component({
-  selector: 'app-blog-image-add-dialog',
-  templateUrl: './blog-image-add-dialog.component.html',
-  styleUrl: './blog-image-add-dialog.component.css'
+  selector: 'app-blog-image-list-dialog',
+  templateUrl: './blog-image-list-dialog.component.html',
+  styleUrl: './blog-image-list-dialog.component.css'
 })
-export class BlogImageAddDialogComponent {
+export class BlogImageListDialogComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<BlogImageAddDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: BlogDialogData) { }
+    public dialogRef: MatDialogRef<BlogImageListDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: BlogDialogData) { }
 
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {
     controller: "blogs",
-    action: "UploadBlogImageForBlogCard",
-    explanation: "Blog kartı için bir adet resim seçiniz veya sürükleyip bırakınız.",
+    action: "Upload",
+    explanation: "Blog için resim veya resimler seçiniz veya sürükleyip bırakınız.",
     accept: ".png, .jpg, .jpeg, .gif",
-    multiple: false,
+    multiple: true,
     queryString: `id=${this.data.id}`,
     optionalFileName: this.data.title
   };

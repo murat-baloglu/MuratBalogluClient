@@ -52,13 +52,15 @@ const routes: Routes = [
       { path: "uzmanliklarim", component: SpecialtiesComponent },
       { path: "videolar", component: VideosComponent },
       { path: "uzmanliklarim/robotik-diz-ve-kalca-protezi", component: SpecialtiesDetailComponent },
-      { path: "blog/hidrojel-sivi-diz-protezi-nedir", component: BlogsDetailComponent }
+      { path: "blog/:detailUrl", component: BlogsDetailComponent }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    bindToComponentInputs: true
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
