@@ -3,7 +3,6 @@ import { BlogService } from '../../../../../services/common/models/blog.service'
 import { BlogDetailModel } from '../../../../../contracts/models/blog-detail-model';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-blogs-detail',
   templateUrl: './blogs-detail.component.html',
@@ -16,10 +15,6 @@ export class BlogsDetailComponent implements OnInit {
   @Input() detailUrl: string;
   blogDetail: BlogDetailModel;
 
-  ngOnInit(): void {
-    this.getBlogDetailByDetailUrl(this.detailUrl);
-  }
-
   urlChanged(detailUrl: string) {
     this.getBlogDetailByDetailUrl(detailUrl);
   }
@@ -31,6 +26,10 @@ export class BlogsDetailComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => { }
     });
+  }
+
+  ngOnInit(): void {
+    this.getBlogDetailByDetailUrl(this.detailUrl);
   }
 
 }

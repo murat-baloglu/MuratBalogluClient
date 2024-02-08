@@ -3,7 +3,6 @@ import { BlogService } from '../../../services/common/models/blog.service';
 import { BlogWithCardImageModel } from '../../../contracts/models/blog-with-card-image-model';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-blogs',
   templateUrl: './blogs.component.html',
@@ -15,10 +14,6 @@ export class BlogsComponent implements OnInit {
 
   blogWithCardImage: BlogWithCardImageModel[];
 
-  ngOnInit(): void {
-    this.getBlogsWithCardImage();
-  }
-
   getBlogsWithCardImage(): void {
     this.blogService.getBlogsWithCardImage().subscribe({
       next: (data: BlogWithCardImageModel[]) => {
@@ -26,6 +21,10 @@ export class BlogsComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => { }
     });
+  }
+
+  ngOnInit(): void {
+    this.getBlogsWithCardImage();
   }
 
 }

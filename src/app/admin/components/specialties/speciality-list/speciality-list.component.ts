@@ -1,55 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../../services/common/models/blog.service';
+import { SpecialityService } from '../../../../services/common/models/speciality.service';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
-import { BlogModel } from '../../../../contracts/models/blog-model';
-import { HttpErrorResponse } from '@angular/common/http';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
-import { BlogImageAddDialogComponent } from '../../../../dialogs/blog-image-add-dialog/blog-image-add-dialog.component';
-import { BlogWithCardImageModel } from '../../../../contracts/models/blog-with-card-image-model';
+import { SpecialityModel } from '../../../../contracts/models/speciality-model';
+import { SpecialityWithCardImageModel } from '../../../../contracts/models/speciality-with-card-image-model';
+import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
-import { BlogImageListDialogComponent } from '../../../../dialogs/blog-image-list-dialog/blog-image-list-dialog.component';
+import { SpecialityImageAddDialogComponent } from '../../../../dialogs/speciality-image-add-dialog/speciality-image-add-dialog.component';
+import { SpecialityImageListDialogComponent } from '../../../../dialogs/speciality-image-list-dialog/speciality-image-list-dialog.component';
 
 @Component({
-  selector: 'app-blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrl: './blog-list.component.css'
+  selector: 'app-speciality-list',
+  templateUrl: './speciality-list.component.html',
+  styleUrl: './speciality-list.component.css'
 })
-export class BlogListComponent implements OnInit {
+export class SpecialityListComponent implements OnInit {
 
   constructor(
-    private blogService: BlogService,
+    private specialityService: SpecialityService,
     private alertifyService: AlertifyService,
     private spinnerService: NgxSpinnerService,
     public dialog: MatDialog
   ) { }
 
-  blogs: BlogModel[];
-  blogWithCardImage: BlogWithCardImageModel[];
+  specialties: SpecialityModel[];
+  specialityWithCardImage: SpecialityWithCardImageModel[];
 
-  addBlogImage(id: string, title: string): void {
-    const dialogRef = this.dialog.open(BlogImageAddDialogComponent, {
-      data: { id: id, title: title }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      //Proje sonunda kullanilmazsa kaldir
-      //this.getBlogs();
-    });
-  }
-
-  uploadBlogImages(id: string, title: string) {
-    const dialogRef = this.dialog.open(BlogImageListDialogComponent, {
+  addSpecialityImage(id: string, title: string): void {
+    const dialogRef = this.dialog.open(SpecialityImageAddDialogComponent, {
       data: { id: id, title: title }
     });
   }
 
-  getBlogs() {
+  uploadSpecialityImages(id: string, title: string) {
+    const dialogRef = this.dialog.open(SpecialityImageListDialogComponent, {
+      data: { id: id, title: title }
+    });
+  }
+
+  getSpecialties() {
     this.spinnerService.show();
 
-    this.blogService.getBlogs().subscribe({
-      next: (data: BlogModel[]) => {
-        this.blogs = data;
+    this.specialityService.getSpecialties().subscribe({
+      next: (data: SpecialityModel[]) => {
+        this.specialties = data;
 
         this.spinnerService.hide();
       },
@@ -65,12 +60,12 @@ export class BlogListComponent implements OnInit {
     });
   }
 
-  getBlogsWithCardImage() {
+  getSpecialtiesWithCardImage() {
     this.spinnerService.show();
 
-    this.blogService.getBlogsWithCardImage().subscribe({
-      next: (data: BlogWithCardImageModel[]) => {
-        this.blogWithCardImage = data;
+    this.specialityService.getSpecialtiesWithCardImage().subscribe({
+      next: (data: SpecialityWithCardImageModel[]) => {
+        this.specialityWithCardImage = data;
 
         this.spinnerService.hide();
       },
@@ -86,7 +81,7 @@ export class BlogListComponent implements OnInit {
     });
   }
 
-  deleteBlog(id: string) {
+  deleteSpeciality(id: string) {
 
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       data: DeleteState.Yes
@@ -95,14 +90,14 @@ export class BlogListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result == DeleteState.Yes) {
-        this.blogService.deleteBlog(id).subscribe({
+        this.specialityService.deleteSpeciality(id).subscribe({
           next: (data: any) => {
             this.alertifyService.message("Silme işlemi başarı ile gerçekleşmiştir.", {
               dismissOthers: true,
               messageType: MessageType.Success,
               position: Position.TopRight
             });
-            this.getBlogsWithCardImage();
+            this.getSpecialtiesWithCardImage();
           },
           error: (error: HttpErrorResponse) => {
             this.alertifyService.message(error.error, {
@@ -118,14 +113,14 @@ export class BlogListComponent implements OnInit {
 
   }
 
-  //BlogModel parametereden gonderilecek.
-  updateBlog() {
-    const blogModel: BlogModel = new BlogModel();
-    blogModel.id = "954C61E2-82FC-4A9B-7AA4-08DC0FC9C2F2"
-    blogModel.title = "Title 6";
-    blogModel.context = "Context 6";
+  //SpecialityModel parametereden gonderilecek.
+  updateSpeciality() {
+    const specialityModel: SpecialityModel = new SpecialityModel();
+    specialityModel.id = "954C61E2-82FC-4A9B-7AA4-08DC0FC9C2F2"
+    specialityModel.title = "Title 6";
+    specialityModel.context = "Context 6";
 
-    this.blogService.updateBlog(blogModel).subscribe({
+    this.specialityService.updateSpeciality(specialityModel).subscribe({
       next: (data: any) => {
         this.alertifyService.message("Başarı ile güncellenmiştir.", {
           dismissOthers: true,
@@ -144,7 +139,7 @@ export class BlogListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBlogsWithCardImage();
+    this.getSpecialtiesWithCardImage();
   }
 
 }

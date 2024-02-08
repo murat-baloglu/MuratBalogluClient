@@ -7,6 +7,8 @@ import { FileUploadModule } from '../services/common/file-upload/file-upload.mod
 import { FileUploadDialogComponent } from './file-upload-dialog/file-upload-dialog.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 import { BlogImageListDialogComponent } from './blog-image-list-dialog/blog-image-list-dialog.component';
+import { SpecialityImageAddDialogComponent } from './speciality-image-add-dialog/speciality-image-add-dialog.component';
+import { SpecialityImageListDialogComponent } from './speciality-image-list-dialog/speciality-image-list-dialog.component';
 
 
 
@@ -15,7 +17,9 @@ import { BlogImageListDialogComponent } from './blog-image-list-dialog/blog-imag
     BlogImageAddDialogComponent,
     FileUploadDialogComponent,
     DeleteDialogComponent,
-    BlogImageListDialogComponent
+    BlogImageListDialogComponent,
+    SpecialityImageAddDialogComponent,
+    SpecialityImageListDialogComponent
   ],
   imports: [
     CommonModule,

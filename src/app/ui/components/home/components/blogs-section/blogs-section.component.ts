@@ -16,10 +16,6 @@ export class BlogsSectionComponent implements OnInit {
 
   blogWithCardImage: BlogWithCardImageModel[];
 
-  ngOnInit(): void {
-    this.getBlogsWithCardImage();
-  }
-
   getBlogsWithCardImage(): void {
     this.blogService.getBlogsWithCardImage().subscribe({
       next: (data: BlogWithCardImageModel[]) => {
@@ -27,6 +23,10 @@ export class BlogsSectionComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => { }
     });
+  }
+
+  ngOnInit(): void {
+    this.getBlogsWithCardImage();
   }
 
 }

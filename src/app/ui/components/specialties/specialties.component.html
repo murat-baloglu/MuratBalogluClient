@@ -1,15 +1,34 @@
 <section class="mySpecialties">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="section-title">
-            Uzmanlıklarım
-          </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-title">
+          Uzmanlıklarım
         </div>
       </div>
-      <div class="row mt-5">
-        <!-- CARD ITEM -->
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+    </div>
+    <div class="row mt-5">
+
+      <!-- CARD ITEM -->
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let speciality of specialityWithCardImage">
+        <a class="spc-card" routerLink="/uzmanlik/{{speciality.detailUrl}}">
+          <div class="spc-card-img">
+            @if (speciality.specialityImageFileId) {
+            <img src={{speciality.path}} alt={{speciality.title}}>
+            }@else {
+            <img src="assets/images/add-photo-1.png" alt={{speciality.title}}>
+            }
+          </div>
+          <div class="spc-card-title">{{speciality.title}} </div>
+          <div class="spc-card-desc">{{speciality.cardContext}} </div>
+          <div class="spc-card-link">
+            <span>DEVAMI</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- CARD ITEM -->
+      <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
           <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
             <div class="spc-card-img">
               <img src="assets/images/robotik-diz-kalca-protezi.jpg" alt="Robotik Diz ve Kalça Protezi">
@@ -21,13 +40,12 @@
             <div class="spc-card-link">
               <span >DEVAMI</span>
             </div>
-
           </a>
-        </div>
+        </div> -->
 
 
-        <!-- CARD ITEM -->
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <!-- CARD ITEM -->
+      <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
           <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
             <div class="spc-card-img">
               <img src="assets/images/boy-uzatma-ameliyati.jpg" alt="Boy Uzatma Ameliyatı">
@@ -38,14 +56,13 @@
             <div class="spc-card-link">
               <span>DEVAMI</span>
             </div>
-
           </a>
-        </div>
+        </div> -->
 
 
 
-        <!-- CARD ITEM -->
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <!-- CARD ITEM -->
+      <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
           <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
             <div class="spc-card-img">
               <img src="assets/images/omuz-diz-ve-ayak-bilegi-artroskopileri.jpg"
@@ -57,14 +74,13 @@
             <div class="spc-card-link">
               <span>DEVAMI</span>
             </div>
-
           </a>
-        </div>
+        </div> -->
 
 
 
-        <!-- CARD ITEM -->
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <!-- CARD ITEM -->
+      <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
           <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
             <div class="spc-card-img">
               <img src="assets/images/svf-ve-acp-uygulamalari.jpg" alt="SVF ve ACP Uygulamaları">
@@ -77,14 +93,13 @@
             <div class="spc-card-link">
               <span>DEVAMI</span>
             </div>
-
           </a>
-        </div>
+        </div> -->
 
 
 
-        <!-- CARD ITEM -->
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <!-- CARD ITEM -->
+      <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
           <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
             <div class="spc-card-img">
               <img src="assets/images/spor-yaralanmalari-ve-tedavileri.jpg" alt="Spor Yaralanmaları ve Tedavileri">
@@ -98,7 +113,8 @@
               <span>DEVAMI</span>
             </div>
           </a>
-        </div>
-      </div>
+        </div> -->
+
     </div>
-  </section>
+  </div>
+</section>

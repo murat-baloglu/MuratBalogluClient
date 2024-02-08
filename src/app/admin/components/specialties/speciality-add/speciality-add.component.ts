@@ -1,22 +1,22 @@
-import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { BlogService } from '../../../../services/common/models/blog.service';
-import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BlogAddModel } from '../../../../contracts/models/blog-add-model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
+import { isPlatformBrowser } from '@angular/common';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SpecialityService } from '../../../../services/common/models/speciality.service';
+import { SpecialityAddModel } from '../../../../contracts/models/speciality-add-model';
 
 @Component({
-  selector: 'app-blog-add',
-  templateUrl: './blog-add.component.html',
-  styleUrl: './blog-add.component.css'
+  selector: 'app-speciality-add',
+  templateUrl: './speciality-add.component.html',
+  styleUrl: './speciality-add.component.css'
 })
-export class BlogAddComponent implements OnInit {
+export class SpecialityAddComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    private blogService: BlogService,
+    private specialityService: SpecialityService,
     private alertifyService: AlertifyService,
     private spinnerService: NgxSpinnerService,
     private formbuilder: FormBuilder) {
@@ -31,7 +31,7 @@ export class BlogAddComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createBlogForm();
+    this.createSpecialityForm();
   }
 
   public Editor: any;
@@ -45,13 +45,13 @@ export class BlogAddComponent implements OnInit {
   }
 
   public config = {
-    placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız. Boş bırakılamaz!'
+    placeholder: 'Oluşturmak istediğiniz uzmanlık içeriğini buraya yazınız. Boş bırakılamaz!'
   }
 
-  blogForm: FormGroup
+  specialityForm: FormGroup
 
-  createBlogForm(): void {
-    this.blogForm = this.formbuilder.group({
+  createSpecialityForm(): void {
+    this.specialityForm = this.formbuilder.group({
       ckEditor: ["", Validators.required],
       title: ["", Validators.required],
       cardContext: ["", [
@@ -62,22 +62,22 @@ export class BlogAddComponent implements OnInit {
     });
   }
 
-  addBlog() {
-    const blogAddModel: BlogAddModel = new BlogAddModel();
-    blogAddModel.title = this.blogForm.value.title;
-    blogAddModel.cardContext = this.blogForm.value.cardContext;
-    blogAddModel.context = this.blogForm.value.ckEditor;
+  addSpeciality() {
+    const specialityAddModel: SpecialityAddModel = new SpecialityAddModel();
+    specialityAddModel.title = this.specialityForm.value.title;
+    specialityAddModel.cardContext = this.specialityForm.value.cardContext;
+    specialityAddModel.context = this.specialityForm.value.ckEditor;
 
-    if (this.blogForm.valid) {
+    if (this.specialityForm.valid) {
       this.spinnerService.show();
 
-      this.blogService.addBlog(blogAddModel).subscribe({
+      this.specialityService.addSpeciality(specialityAddModel).subscribe({
         next: (data: any) => {
           this.spinnerService.hide();
 
-          this.createBlogForm();
+          this.createSpecialityForm();
 
-          this.alertifyService.message("Blog başarılı bir şekilde ile oluşturulmuştur.", {
+          this.alertifyService.message("Uzmanlık başarılı bir şekilde ile oluşturulmuştur.", {
             dismissOthers: true,
             messageType: MessageType.Success,
             position: Position.TopRight
@@ -95,7 +95,7 @@ export class BlogAddComponent implements OnInit {
       });
     }
     else {
-      this.alertifyService.message("Hiç bir alan boş bırakılamaz ve blog kartı içeriği en az 150, en fazla 200 karakter olmalıdır.", {
+      this.alertifyService.message("Hiç bir alan boş bırakılamaz ve uzmanlık kartı içeriği en az 150, en fazla 200 karakter olmalıdır.", {
         dismissOthers: true,
         messageType: MessageType.Error,
         position: Position.TopCenter,

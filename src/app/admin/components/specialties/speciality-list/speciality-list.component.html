@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Bloglar > Blogları Listele</h1>
+                <h1 class="m-0">Uzmanlıklarım > Uzmanlıklarımı Listele</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
-                    <li class="breadcrumb-item active">Bloglar > Blogları Listele</li>
+                    <li class="breadcrumb-item active">Uzmanlıklarım > Uzmanlıklarımı Listele</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -16,49 +16,43 @@
 </div>
 <!-- /.content-header -->
 
-<section class="blog">
+<section class="mySpecialties">
     <div class="container">
         <!-- <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    Blog Yazıları
+                    Uzmanlıklarım
                 </div>
             </div>
         </div> -->
         <div class="row mt-5">
 
             <!-- CARD ITEM -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogWithCardImage">
-                <div class="blog-card">
-                    <div class="blog-card-img">
-                        @if (blog.blogImageFileId) {
-                        <img style="cursor: pointer;" src={{blog.path}} alt={{blog.title}}
-                            (click)="addBlogImage(blog.id, blog.title)">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let speciality of specialityWithCardImage">
+                <div class="spc-card">
+                    <div class="spc-card-img">
+                        @if (speciality.specialityImageFileId) {
+                        <img style="cursor: pointer;" src={{speciality.path}} alt={{speciality.title}}
+                            (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }@else {
                         <img style="cursor: pointer;" src="assets/images/add-photo-1.png"
-                            (click)="addBlogImage(blog.id, blog.title)">
+                            (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }
                     </div>
-                    <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> {{blog.createdDate | date:
-                        "dd.MM.YYYY"}}</div>
-                    <div class="blog-card-title">{{blog.title}}</div>
-                    <div class="blog-card-desc">{{blog.cardContext}}...</div>
-                    <!-- <div class="blog-card-link">
-                        <a class="btn btn-dark" routerLink="/blog/{{blog.detailUrl}}">Devamını oku</a>
-                    </div> -->
-
+                    <div class="spc-card-title">{{speciality.title}} </div>
+                    <div class="spc-card-desc">{{speciality.cardContext}} </div>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteBlog(blog.id)"><i
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteSpeciality(speciality.id)"><i
                                 class="fas fa-trash"></i>Delete</button>
                         <!-- <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
                             Edit</button> -->
                         <!-- <button type="button" class="btn btn-primary btn-sm"
-                            (click)="uploadBlogImages(blog.id,blog.title)"><i class="fas fa-pencil-alt"></i>Blog
+                            (click)="uploadSpecialityImages(speciality.id,speciality.title)"><i class="fas fa-pencil-alt"></i>Uzmanlık
                             Resimleri</button> -->
                     </div>
-                    <div>
-
-                    </div>
+                    <!-- <div class="spc-card-link">
+                        <span>DEVAMI</span>
+                    </div> -->
                 </div>
             </div>
 
