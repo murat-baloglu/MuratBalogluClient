@@ -8,6 +8,7 @@ import { PatientCommentsSectionComponent } from './patient-comments-section/pati
 import { VideosSectionComponent } from './videos-section/videos-section.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SafePipe } from '../../../../pipes/ui/home/safe.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     SpecialtiesSectionComponent,
     BlogsSectionComponent,
     PatientCommentsSectionComponent,
-    VideosSectionComponent
+    VideosSectionComponent,
+    SafePipe
   ],
   imports: [
     CommonModule,

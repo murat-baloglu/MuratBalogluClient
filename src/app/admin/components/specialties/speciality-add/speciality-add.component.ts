@@ -30,10 +30,6 @@ export class SpecialityAddComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    this.createSpecialityForm();
-  }
-
   public Editor: any;
 
   public isDisabled = false;
@@ -77,7 +73,7 @@ export class SpecialityAddComponent implements OnInit {
 
           this.createSpecialityForm();
 
-          this.alertifyService.message("Uzmanlık başarılı bir şekilde ile oluşturulmuştur.", {
+          this.alertifyService.message("Uzmanlık başarılı bir şekilde oluşturulmuştur.", {
             dismissOthers: true,
             messageType: MessageType.Success,
             position: Position.TopRight
@@ -103,6 +99,10 @@ export class SpecialityAddComponent implements OnInit {
       });
     }
 
+  }
+
+  ngOnInit(): void {
+    this.createSpecialityForm();
   }
 
 }
