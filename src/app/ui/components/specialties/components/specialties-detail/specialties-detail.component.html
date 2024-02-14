@@ -50,8 +50,10 @@
                     <ul>
                         <li *ngFor="let titleAndDetailUrl of specialityDetail?.titlesAndDetailUrls">
                             <a routerLink="/uzmanlik/{{titleAndDetailUrl.detailUrl}}"
-                                (click)="urlChanged(titleAndDetailUrl.detailUrl)"><i
-                                    class="fa-solid fa-chevron-right"></i>{{titleAndDetailUrl.title}}</a>
+                                (click)="urlChanged(titleAndDetailUrl.detailUrl)">
+                                <i class="fa-solid fa-chevron-right"></i>
+                                {{titleAndDetailUrl.title}}
+                            </a>
                         </li>
                         <!-- <li><a><i class="fa-solid fa-chevron-right"></i>Robotik Diz ve Kalça Protezi</a></li>
                         <li><a><i class="fa-solid fa-chevron-right"></i>Boy Uzatma Ameliyatı</a></li>

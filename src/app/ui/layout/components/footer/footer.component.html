@@ -12,13 +12,18 @@
           HIZLI BAĞLANTILAR
         </div>
         <ul class="footer-menu-list">
-          <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Robotik Diz ve Kalça Protezi</a></li>
+          <li *ngFor="let titleAndDetailUrl of titleAndDetailUrlList">
+            <a routerLink="/uzmanlik/{{titleAndDetailUrl.detailUrl}}">{{titleAndDetailUrl.title}}</a>
+          </li>
+          <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Hasta Yorumları</a></li>
+          <li><a routerLink="videolar">Videolar</a></li>
+          <li><a routerLink="iletisim">İletişim</a></li>
+          <!-- <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Robotik Diz ve Kalça Protezi</a></li>
           <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Boy Uzatma Ameliyatları</a></li>
           <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Omuz , Diz ve Ayak Bileği Artroskopileri</a>
           </li>
           <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">SVF ve ACP Uygulamaları</a></li>
-          <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Spor Yaralanmaları ve Tedavileri</a></li>
-          <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Hasta Yorumları</a></li>
+          <li><a routerLink="uzmanliklarim/robotik-diz-ve-kalca-protezi">Spor Yaralanmaları ve Tedavileri</a></li> -->
         </ul>
       </div>
 
@@ -28,11 +33,22 @@
         </div>
 
         <ul class="footer-menu-list">
-          <li><a href="tel:4447888"><i class="fa-solid fa-phone"></i>444 7 888</a> / <a href="tel:02423146666">0242 314
-              66 66</a> (dahili 5306)</li>
-          <li><a href="javascript:void(0);"><i class="fa-regular fa-envelope"></i>op.dr.muratbaloglu&#64;gmail.com</a>
+          <li>
+            <a href="tel:4447888"><i class="fa-solid fa-phone"></i>{{contact?.fixedPhoneOne}}</a>
+            @if(contact?.fixedPhoneOneExtension){
+            (dahili {{contact?.fixedPhoneOneExtension}})
+            } /
+            <a href="tel:02423146666">{{contact?.fixedPhoneTwo}}</a>
+            @if(contact?.fixedPhoneTwoExtension){
+            (dahili {{contact?.fixedPhoneTwoExtension}})
+            }
+          </li>
+          <li>
+            <a href="javascript:void(0);"><i class="fa-regular fa-envelope"></i>{{contact?.email}}</a>
+            <!-- <a href="javascript:void(0);"><i class="fa-regular fa-envelope"></i>op.dr.muratbaloglu&#64;gmail.com</a> -->
           </li>
         </ul>
+
         <div class="footer-social-media py-2">
           <a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a> <a href="javascript:void(0);"><i
               class="fa-brands fa-facebook"></i></a> <a href="javascript:void(0);"><i
@@ -47,14 +63,14 @@
   <div class="copyright">
     <div class="container">
       <div class="row">
-        <div class="col-sm-12 col-md-6 d-flex align-items-center">© 2024 drmuratbaloglu.com, Op. Dr. Murat Baloğlu</div>
+        <div class="col-sm-12 col-md-6 d-flex align-items-center">© 2024 {{contact?.email}}, Op. Dr. Murat Baloğlu</div>
         <div class="col-sm-12 col-md-6">
           <ul>
             <li><a class="footer-text-link" data-bs-toggle="modal" data-bs-target="#cerezModal">Gizlilik ve Çerez
                 Politikası</a></li>
-            <li><a class="footer-text-link" data-bs-toggle="modal" data-bs-target="#kvkkModal">KVKK Aydınlatma
-                Metni</a></li>
-
+            <li>
+              <a class="footer-text-link" data-bs-toggle="modal" data-bs-target="#kvkkModal">KVKK Aydınlatma Metni</a>
+            </li>
             <li><a class="btn btn-danger acceptBtn">Kabul Ediyorum</a></li>
           </ul>
         </div>
@@ -63,8 +79,6 @@
 
   </div>
 </footer>
-
-
 
 <!-- Modal KVKK -->
 <div class="modal fade" id="kvkkModal" tabindex="-1" aria-labelledby="kvkkModalLabel" aria-hidden="true">
@@ -120,8 +134,6 @@
   </div>
 </div>
 
-
-
 <!-- Modal Gizlilik ve Çerez Politikası -->
 <div class="modal fade" id="cerezModal" tabindex="-1" aria-labelledby="cerezModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl  modal-dialog-scrollable">
@@ -144,7 +156,8 @@
           <p><strong><br>Veri Sorumlusu</strong></p>
           <p>Kişisel veri kimliği belirli veya belirlenebilir gerçek kişiye ilişkin isim, soyisim, doğum tarihi veya
             telefon numarası gibi her türlü bilgiyi ifade etmektedir.</p>
-          <p>Kişisel verileriniz, veri sorumlusu sıfatıyla <span>Antalya</span> Ticaret Sicil Müdürlüğü nezdinde sicil numarası ile
+          <p>Kişisel verileriniz, veri sorumlusu sıfatıyla <span>Antalya</span> Ticaret Sicil Müdürlüğü nezdinde sicil
+            numarası ile
             kayıtlı ve şirket merkezi <span>Zafer Mah. Yıldırım Beyazıt Cad. No: 91
               Kepez/Antalya</span> adresinde bulunan <span>Op. Dr. Murat Baloğlu</span>
             (Şirket) tarafından 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) başta olmak üzere, ilgili mevzuat
@@ -216,12 +229,13 @@
           <p><strong><br>Bilgi Güncelleme ve Değişiklik</strong></p>
           <p>Şirket, gizlilik veri koruma prensiplerini güncel tutmak ve ilgili mevzuata uygun hale getirmek için işbu
             Gizlilik Politikası'nın içeriğini dilediği zaman değiştirebilir. Değişen Gizlilik Politikası Şirket internet
-            sitesinde ilan edilir. Gizlilik Politikası'nın güncel haline <span>www.drmuratbaloglu.com</span> adresinden sürekli olarak ulaşmanız
+            sitesinde ilan edilir. Gizlilik Politikası'nın güncel haline <span>www.drmuratbaloglu.com</span> adresinden
+            sürekli olarak ulaşmanız
             mümkündür. İşbu Gizlilik Politikası'nın değiştirilmesinden sonra Şirketin hizmet veya uygulamalarını
             kullanmaya devam etmeniz halinde yapılan değişiklikleri kabul ettiğiniz varsayılır. Şirketin değişiklik
             yaptığı Gizlilik Politikası hükümleri internet sitesinde yayınlandığı tarihte yürürlük kazanır.</p>
-         
-          
+
+
           <p><br><strong>Verileri Saklama Süresi</strong></p>
           <p>Sitede herhangi bir şekilde doğrudan paylaşılan veriler etkileşim süresinin devamı boyunca saklanmaktadır.
           </p>
@@ -236,7 +250,8 @@
           </p>
           <p>Yukarıda belirtilen amaçlarla, <span>Op. Dr. Murat Baloğlu</span> ile
             paylaşılan kişisel verilerin aktarılabileceği kişi ve kuruluşlar; ana hissedarlar, hissedarlar, reklam
-            verenler, doğrudan veya dolaylı yurtiçi/ yurtdışı iştiraklerimiz; başta <span>Op. Dr. Murat Baloğlu</span> altyapısını kullanan üye firmalar ve
+            verenler, doğrudan veya dolaylı yurtiçi/ yurtdışı iştiraklerimiz; başta <span>Op. Dr. Murat Baloğlu</span>
+            altyapısını kullanan üye firmalar ve
             bunlarla sınırlı olmamak üzere sunulan hizmet ile ilgili kişi ve kuruluşlar olmak üzere, faaliyetlerimizi
             yürütmek üzere veya Veri İşleyen sıfatı ile hizmet aldığımız, iş birliği yaptığımız, program ortağı
             kuruluşları, yurtiçi/yurtdışı kuruluşlar ve diğer 3. kişiler ve kuruluşlardır. Mahkemelerden gelen bağlayıcı
@@ -269,7 +284,8 @@
           <p>Kişisel verilerin işlenmesine onay verilmesi halinde onayın geri çekilmesi imkanı vardır.</p>
           <p>Kanun kapsamında, kişisel verileriniz ile ilgili her türlü talep, şikayet ve önerilerinizi, kimliğinizi
             tevsik edici belgeler ve talebinizi içeren dilekçeniz ile aşağıdaki adresimize ulaştırabilir veya güvenli
-            elektronik imza kullanmak suretiyle Şirketimizin <span>op.dr.muratbaloglu&#64;gmail.com</span> kayıtlı elektronik posta
+            elektronik imza kullanmak suretiyle Şirketimizin <span>op.dr.muratbaloglu&#64;gmail.com</span> kayıtlı
+            elektronik posta
             adresine gönderebilirsiniz.</p>
           <p><br>Adresimiz:</p>
           <p><span>Memorial Antalya Hastanesi - Zafer Mah. Yıldırım Beyazıt Cad. No: 91
@@ -281,11 +297,9 @@
   </div>
 </div>
 
-
 <div class="scrollTop">
   <i class="fa-solid fa-angle-up"></i>
 </div>
-
 
 <div class="whatsapp-widget">
   <i class="fa-brands fa-whatsapp"></i>
@@ -304,7 +318,6 @@
           </li>
           <li>
             Whatsapp'dan İletişime Geçin
-
           </li>
         </ul>
       </a>
