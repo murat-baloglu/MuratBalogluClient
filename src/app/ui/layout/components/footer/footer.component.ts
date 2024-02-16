@@ -4,6 +4,8 @@ import { ContactModel } from '../../../../contracts/models/contact-model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SpecialityService } from '../../../../services/common/models/speciality.service';
 import { TitleAndDetailUrlModel } from '../../../../contracts/models/common/title-and-detail-url-model';
+import { SocialMediaAccountService } from '../../../../services/common/models/social-media-account.service';
+import { SocialMediaAccountModel } from '../../../../contracts/models/social-media-account-model';
 
 @Component({
   selector: 'app-footer',
@@ -12,9 +14,12 @@ import { TitleAndDetailUrlModel } from '../../../../contracts/models/common/titl
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private contactService: ContactService, private specialityService: SpecialityService) { }
+  constructor(private contactService: ContactService,
+    private specialityService: SpecialityService,
+    private socialMediaAccountService: SocialMediaAccountService) { }
 
   contact: ContactModel;
+  socialMediaAccount: SocialMediaAccountModel;
   titleAndDetailUrlList: TitleAndDetailUrlModel[];
 
   getContact() {
@@ -35,9 +40,19 @@ export class FooterComponent implements OnInit {
     });
   }
 
+  getSocialMediaAccounts() {
+    this.socialMediaAccountService.getSocialMediaAccounts().subscribe({
+      next: (data: SocialMediaAccountModel) => {
+        this.socialMediaAccount = data;
+      },
+      error: (error: HttpErrorResponse) => { }
+    });
+  }
+
   ngOnInit(): void {
     this.getContact();
     this.getSpecialityTitlesAndDetailUrls();
+    this.getSocialMediaAccounts();
   }
 
 }

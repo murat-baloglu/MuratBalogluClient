@@ -52,10 +52,31 @@
 
                 <div class="col-9 col-sm-9 col-md-9  col-lg-3 col-xl-4 col-xxl-4 text-end d-flex align-items-center">
                     <ul class="social-media ms-auto me-4">
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a></li>
-                        <li><a href="javascript:void(0);"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li>
+                            <a [href]="socialMediaAccount?.youTube" target="_blank">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="socialMediaAccount?.instagram" target="_blank">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="socialMediaAccount?.facebook" target="_blank">
+                                <i class="fa-brands fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="socialMediaAccount?.x" target="_blank">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a [href]="socialMediaAccount?.linkedIn" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </li>
                     </ul>
 
                     <div class="dropdown select-language">

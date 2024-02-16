@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../../services/common/models/contact.service';
 import { ContactModel } from '../../../../contracts/models/contact-model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SocialMediaAccountService } from '../../../../services/common/models/social-media-account.service';
+import { SocialMediaAccountModel } from '../../../../contracts/models/social-media-account-model';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +12,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private socialMediaAccountService: SocialMediaAccountService) { }
 
   contact: ContactModel;
+  socialMediaAccount: SocialMediaAccountModel;
 
   getContact() {
     this.contactService.getContact().subscribe({
@@ -23,8 +26,18 @@ export class HeaderComponent implements OnInit {
     });
   }
 
+  getSocialMediaAccounts() {
+    this.socialMediaAccountService.getSocialMediaAccounts().subscribe({
+      next: (data: SocialMediaAccountModel) => {
+        this.socialMediaAccount = data;
+      },
+      error: (error: HttpErrorResponse) => { }
+    });
+  }
+
   ngOnInit(): void {
     this.getContact();
+    this.getSocialMediaAccounts();
   }
 
 }
