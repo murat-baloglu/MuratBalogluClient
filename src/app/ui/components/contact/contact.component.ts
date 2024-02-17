@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../../../services/common/models/contact.service';
 import { ContactModel } from '../../../contracts/models/contact-model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { WorkingHourService } from '../../../services/common/models/working-hour.service';
+import { WorkingHourModel } from '../../../contracts/models/working-hour-model';
 
 @Component({
   selector: 'app-contact',
@@ -10,9 +12,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ContactComponent implements OnInit {
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private workingHourService: WorkingHourService) { }
 
   contact: ContactModel;
+  workingHour: WorkingHourModel
 
   getContact() {
     this.contactService.getContact().subscribe({
@@ -23,8 +26,18 @@ export class ContactComponent implements OnInit {
     });
   }
 
+  getWorkingHours() {
+    this.workingHourService.getWorkingHours().subscribe({
+      next: (data: WorkingHourModel) => {
+        this.workingHour = data;
+      },
+      error: (error: HttpErrorResponse) => { }
+    });
+  }
+
   ngOnInit(): void {
     this.getContact();
+    this.getWorkingHours();
   }
 
 }

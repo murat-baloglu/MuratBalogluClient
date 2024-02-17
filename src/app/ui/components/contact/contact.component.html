@@ -41,33 +41,40 @@
                             <tr>
                                 <td width="150">Pazartesi</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 18:00</td>
+                                <td>{{workingHour?.monday}}</td>
                             </tr>
                             <tr>
                                 <td width="150">Salı</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 18:00</td>
+                                <td>{{workingHour?.tuesday}}</td>
                             </tr>
                             <tr>
                                 <td width="150">Çarşamba</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 18:00</td>
+                                <td>{{workingHour?.wednesday}}</td>
                             </tr>
                             <tr>
                                 <td width="150">Perşembe</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 18:00</td>
+                                <td>{{workingHour?.thursday}}</td>
                             </tr>
                             <tr>
                                 <td width="150">Cuma</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 18:00</td>
+                                <td>{{workingHour?.friday}}</td>
                             </tr>
                             <tr>
                                 <td width="80">Cumartesi</td>
                                 <td width="40">:</td>
-                                <td>09:00 - 15:00</td>
+                                <td>{{workingHour?.saturday}}</td>
                             </tr>
+                            @if (workingHour?.sunday) {
+                            <tr>
+                                <td width="80">Pazar</td>
+                                <td width="40">:</td>
+                                <td>{{workingHour?.sunday}}</td>
+                            </tr>
+                            }
                         </tbody>
 
                     </table>
