@@ -24,6 +24,8 @@ import { BlogAddComponent } from './admin/components/blogs/blog-add/blog-add.com
 import { BlogListComponent } from './admin/components/blogs/blog-list/blog-list.component';
 import { SpecialityAddComponent } from './admin/components/specialties/speciality-add/speciality-add.component';
 import { SpecialityListComponent } from './admin/components/specialties/speciality-list/speciality-list.component';
+import { SocialMediaAccountsComponent } from './admin/components/social-media-accounts/social-media-accounts.component';
+
 
 const routes: Routes = [
   {
@@ -37,7 +39,8 @@ const routes: Routes = [
       { path: "contact", component: AdminContactComponent },
       { path: "faq", component: AdminFaqComponent },
       { path: "languages", component: AdminLanguagesComponent },
-      { path: "videos", component: AdminVideosComponent }
+      { path: "videos", component: AdminVideosComponent },
+      { path: "social-media-accounts", component: SocialMediaAccountsComponent }
     ]
   },
 

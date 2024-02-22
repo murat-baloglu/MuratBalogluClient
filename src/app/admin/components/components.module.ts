@@ -8,6 +8,7 @@ import { FaqModule } from './faq/faq.module';
 import { LanguagesModule } from './languages/languages.module';
 import { SpecialtiesModule } from './specialties/specialties.module';
 import { VideosModule } from './videos/videos.module';
+import { SocialMediaAccountsModule } from './social-media-accounts/social-media-accounts.module';
 
 
 
@@ -22,7 +23,8 @@ import { VideosModule } from './videos/videos.module';
     FaqModule,
     LanguagesModule,
     SpecialtiesModule,
-    VideosModule
+    VideosModule,
+    SocialMediaAccountsModule
   ]
 })
 export class ComponentsModule { }
