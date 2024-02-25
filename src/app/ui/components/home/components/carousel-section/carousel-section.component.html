@@ -17,8 +17,8 @@
     <div class="carousel-inner">
         @for (carouselImage of carouselImages; track carouselImage; let i = $index) {
         @if (i == 0) {
-        <div class="carousel-item active" data-bs-interval="8000">
-            <img class="d-block w-100" src={{carouselImage.path}} alt="Ortopedi ve Travmatoloji Uzmanlığı">
+        <div class="carousel-item active" data-bs-interval="8000" [ngStyle]="{'background-image': ' url(' + carouselImage.path  + ')'}">
+            <img class="d-none w-100" src={{carouselImage.path}} alt="Ortopedi ve Travmatoloji Uzmanlığı">
             <div class="carousel-caption d-none d-md-block">
                 <div>Op. Dr. Murat Baloğlu</div>
                 <h2>Ortopedi ve <br>Travmatoloji Uzmanlığı</h2>
@@ -28,8 +28,8 @@
             </div>
         </div>
         }@else {
-        <div class="carousel-item" data-bs-interval="8000">
-            <img src={{carouselImage.path}} class="d-block w-100" alt="Ortopedi ve Travmatoloji Uzmanlığı">
+        <div class="carousel-item" data-bs-interval="8000" [ngStyle]="{'background-image': ' url(' + carouselImage.path  + ')'}">
+            <img src={{carouselImage.path}} class="d-none w-100" alt="Ortopedi ve Travmatoloji Uzmanlığı">
             <div class="carousel-caption d-none d-md-block">
                 <div>Op. Dr. Murat Baloğlu</div>
                 <h2>Ortopedi ve <br>Travmatoloji Uzmanlığı</h2>
@@ -40,7 +40,7 @@
         </div>
         }
         }@empty {
-        <div class="carousel-item active" data-bs-interval="8000">
+        <div class="carousel-item active" data-bs-interval="8000" style="background-color: #e2e2e2;">
             <img src="" class="d-none w-100" alt="Ortopedi ve Travmatoloji Uzmanlığı">
             <div class="carousel-caption d-none d-md-block">
                 <div>Op. Dr. Murat Baloğlu</div>

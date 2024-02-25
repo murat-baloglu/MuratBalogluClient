@@ -23,7 +23,7 @@ export class CarouselComponent implements OnInit {
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {
     controller: "home",
     action: "uploadcarouselimages",
-    explanation: "Slider / Carousel için resim veya resimler seçiniz veya sürükleyip bırakınız.",
+    explanation: "Slider için resim seçin veya sürükleyip bırakın. Birden çok resim seçilebilir.",
     accept: ".png, .jpg, .jpeg, .gif",
     multiple: true,
     optionalFileName: "ortopedi-ve-travmatoloji-uzmanligi"

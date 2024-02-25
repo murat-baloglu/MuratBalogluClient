@@ -30,7 +30,6 @@
 
 .spc-card-img img {
     width: 100%;
-    margin-top: -10%;
 }
 
 .spc-card-title {
@@ -70,3 +69,5 @@
     font-family: "OPS Bold";
     font-size: .9rem;
 }
+
+

@@ -4,9 +4,9 @@
             <div class="col-md-12">
                 <div class="section-head">
                     <div class="section-title">
-                        Son Eklenen Videolar
+                        Videolar
                     </div>
-                    <a routerLink="/videolar" class="btn btn-outline-dark btn-sm section-title-link">
+                    <a routerLink="/videolar" class="btn  btn-sm btn-view-all">
                         Tümünü Gör<i class="fa-solid fa-chevron-right"></i>
                     </a>
                 </div> 
@@ -15,7 +15,7 @@
         <div class="row mt-5">
 
             <!-- CARD ITEM -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let video of videos">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4" *ngFor="let video of videos">
                 <div class="video-card">
                     <div [innerHTML]="video.link | safe"></div>
                     <div class="video-title">

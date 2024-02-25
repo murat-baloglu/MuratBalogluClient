@@ -3,6 +3,8 @@ import { HomeService } from '../../../../../services/common/models/home.service'
 import { CarouselImageModel } from '../../../../../contracts/models/carousel-image-model';
 import { HttpErrorResponse } from '@angular/common/http';
 
+declare var $: any;
+
 @Component({
   selector: 'app-carousel-section',
   templateUrl: './carousel-section.component.html',

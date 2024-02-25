@@ -3,7 +3,7 @@
 .navbar-brand img{ max-width:377px;}
 .navbar .nav-item{padding:0;}
 .navbar .nav-item:last-child{padding-right:0;}
-.navbar .nav-link{color:#fff; font-size:.9rem; padding:32px 20px;}
+.navbar .nav-link{color:#fff; font-size:.95rem; padding:32px 16px;}
 .navbar .nav-link:hover{background-color: #037491; color:#fff; box-shadow: inset rgba(0,0,0,.16) 0px 0px 60px -12px;}
 .navbar .nav-link.active{color:#fff;}
 .dropdown-menu{border-radius: 0; border:none; border-top:4px solid #037491;  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.30); -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.30);   box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.30); padding:10px 15px 15px 15px; background-color:#008eb28f; }

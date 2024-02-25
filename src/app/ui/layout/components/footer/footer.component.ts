@@ -19,6 +19,9 @@ export class FooterComponent implements OnInit {
     private socialMediaAccountService: SocialMediaAccountService) { }
 
   contact: ContactModel;
+  mobile:string;
+  contactFixedPhoneOne:string;
+  contactFixedPhoneTwo:string;
   socialMediaAccount: SocialMediaAccountModel;
   titleAndDetailUrlList: TitleAndDetailUrlModel[];
 
@@ -26,6 +29,9 @@ export class FooterComponent implements OnInit {
     this.contactService.getContact().subscribe({
       next: (data: ContactModel) => {
         this.contact = data;
+        this.mobile = data.mobile.replace(/\s/g, '')
+        this.contactFixedPhoneOne = data.fixedPhoneOne.replace(/\s/g, '')
+        this.contactFixedPhoneTwo = data.fixedPhoneTwo.replace(/\s/g, '')
       },
       error: (error: HttpErrorResponse) => { }
     });

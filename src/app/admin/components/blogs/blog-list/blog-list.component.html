@@ -17,7 +17,7 @@
 <!-- /.content-header -->
 
 <section class="blog">
-    <div class="container">
+    <div class="container-fluid">
         <!-- <div class="row">
             <div class="col-12">
                 <div class="section-title">
@@ -25,7 +25,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="row mt-5">
+        <div class="row mt-0">
 
             <!-- CARD ITEM -->
             <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogWithCardImage">
@@ -49,7 +49,7 @@
 
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-danger btn-sm" (click)="deleteBlog(blog.id)"><i
-                                class="fas fa-trash"></i>Delete</button>
+                                class="fas fa-trash me-2"></i>Sil</button>
                         <!-- <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
                             Edit</button> -->
                         <!-- <button type="button" class="btn btn-primary btn-sm"

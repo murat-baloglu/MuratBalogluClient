@@ -4,9 +4,9 @@
             <div class="col-12">
                 <div class="section-head">
                     <div class="section-title">
-                        Son Eklenen Blog Yazıları
+                        Blog Yazıları
                     </div>
-                    <a routerLink="/bloglar" class="btn btn-outline-dark btn-sm section-title-link">
+                    <a routerLink="/bloglar" class="btn   btn-sm btn-view-all">
                         Tümünü Gör<i class="fa-solid fa-chevron-right"></i>
                     </a>
                 </div>
@@ -28,9 +28,11 @@
                         "dd.MM.YYYY"}}</div>
                     <div class="blog-card-title">{{blog.title}}</div>
                     <div class="blog-card-desc">{{blog.cardContext}}...</div>
-                    <div class="blog-card-link">
-                        <a class="btn btn-dark" routerLink="/blog/{{blog.detailUrl}}">Devamını oku</a>
-                    </div>
+             
+
+                    <a routerLink="/blog/{{blog.detailUrl}}" class="btn btn-dark btn-sm">
+                        Devamını Oku
+                    </a>
                     <!-- <div class="blog-card-link">
             <a class="btn btn-dark" routerLink="/blog/diz-protezi-ameliyati-nasil-yapilir">Devamını oku</a>
           </div> -->

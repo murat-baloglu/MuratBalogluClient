@@ -44,7 +44,7 @@ function mainCarouselSetting() {
 
 
 patientCommentsCarousel();
-mainCarouselSetting();
+
 navigation.addEventListener('navigate', () => {
     window.scrollTo(0, 0);
 });

@@ -15,12 +15,24 @@ export class HeaderComponent implements OnInit {
   constructor(private contactService: ContactService, private socialMediaAccountService: SocialMediaAccountService) { }
 
   contact: ContactModel;
+  contactMobile: string;
+  contactFixedPhoneOne: string;
+  contactFixedPhoneTwo: string;
   socialMediaAccount: SocialMediaAccountModel;
+  langTurkish: boolean = true;
+
+  toggleFlag() {
+    this.langTurkish = !this.langTurkish;
+  }
+
 
   getContact() {
     this.contactService.getContact().subscribe({
       next: (data: ContactModel) => {
         this.contact = data;
+        this.contactMobile = data.mobile.replace(/\s/g, '');
+        this.contactFixedPhoneOne = data.fixedPhoneOne.replace(/\s/g, '');
+        this.contactFixedPhoneTwo = data.fixedPhoneTwo.replace(/\s/g, '');
       },
       error: (error: HttpErrorResponse) => { }
     });

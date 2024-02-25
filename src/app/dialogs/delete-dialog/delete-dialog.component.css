@@ -6,3 +6,7 @@
 .delete-dialog-button-row .mat-mdc-button-base {
     margin: 8px 8px 8px 15px;
 }
+
+.mdc-dialog__content{
+    padding:0 24px!important
+}

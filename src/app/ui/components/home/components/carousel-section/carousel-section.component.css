@@ -1,6 +1,6 @@
 /* CAROUSEL */
 #carouselExampleAutoplaying .carousel-item {
-    height: 500px;
+    height: 580px;
     background-size: cover;
     background-position: 75% 100%;
 }
@@ -66,8 +66,8 @@
     -webkit-box-shadow: 1px 3px 6px 0px rgba(3, 34, 39, 0.4);
     -moz-box-shadow: 1px 3px 6px 0px rgba(3, 34, 39, 0.4);
     box-shadow: 1px 3px 6px 0px rgba(3, 34, 39, 0.4);
+    top:0!important;
 }
-
 .carousel-indicators button {
     width: 17px !important;
     height: 17px !important;

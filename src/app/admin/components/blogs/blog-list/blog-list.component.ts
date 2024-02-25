@@ -45,6 +45,7 @@ export class BlogListComponent implements OnInit {
   }
 
   getBlogs() {
+
     this.spinnerService.show();
 
     this.blogService.getBlogs().subscribe({
@@ -66,6 +67,7 @@ export class BlogListComponent implements OnInit {
   }
 
   getBlogsWithCardImage() {
+
     this.spinnerService.show();
 
     this.blogService.getBlogsWithCardImage().subscribe({

@@ -15,7 +15,6 @@
 
 .blog-card-img img {
     width: 100%;
-    margin-top: -10%;
 }
 
 .blog-date {
@@ -39,3 +38,4 @@
     line-height: 1.5rem;
     margin-bottom: 16px;
 }
+
