@@ -53,6 +53,11 @@ footer {
 .footer-social-media a {
     color: var(--light-blue);
     margin-right: 10px;
+    transition: .5s;
+}
+
+.footer-social-media a:hover {
+    color: #fff;
 }
 
 .copyright {

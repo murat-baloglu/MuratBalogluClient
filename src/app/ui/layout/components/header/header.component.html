@@ -7,11 +7,12 @@
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-2 col-xxl-2 ps-2 ps-sm-0">
                     <div class="row quick-menu">
                         <div class="col-2 d-flex align-items-center">
-                            <a href="tel:+90{{contactMobile}}"><i class="fa-solid fa-phone"></i></a>
+                            <a href="tel:+90{{mobileWithoutSpace}}"><i class="fa-solid fa-phone"></i></a>
                         </div>
                         <div class="col-10">
                             <div class="ht-item-head">Bize Ulaşın</div>
-                            <div class="ht-item-text"><a href="tel:+90{{contactMobile}}">+90 {{contact?.mobile}}</a>
+                            <div class="ht-item-text">
+                                <a href="tel:+90{{mobileWithoutSpace}}">+90 {{contact?.mobile}} </a>
                             </div>
                             <!-- <div class="ht-item-text"><a href="tel:05336622902">+90 533 662 29 02</a></div> -->
                         </div>
@@ -21,7 +22,7 @@
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-3  col-xxl-3  ps-2 ps-sm-0">
                     <div class="row quick-menu">
                         <div class="col-1 d-flex align-items-center">
-                            <a href="mailto:op.dr.muratbaloglu&#64;gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                            <a href="mailto:{{contact?.email}}"><i class="fa-regular fa-envelope"></i></a>
                         </div>
                         <div class="col-11">
                             <div class="ht-item-head">E-Posta</div>
@@ -41,9 +42,9 @@
                         <div class="col-11 col-sm-11 col-md-11 col-lg-11 col-xl-10 col-xxl-11 px-0">
                             <div class="ht-item-head">Randevu İçin</div>
                             <div class="ht-item-text">
-                                <a href="tel:{{contactFixedPhoneOne}}">{{contact?.fixedPhoneOne}} </a>
+                                <a href="tel:{{fixedPhoneOneWithoutSpace}}">{{contact?.fixedPhoneOne}} </a>
                                 @if(contact?.fixedPhoneOneExtension){(dahili {{contact?.fixedPhoneOneExtension}})} /
-                                <a href="tel:{{contactFixedPhoneTwo}}">{{contact?.fixedPhoneTwo}} </a>
+                                <a href="tel:{{fixedPhoneTwoWithoutSpace}}">{{contact?.fixedPhoneTwo}} </a>
                                 @if(contact?.fixedPhoneTwoExtension){(dahili {{contact?.fixedPhoneTwoExtension}})}
                             </div>
                             <!-- <div class="ht-item-text"><a href="tel:4447888">444 7 888</a> / <a href="tel:02423146666">0242 314 66 66</a> (dahili 5306)</div> -->

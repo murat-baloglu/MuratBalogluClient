@@ -34,20 +34,20 @@
 
         <ul class="footer-menu-list">
           <li>
-            <a href="tel:+90{{mobile}};"><i class="fa-solid fa-phone"></i>+90 {{contact?.mobile}}</a>
+            <a href="tel:+90{{mobileWithoutSpace}}"><i class="fa-solid fa-phone"></i>+90 {{contact?.mobile}}</a>
           </li>
           <li>
-            <a href="tel:{{contactFixedPhoneOne}}"><i class="fa-solid fa-phone"></i>{{contact?.fixedPhoneOne}}</a>
+            <a href="tel:{{fixedPhoneOneWithoutSpace}}"><i class="fa-solid fa-phone"></i>{{contact?.fixedPhoneOne}}</a>
             @if(contact?.fixedPhoneOneExtension){
             (dahili {{contact?.fixedPhoneOneExtension}})
             } /
-            <a href="tel:{{contactFixedPhoneTwo}}">{{contact?.fixedPhoneTwo}}</a>
+            <a href="tel:{{fixedPhoneTwoWithoutSpace}}">{{contact?.fixedPhoneTwo}}</a>
             @if(contact?.fixedPhoneTwoExtension){
             (dahili {{contact?.fixedPhoneTwoExtension}})
             }
           </li>
           <li>
-            <a href="mailto:{{contact?.email}};"><i class="fa-regular fa-envelope"></i>{{contact?.email}}</a>
+            <a href="mailto:{{contact?.email}}"><i class="fa-regular fa-envelope"></i>{{contact?.email}}</a>
             <!-- <a href="javascript:void(0);"><i class="fa-regular fa-envelope"></i>op.dr.muratbaloglu&#64;gmail.com</a> -->
           </li>
         </ul>
@@ -314,8 +314,8 @@
       <i class="fa-solid fa-xmark"></i>
     </a>
     <div class="wwp-link">
-      <div class="wpp-head">Uzmanlarımıza <br> Danışmak İçin</div>
-      <a href="">
+      <div class="wpp-head">Op. Dr. Murat Baloğlu'na <br> Danışmak İçin</div>
+      <a href="https://wa.me/+90{{mobileWithoutSpace}}?text=Merhaba%20destek%20alabilir miyim?" target="_blank">
         <ul>
           <li>
             <i class="fa-brands fa-whatsapp"></i>

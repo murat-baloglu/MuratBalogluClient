@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   constructor(private contactService: ContactService, private socialMediaAccountService: SocialMediaAccountService) { }
 
   contact: ContactModel;
-  contactMobile: string;
-  contactFixedPhoneOne: string;
-  contactFixedPhoneTwo: string;
+  mobileWithoutSpace: string;
+  fixedPhoneOneWithoutSpace: string;
+  fixedPhoneTwoWithoutSpace: string;
   socialMediaAccount: SocialMediaAccountModel;
   langTurkish: boolean = true;
 
@@ -30,9 +30,9 @@ export class HeaderComponent implements OnInit {
     this.contactService.getContact().subscribe({
       next: (data: ContactModel) => {
         this.contact = data;
-        this.contactMobile = data.mobile.replace(/\s/g, '');
-        this.contactFixedPhoneOne = data.fixedPhoneOne.replace(/\s/g, '');
-        this.contactFixedPhoneTwo = data.fixedPhoneTwo.replace(/\s/g, '');
+        this.mobileWithoutSpace = data.mobile.replace(/\s/g, '');
+        this.fixedPhoneOneWithoutSpace = data.fixedPhoneOne.replace(/\s/g, '');
+        this.fixedPhoneTwoWithoutSpace = data.fixedPhoneTwo.replace(/\s/g, '');
       },
       error: (error: HttpErrorResponse) => { }
     });
