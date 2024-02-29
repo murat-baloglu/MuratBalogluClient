@@ -1,28 +1,18 @@
 <section class="patients-comments">
   <div class="container">
-    <!-- ITEM -->
-    <div class="card pe-4 py-3 my-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-1 card-head">
-            <div class="card-head-icon">
-              <i class="fa-regular fa-thumbs-up"></i>
-            </div>
-          </div>
-          <div class="col-md-11">
-            <div class="card-head-name">Vedat Bey</div>
-            <div class="card-head-title mb-2">Diz Protezi Ameliyatı</div>
-            <div>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-              Aldus PageMaker including versions of Lorem Ipsum.
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="section-sub-main-title">
+          YORUMLAR
+        </div>
+        <div class="section-sub-title">
+          Hastalarımızın Yorumları
         </div>
       </div>
     </div>
 
     <!-- ITEM -->
+    @for (patientComment of patientComments; track patientComment) {
     <div class="card pe-4 py-3 my-4">
       <div class="card-body">
         <div class="row">
@@ -32,96 +22,16 @@
             </div>
           </div>
           <div class="col-md-11">
-            <div class="card-head-name">Vedat Bey</div>
-            <div class="card-head-title mb-2">Diz Protezi Ameliyatı</div>
+            <div class="card-head-name">{{patientComment.patientName}}</div>
+            <div class="card-head-title mb-2">{{patientComment.disease}}</div>
             <div>
-              <p>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum.</p>
-
-              <p>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum.</p>
+              {{patientComment.patientReview}}
             </div>
           </div>
         </div>
       </div>
     </div>
+    }
 
-
-    <!-- ITEM -->
-    <div class="card pe-4 py-3 my-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-1 card-head">
-            <div class="card-head-icon">
-              <i class="fa-regular fa-thumbs-up"></i>
-            </div>
-          </div>
-          <div class="col-md-11">
-            <div class="card-head-name">Vedat Bey</div>
-            <div class="card-head-title mb-2">Diz Protezi Ameliyatı</div>
-            <div>
-              <p>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum with the release of Letraset
-                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- ITEM -->
-    <div class="card pe-4 py-3 my-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-1 card-head">
-            <div class="card-head-icon">
-              <i class="fa-regular fa-thumbs-up"></i>
-            </div>
-          </div>
-          <div class="col-md-11">
-            <div class="card-head-name">Vedat Bey</div>
-            <div class="card-head-title mb-2">Diz Protezi Ameliyatı</div>
-            <div>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-              Aldus PageMaker including versions of Lorem Ipsum.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <!-- ITEM -->
-    <div class="card pe-4 py-3 my-4">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-md-1 card-head">
-            <div class="card-head-icon">
-              <i class="fa-regular fa-thumbs-up"></i>
-            </div>
-          </div>
-          <div class="col-md-11">
-            <div class="card-head-name">Vedat Bey</div>
-            <div class="card-head-title mb-2">Diz Protezi Ameliyatı</div>
-            <div>Lorem Ipsum is simply dummy text of the pr make but also the leap into electronic typesetting,
-              remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-              sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-              Aldus PageMaker including versions of Lorem Ipsum.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>

@@ -14,7 +14,7 @@ export class VideosSectionComponent implements OnInit {
 
   videos: VideoModel[];
 
-  getVideos(): void {
+  getLastNineVideo(): void {
     this.videoService.getLastNineVideo().subscribe({
       next: (data: VideoModel[]) => {
         this.videos = data;
@@ -24,7 +24,7 @@ export class VideosSectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getVideos();
+    this.getLastNineVideo();
   }
 
 }

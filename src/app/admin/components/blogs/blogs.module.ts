@@ -23,7 +23,6 @@ import { DialogsModule } from '../../../dialogs/dialogs.module';
     CKEditorModule,
     ReactiveFormsModule,
     RouterModule,
-    // FileUploadModule,
     DialogsModule,
     MatDialogModule,
     MatButtonModule

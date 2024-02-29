@@ -25,6 +25,8 @@ import { BlogListComponent } from './admin/components/blogs/blog-list/blog-list.
 import { SpecialityAddComponent } from './admin/components/specialties/speciality-add/speciality-add.component';
 import { SpecialityListComponent } from './admin/components/specialties/speciality-list/speciality-list.component';
 import { SocialMediaAccountsComponent } from './admin/components/social-media-accounts/social-media-accounts.component';
+import { PatientCommentAddComponent } from './admin/components/patient-comments/patient-comment-add/patient-comment-add.component';
+import { PatientCommentListComponent } from './admin/components/patient-comments/patient-comment-list/patient-comment-list.component';
 
 
 const routes: Routes = [
@@ -40,7 +42,9 @@ const routes: Routes = [
       { path: "faq", component: AdminFaqComponent },
       { path: "languages", component: AdminLanguagesComponent },
       { path: "videos", component: AdminVideosComponent },
-      { path: "social-media-accounts", component: SocialMediaAccountsComponent }
+      { path: "social-media-accounts", component: SocialMediaAccountsComponent },
+      { path: "patient-comment-add", component: PatientCommentAddComponent },
+      { path: "patient-comment-list", component: PatientCommentListComponent }
     ]
   },
 

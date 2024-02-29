@@ -9,6 +9,7 @@ import { LanguagesModule } from './languages/languages.module';
 import { SpecialtiesModule } from './specialties/specialties.module';
 import { VideosModule } from './videos/videos.module';
 import { SocialMediaAccountsModule } from './social-media-accounts/social-media-accounts.module';
+import { PatientCommentsModule } from './patient-comments/patient-comments.module';
 
 
 
@@ -24,7 +25,8 @@ import { SocialMediaAccountsModule } from './social-media-accounts/social-media-
     LanguagesModule,
     SpecialtiesModule,
     VideosModule,
-    SocialMediaAccountsModule
+    SocialMediaAccountsModule,
+    PatientCommentsModule
   ]
 })
 export class ComponentsModule { }
