@@ -23,7 +23,7 @@ export class PatientCommentService {
     return this.httpClientService.delete<any>({ controller: "patientcomments" }, id);
   }
 
-  updateBlog(patientCommentModel: PatientCommentModel): Observable<any> {
+  updatePatientComment(patientCommentModel: PatientCommentModel): Observable<any> {
     return this.httpClientService.put<any>({ controller: "patientcomments" }, patientCommentModel);
   }
 

@@ -74,6 +74,25 @@ export class PatientCommentListComponent implements OnInit {
     });
 
   }
+    
+  // updatePatientComment(patientCommentModel: PatientCommentModel) {
+  //   this.patientCommentService.updatePatientComment(patientCommentModel).subscribe({
+  //     next: (data: any) => {
+  //       this.alertifyService.message("Başarı ile güncellenmiştir.", {
+  //         dismissOthers: true,
+  //         messageType: MessageType.Success,
+  //         position: Position.TopRight
+  //       });
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       this.alertifyService.message(error.message, {
+  //         dismissOthers: true,
+  //         messageType: MessageType.Error,
+  //         position: Position.TopRight
+  //       });
+  //     }
+  //   });
+  // }
 
   ngOnInit(): void {
     this.getPatientComments();
