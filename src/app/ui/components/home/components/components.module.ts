@@ -9,6 +9,7 @@ import { VideosSectionComponent } from './videos-section/videos-section.componen
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SafePipe } from '../../../../pipes/ui/home/safe.pipe';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 
 
@@ -25,7 +26,8 @@ import { SafePipe } from '../../../../pipes/ui/home/safe.pipe';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
   exports: [
     CarouselSectionComponent,

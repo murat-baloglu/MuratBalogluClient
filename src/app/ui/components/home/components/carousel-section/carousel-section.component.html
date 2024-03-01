@@ -1,4 +1,30 @@
-<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+<owl-carousel-o [options]="customOptions" class="main-carousel">
+    @for (carouselImage of carouselImages; track carouselImage; let i = $index) {
+    <ng-template carouselSlide>
+        <div class="carousel-caption d-none d-md-block">
+            <div>Op. Dr. Murat Baloğlu</div>
+            <h2>Ortopedi ve <br>Travmatoloji Uzmanlığı</h2>
+            <p>Ortopedi ve travmatolojide, travma cerrahisi, kırık ve çıkıklar gibi akut travmatik yaralanmaların
+                tedavisi.</p>
+            <a class="btn btn-dark brd-lblue btn-detail" routerLink="/uzmanliklarim">Detaylı Bilgi</a>
+        </div>
+        <img src="../../../../../../assets/images/slider-images/ortopedi-ve-travmatoloji-uzmanligi.jpg">
+    </ng-template>
+    }@empty {
+    <ng-template carouselSlide>
+        <div class="carousel-caption d-none d-md-block">
+            <div>Op. Dr. Murat Baloğlu</div>
+            <h2>Ortopedi ve <br>Travmatoloji Uzmanlığı</h2>
+            <p>Ortopedi ve travmatolojide, travma cerrahisi, kırık ve çıkıklar gibi akut travmatik yaralanmaların
+                tedavisi.</p>
+            <a class="btn btn-dark brd-lblue btn-detail" routerLink="/uzmanliklarim">Detaylı Bilgi</a>
+        </div>
+        <img src="../../../../../../assets/images/no-image.jpg" height="574px">
+    </ng-template>
+    }
+</owl-carousel-o>
+
+<!-- <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         @if (carouselImagesCount > 1) {
         @for (carouselImage of carouselImages; track carouselImage; let i = $index) {
@@ -64,4 +90,4 @@
         <span class="visually-hidden">Next</span>
     </button>
     }
-</div>
+</div> -->

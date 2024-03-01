@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PatientCommentModel } from '../../../../../contracts/models/patient-comment-model';
 import { PatientCommentService } from '../../../../../services/common/models/patient-comment.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 declare var $: any;
 
@@ -24,6 +25,44 @@ export class PatientCommentsSectionComponent implements OnInit {
       error: (error: HttpErrorResponse) => { }
     });
   }
+
+   // CAROUSEL SETTING
+   customOptions: OwlOptions = {
+    loop: true,
+    autoplay: true,
+    autoplaySpeed: 1500,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 1500,
+    dotsSpeed: 1500,
+    margin: 10,
+    navText: [
+      `<span class="carousel-control-prev-icon" aria-hidden="true"></span>`,
+      `<span class="carousel-control-next-icon" aria-hidden="true"></span>`,
+    ],
+    responsive: {
+      0: {
+        items: 1,
+      },
+      400: {
+        items: 1,
+      },
+      740: {
+        items: 2,
+      },
+      940: {
+        items: 2,
+      },
+      1200: {
+        items: 3,
+      },
+    },
+    nav: true,
+  };
 
   // patientCommentsCarousel(): void {
   //   setTimeout(() => {

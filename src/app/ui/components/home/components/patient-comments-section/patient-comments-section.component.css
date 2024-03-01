@@ -60,8 +60,6 @@
     font-size: 1.2rem;
 }
 
-
-
 @media (max-width: 767px) {
     .patients-comments .carousel-inner .carousel-item>div {
         display: none;
@@ -80,7 +78,6 @@
 
 /* medium and up screens */
 @media (min-width: 768px) {
-
 
     .patients-comments .carousel-inner .carousel-item-end.active,
     .patients-comments .carousel-inner .carousel-item-next {
