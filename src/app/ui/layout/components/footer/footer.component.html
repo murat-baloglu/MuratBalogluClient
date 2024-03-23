@@ -40,7 +40,8 @@
             <a href="tel:{{fixedPhoneOneWithoutSpace}}"><i class="fa-solid fa-phone"></i>{{contact?.fixedPhoneOne}}</a>
             @if(contact?.fixedPhoneOneExtension){
             (dahili {{contact?.fixedPhoneOneExtension}})
-            } /
+            }
+            @if(contact?.fixedPhoneTwo){ / }
             <a href="tel:{{fixedPhoneTwoWithoutSpace}}">{{contact?.fixedPhoneTwo}}</a>
             @if(contact?.fixedPhoneTwoExtension){
             (dahili {{contact?.fixedPhoneTwoExtension}})
@@ -55,9 +56,6 @@
         <div class="footer-social-media py-2">
           <a [href]="socialMediaAccount?.youTube" target="_blank"><i class="fa-brands fa-youtube"></i></a>
           <a [href]="socialMediaAccount?.instagram" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-          <a [href]="socialMediaAccount?.facebook" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-          <a [href]="socialMediaAccount?.x" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-          <a [href]="socialMediaAccount?.linkedIn" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
         </div>
 
       </div>

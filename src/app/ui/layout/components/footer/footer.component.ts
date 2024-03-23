@@ -29,9 +29,9 @@ export class FooterComponent implements OnInit {
     this.contactService.getContact().subscribe({
       next: (data: ContactModel) => {
         this.contact = data;
-        this.mobileWithoutSpace = data.mobile.replace(/\s/g, '')
-        this.fixedPhoneOneWithoutSpace = data.fixedPhoneOne.replace(/\s/g, '')
-        this.fixedPhoneTwoWithoutSpace = data.fixedPhoneTwo.replace(/\s/g, '')
+        this.mobileWithoutSpace = data?.mobile.replace(/\s/g, '');
+        this.fixedPhoneOneWithoutSpace = data?.fixedPhoneOne.replace(/\s/g, '');
+        this.fixedPhoneTwoWithoutSpace = data?.fixedPhoneTwo.replace(/\s/g, '');
       },
       error: (error: HttpErrorResponse) => { }
     });

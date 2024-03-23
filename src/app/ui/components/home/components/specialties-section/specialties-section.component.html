@@ -1,117 +1,38 @@
 <section class="mySpecialties">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-head">
-                    <div class="section-title">
-                        Uzmanlıklarım
-                    </div>
-                    <a routerLink="/uzmanliklarim" class="btn btn-sm btn-view-all">
-                        Tümünü Gör<i class="fa-solid fa-chevron-right"></i>
-                    </a>                    
-                </div>
-            </div>
+  <div class="container relative">
+
+    <div class="row">
+      <div class="col-12">
+        <div class="section-head">
+          <div class="section-title">
+            Uzmanlıkları
+          </div>
+          <a routerLink="/uzmanliklari" class="btn btn-sm btn-view-all">
+            Tümünü Gör<i class="fa-solid fa-chevron-right"></i>
+          </a>
         </div>
-        <div class="row mt-5">
-
-            <!-- CARD ITEM -->
-            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let speciality of specialityWithCardImage">
-                <a class="spc-card" routerLink="/uzmanlik/{{speciality.detailUrl}}">
-                    <div class="spc-card-img">
-                        @if (speciality.specialityImageFileId) {
-                        <img src={{speciality.path}} alt={{speciality.title}}>
-                        }@else {
-                        <img src="assets/images/add-photo-1.png" alt={{speciality.title}}>
-                        }
-                    </div>
-                    <div class="spc-card-title">{{speciality.title}} </div>
-                    <div class="spc-card-desc">{{speciality.cardContext}} </div>
-                    <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div>
-                </a>
-            </div>
-
-
-            <!-- CARD ITEM -->
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
-                    <div class="spc-card-img">
-                        <img src="assets/images/boy-uzatma-ameliyati.jpg" alt="Boy Uzatma Ameliyatı">
-                    </div>
-                    <div class="spc-card-title">Boy Uzatma Ameliyatı</div>
-                    <div class="spc-card-desc">Boy uzatma ameliyatı, sağlık sorunları ya da estetik nedenlerle bacak
-                        uzunluğunu
-                        artırmak için yapılan ortopedik bir cerrahi işlemdir.</div>
-                    <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div>
-
-                </a>
-            </div> -->
-
-
-
-            <!-- CARD ITEM -->
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
-                    <div class="spc-card-img">
-                        <img src="assets/images/omuz-diz-ve-ayak-bilegi-artroskopileri.jpg"
-                            alt="Omuz, Diz ve Ayak Bileği Artroskopileri">
-                    </div>
-                    <div class="spc-card-title">Omuz, Diz ve Ayak Bileği Artroskopileri</div>
-                    <div class="spc-card-desc">Diz, omuz, kalça gibi bölgelerde olduğu gibi ayak bileği artroskopisinde
-                        de eklem
-                        içi hastalıkların tanı ve tedavi için kullanılan kapalı bir cerrahi yöntemdir. </div>
-                    <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div>
-
-                </a>
-            </div> -->
-
-
-
-            <!-- CARD ITEM -->
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
-                    <div class="spc-card-img">
-                        <img src="assets/images/svf-ve-acp-uygulamalari.jpg" alt="SVF ve ACP Uygulamaları">
-                    </div>
-                    <div class="spc-card-title">SVF ve ACP Uygulamaları</div>
-                    <div class="spc-card-desc">Ek ACP desteği ile SVF kök hücre tedavisi, artrit ve dejeneratif eklem
-                        ağrısında
-                        başarılıdır. Konservatif tedaviyi deneyen ve başarısız olan ve invaziv cerrahiden kaçınmak
-                        isteyen
-                        hastalar yararlanabilir.
-                    </div>
-                    <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div>
-
-                </a>
-            </div> -->
-
-
-
-            <!-- CARD ITEM -->
-            <!-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
-                <a class="spc-card" routerLink="/uzmanliklarim/robotik-diz-ve-kalca-protezi">
-                    <div class="spc-card-img">
-                        <img src="assets/images/spor-yaralanmalari-ve-tedavileri.jpg"
-                            alt="Spor Yaralanmaları ve Tedavileri">
-                    </div>
-                    <div class="spc-card-title">Spor Yaralanmaları ve Tedavileri</div>
-                    <div class="spc-card-desc">Spor yaralanmaları, artrit ve dejeneratif eklem ağrısında başarılıdır.
-                        Konservatif tedaviyi deneyen ve başarısız olan ve invaziv cerrahiden kaçınmak isteyen hastalar
-                        yararlanabilir.
-                    </div>
-                    <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div>
-                </a>
-            </div> -->
-
-        </div>
+      </div>
     </div>
+
+    <div class="row mt-5">
+      <!-- CARD ITEM -->
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let speciality of specialityWithCardImage">
+        <a class="spc-card" routerLink="/uzmanlik/{{speciality.detailUrl}}">
+          <div class="spc-card-img">
+            @if (speciality.specialityImageFileId) {
+            <img src={{speciality.path}} alt={{speciality.title}}>
+            }@else {
+            <img src="assets/images/add-photo-1.png" alt={{speciality.title}}>
+            }
+          </div>
+          <div class="spc-card-title">{{speciality.title}} </div>
+          <div class="spc-card-desc">{{speciality.cardContext}} </div>
+          <div class="spc-card-link">
+            <span>DEVAMI</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
 </section>
