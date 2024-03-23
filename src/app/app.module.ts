@@ -24,10 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     provideClientHydration(),
-    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }
-    // { provide: "baseUrl", useValue: "https://service.drmuratbaloglu.com/api", multi: true }
-    // { provide: "baseUrl", useValue: "https://muratbaloglu.net/api", multi: true }
-    // { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }
+    // { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }    
+    { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }
   ],
   bootstrap: [AppComponent]
 })
