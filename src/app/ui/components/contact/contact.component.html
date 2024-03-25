@@ -17,10 +17,13 @@
                     <ul>
                         <li><span>Telefon : </span>+90 {{contact?.mobile}}</li>
                         <li>
-                            <span>Randevu : </span>{{contact?.fixedPhoneOne}}
+                            <span>Randevu : </span>
+                            {{contact?.fixedPhoneOne}}
                             @if(contact?.fixedPhoneOneExtension){
                             (dahili {{contact?.fixedPhoneOneExtension}})
-                            } / {{contact?.fixedPhoneTwo}}
+                            }
+                            @if(contact?.fixedPhoneTwo){ / }
+                            {{contact?.fixedPhoneTwo}}
                             @if(contact?.fixedPhoneTwoExtension){
                             (dahili {{contact?.fixedPhoneTwoExtension}})
                             }

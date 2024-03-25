@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PatientCommentModel } from '../../../../contracts/models/patient-comment-model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
+import { PatientCommentUpdateDialogComponent } from '../../../../dialogs/patient-comment-update-dialog/patient-comment-update-dialog.component';
 
 @Component({
   selector: 'app-patient-comment-list',
@@ -22,6 +23,7 @@ export class PatientCommentListComponent implements OnInit {
   ) { }
 
   patientComments: PatientCommentModel[];
+  patientComment: PatientCommentModel;
 
   getPatientComments() {
     this.spinnerService.show();
@@ -74,25 +76,14 @@ export class PatientCommentListComponent implements OnInit {
     });
 
   }
-    
-  // updatePatientComment(patientCommentModel: PatientCommentModel) {
-  //   this.patientCommentService.updatePatientComment(patientCommentModel).subscribe({
-  //     next: (data: any) => {
-  //       this.alertifyService.message("Başarı ile güncellenmiştir.", {
-  //         dismissOthers: true,
-  //         messageType: MessageType.Success,
-  //         position: Position.TopRight
-  //       });
-  //     },
-  //     error: (error: HttpErrorResponse) => {
-  //       this.alertifyService.message(error.message, {
-  //         dismissOthers: true,
-  //         messageType: MessageType.Error,
-  //         position: Position.TopRight
-  //       });
-  //     }
-  //   });
-  // }
+
+  updatePatientComment(patientComment: PatientCommentModel): void {
+    this.dialog.open(PatientCommentUpdateDialogComponent, {
+      data: { id: patientComment.id, patientName: patientComment.patientName, disease: patientComment.disease, patientReview: patientComment.patientReview },
+      width: '850px',
+      // height: '400px'      
+    });
+  }
 
   ngOnInit(): void {
     this.getPatientComments();

@@ -41,4 +41,8 @@ export class BlogService {
     return this.httpClientService.get<BlogDetailModel>({ controller: "blogs", action: "getblogdetailbydetailurl" }, detailUrl);
   }
 
+  getBlogById(id: string): Observable<BlogModel> {
+    return this.httpClientService.get<BlogModel>({ controller: "blogs", action: "getblogbyid" }, id);
+  }
+
 }

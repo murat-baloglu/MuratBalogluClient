@@ -9,13 +9,15 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogsModule } from '../../../dialogs/dialogs.module';
+import { BlogUpdateComponent } from './blog-update/blog-update.component';
 
 
 
 @NgModule({
   declarations: [
     BlogAddComponent,
-    BlogListComponent
+    BlogListComponent,
+    BlogUpdateComponent
   ],
   imports: [
     CommonModule,

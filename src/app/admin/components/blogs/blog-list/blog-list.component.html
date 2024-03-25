@@ -46,16 +46,16 @@
                     <!-- <div class="blog-card-link">
                         <a class="btn btn-dark" routerLink="/blog/{{blog.detailUrl}}">Devamını oku</a>
                     </div> -->
-
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteBlog(blog.id)"><i
-                                class="fas fa-trash me-2"></i>Sil</button>
-                        <!-- <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
-                            Edit</button> -->
-                        <!-- <button type="button" class="btn btn-primary btn-sm"
-                            (click)="uploadBlogImages(blog.id,blog.title)"><i class="fas fa-pencil-alt"></i>Blog
-                            Resimleri</button> -->
-                    </div>
+                    <button type="button" class="btn btn-danger card-link btn-sm" (click)="deleteBlog(blog.id)">
+                        <i class="fas fa-trash me-2"></i>Sil
+                    </button>
+                    <button type="button" class="btn btn-info card-link btn-sm"
+                        routerLink="/admin/blog-update/{{blog.id}}">
+                        <i class="fas fa-pencil-alt me-2"></i>Düzenle
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary btn-sm" (click)="uploadBlogImages(blog.id,blog.title)">
+                        <i class="fas fa-pencil-alt"></i>Blog Resimleri
+                    </button> -->
                 </div>
             </div>
 

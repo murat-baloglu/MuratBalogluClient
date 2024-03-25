@@ -46,4 +46,8 @@ export class SpecialityService {
     return this.httpClientService.get<TitleAndDetailUrlModel[]>({ controller: "specialties", action: "getspecialitytitlesanddetailurls" });
   }
 
+  getSpecialityById(id: string): Observable<SpecialityModel> {
+    return this.httpClientService.get<SpecialityModel>({ controller: "specialties", action: "getspecialitybyid" }, id);
+  }
+
 }

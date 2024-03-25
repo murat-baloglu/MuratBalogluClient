@@ -8,13 +8,15 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { DialogsModule } from '../../../dialogs/dialogs.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { SpecialityUpdateComponent } from './speciality-update/speciality-update.component';
 
 
 
 @NgModule({
   declarations: [
     SpecialityAddComponent,
-    SpecialityListComponent
+    SpecialityListComponent,
+    SpecialityUpdateComponent
   ],
   imports: [
     CommonModule,

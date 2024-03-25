@@ -1,18 +1,18 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { BlogService } from '../../../../services/common/models/blog.service';
 import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BlogAddModel } from '../../../../contracts/models/blog-add-model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse } from '@angular/common/http';
+import { BlogModel } from '../../../../contracts/models/blog-model';
 
 @Component({
-  selector: 'app-blog-add',
-  templateUrl: './blog-add.component.html',
-  styleUrl: './blog-add.component.css'
+  selector: 'app-blog-update',
+  templateUrl: './blog-update.component.html',
+  styleUrl: './blog-update.component.css'
 })
-export class BlogAddComponent implements OnInit {
+export class BlogUpdateComponent implements OnInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
@@ -30,6 +30,10 @@ export class BlogAddComponent implements OnInit {
 
   }
 
+  @Input() id: string;
+
+  blog: BlogModel;
+
   public Editor: any;
 
   public isDisabled = false;
@@ -44,13 +48,13 @@ export class BlogAddComponent implements OnInit {
     placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız. Boş bırakılamaz!',
   }
 
-  blogForm: FormGroup
+  blogUpdateForm: FormGroup
 
-  createBlogForm(): void {
-    this.blogForm = this.formbuilder.group({
-      ckEditor: ["", Validators.required],
-      title: ["", Validators.required],
-      cardContext: ["", [
+  updateBlogForm(): void {
+    this.blogUpdateForm = this.formbuilder.group({
+      ckEditor: [this.blog?.context, Validators.required],
+      title: [this.blog?.title, Validators.required],
+      cardContext: [this.blog?.cardContext, [
         Validators.required,
         Validators.minLength(150),
         Validators.maxLength(200)
@@ -58,22 +62,21 @@ export class BlogAddComponent implements OnInit {
     });
   }
 
-  addBlog() {
-    const blogAddModel: BlogAddModel = new BlogAddModel();
-    blogAddModel.title = this.blogForm.value.title;
-    blogAddModel.cardContext = this.blogForm.value.cardContext;
-    blogAddModel.context = this.blogForm.value.ckEditor;
+  updateBlog() {
+    const blogModel: BlogModel = new BlogModel();
+    blogModel.id = this.id;
+    blogModel.title = this.blogUpdateForm.value.title;
+    blogModel.cardContext = this.blogUpdateForm.value.cardContext;
+    blogModel.context = this.blogUpdateForm.value.ckEditor;
 
-    if (this.blogForm.valid) {
+    if (this.blogUpdateForm.valid) {
       this.spinnerService.show();
 
-      this.blogService.addBlog(blogAddModel).subscribe({
+      this.blogService.updateBlog(blogModel).subscribe({
         next: (data: any) => {
           this.spinnerService.hide();
 
-          this.createBlogForm();
-
-          this.alertifyService.message("Blog başarılı bir şekilde ile oluşturulmuştur.", {
+          this.alertifyService.message("Blog başarılı bir şekilde ile güncellenmiştir.", {
             dismissOthers: true,
             messageType: MessageType.Success,
             position: Position.TopRight
@@ -101,8 +104,25 @@ export class BlogAddComponent implements OnInit {
 
   }
 
+  getBlogById(id: string): void {
+    this.blogService.getBlogById(id).subscribe({
+      next: (data: BlogModel) => {
+        this.blog = data;
+        this.updateBlogForm();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.alertifyService.message(error.error, {
+          dismissOthers: true,
+          messageType: MessageType.Error,
+          position: Position.TopRight
+        });
+      }
+    });
+  }
+
   ngOnInit(): void {
-    this.createBlogForm();
+    this.updateBlogForm();
+    this.getBlogById(this.id);
   }
 
 }

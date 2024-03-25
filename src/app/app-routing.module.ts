@@ -26,6 +26,8 @@ import { SpecialityListComponent } from "./admin/components/specialties/speciali
 import { SocialMediaAccountsComponent } from "./admin/components/social-media-accounts/social-media-accounts.component";
 import { PatientCommentAddComponent } from "./admin/components/patient-comments/patient-comment-add/patient-comment-add.component";
 import { PatientCommentListComponent } from "./admin/components/patient-comments/patient-comment-list/patient-comment-list.component";
+import { BlogUpdateComponent } from "./admin/components/blogs/blog-update/blog-update.component";
+import { SpecialityUpdateComponent } from "./admin/components/specialties/speciality-update/speciality-update.component";
 
 const routes: Routes = [
   {
@@ -33,8 +35,10 @@ const routes: Routes = [
       { path: "", component: DashboardComponent }, //DashboardComponent burada Ui daki HomeComponent kontrolü için kullanılıyor.
       { path: "blog-add", component: BlogAddComponent },
       { path: "blog-list", component: BlogListComponent },
+      { path: "blog-update/:id", component: BlogUpdateComponent },
       { path: "speciality-add", component: SpecialityAddComponent },
       { path: "speciality-list", component: SpecialityListComponent },
+      { path: "speciality-update/:id", component: SpecialityUpdateComponent },
       { path: "about-me", component: AdminAboutMeComponent },
       { path: "contact", component: AdminContactComponent },
       { path: "faq", component: AdminFaqComponent },

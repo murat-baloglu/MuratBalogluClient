@@ -18,13 +18,6 @@
 
 <section class="mySpecialties">
     <div class="container-fluid">
-        <!-- <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    Uzmanlıklarım
-                </div>
-            </div>
-        </div> -->
         <div class="row mt-0">
 
             <!-- CARD ITEM -->
@@ -41,18 +34,19 @@
                     </div>
                     <div class="spc-card-title">{{speciality.title}} </div>
                     <div class="spc-card-desc">{{speciality.cardContext}} </div>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-danger btn-sm" (click)="deleteSpeciality(speciality.id)"><i
-                                class="fas fa-trash me-2"></i>Sil</button>
-                        <!-- <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
-                            Edit</button> -->
-                        <!-- <button type="button" class="btn btn-primary btn-sm"
-                            (click)="uploadSpecialityImages(speciality.id,speciality.title)"><i class="fas fa-pencil-alt"></i>Uzmanlık
-                            Resimleri</button> -->
-                    </div>
-                    <!-- <div class="spc-card-link">
-                        <span>DEVAMI</span>
-                    </div> -->
+
+                    <button type="button" class="btn btn-danger card-link btn-sm"
+                        (click)="deleteSpeciality(speciality.id)">
+                        <i class="fas fa-trash me-2"></i>Sil
+                    </button>
+                    <button type="button" class="btn btn-info card-link btn-sm"
+                        routerLink="/admin/speciality-update/{{speciality.id}}">
+                        <i class="fas fa-pencil-alt me-2"></i>Düzenle
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary card-link btn-sm"
+                        (click)="uploadSpecialityImages(speciality.id,speciality.title)">
+                        <i class="fas fa-pencil-alt"></i>Uzmanlık Resimleri
+                    </button> -->
                 </div>
             </div>
 
