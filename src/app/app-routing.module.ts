@@ -4,7 +4,6 @@ import { LayoutComponent } from "./ui/layout/layout.component";
 import { LayoutComponent as AdminLayoutComponent } from "./admin/layout/layout.component";
 import { HomeComponent } from "./ui/components/home/home.component";
 import { AboutMeComponent } from "./ui/components/about-me/about-me.component";
-import { AboutMeComponent as AdminAboutMeComponent } from "./admin/components/about-me/about-me.component";
 import { AcademicComponent } from "./ui/components/academic/academic.component";
 import { BlogsComponent } from "./ui/components/blogs/blogs.component";
 import { VideosComponent as AdminVideosComponent } from "./admin/components/videos/videos.component";
@@ -28,6 +27,9 @@ import { PatientCommentAddComponent } from "./admin/components/patient-comments/
 import { PatientCommentListComponent } from "./admin/components/patient-comments/patient-comment-list/patient-comment-list.component";
 import { BlogUpdateComponent } from "./admin/components/blogs/blog-update/blog-update.component";
 import { SpecialityUpdateComponent } from "./admin/components/specialties/speciality-update/speciality-update.component";
+import { AboutMeAddComponent } from "./admin/components/about-me/about-me-add/about-me-add.component";
+import { HomeAboutMeAddComponent } from "./admin/components/about-me/home-about-me-add/home-about-me-add.component";
+import { AboutMeImageAddComponent } from "./admin/components/about-me/about-me-image-add/about-me-image-add.component";
 
 const routes: Routes = [
   {
@@ -39,7 +41,9 @@ const routes: Routes = [
       { path: "speciality-add", component: SpecialityAddComponent },
       { path: "speciality-list", component: SpecialityListComponent },
       { path: "speciality-update/:id", component: SpecialityUpdateComponent },
-      { path: "about-me", component: AdminAboutMeComponent },
+      { path: "about-me-add", component: AboutMeAddComponent },
+      { path: "home-about-me-add", component: HomeAboutMeAddComponent },
+      { path: "about-me-image-add", component: AboutMeImageAddComponent },
       { path: "contact", component: AdminContactComponent },
       { path: "faq", component: AdminFaqComponent },
       { path: "languages", component: AdminLanguagesComponent },

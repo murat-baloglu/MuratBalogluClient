@@ -45,7 +45,7 @@ export class BlogUpdateComponent implements OnInit {
   }
 
   public config = {
-    placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız. Boş bırakılamaz!',
+    placeholder: 'Oluşturmak istediğiniz blog içeriğini buraya yazınız. Boş bırakılamaz!'
   }
 
   blogUpdateForm: FormGroup

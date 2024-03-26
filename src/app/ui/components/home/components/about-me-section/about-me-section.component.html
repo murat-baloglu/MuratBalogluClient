@@ -3,16 +3,21 @@
     <div class="row">
       <div class="col-xl-4  ps-lg-0">
         <!-- <img src="assets/images/about-images/about-doctor.png" alt="Op. Dr. Murat Baloğlu"> -->
+        @if (aboutMeWithImage?.aboutMeImageFileId) {
+        <img src={{aboutMeWithImage?.path}} alt="Op. Dr. Murat Baloğlu">
+        }@else {
         <img src="https://placehold.co/400x550" alt="Op. Dr. Murat Baloğlu">
+        }
       </div>
       <div class="col-xl-8 cpad text-bg">
-        <p>
-          Anasayfa - Hakkında - İçerik
-          <!-- Doğum yeri Ankara Polatlı olan Murat Baloğlu 1979 doğumludur. İlk hekimliğini Rizzoli Instutite /
+        <div [innerHTML]="aboutMeWithImage?.homeContext"></div>
+        <!-- <p> -->
+        <!-- Anasayfa - Hakkında - İçerik -->
+        <!-- Doğum yeri Ankara Polatlı olan Murat Baloğlu 1979 doğumludur. İlk hekimliğini Rizzoli Instutite /
           İtalya'da
           yapan Op. Dr. Murat Baloğlu, şuan Memorial Antalya Hastanesi'nde hekimlik yapmaktadır. Aynı zamanda
           Antalyaspor konsültan hekimidir. -->
-        </p>
+        <!-- </p> -->
         <!-- <h3>Ortopedi ve Travmatoloji doktoru Op. Dr. Murat Baloğlu’nun uzmanlık alanları;</h3> -->
         <!-- <ul>
           <li>- Robotik diz-kalça protez cerrahisi,</li>

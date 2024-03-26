@@ -12,14 +12,15 @@
     </div>
     <div class="row mt-5">
       <div class="col-sm-12 col-sm-12 col-md-12">
-        <div class="subpage-bg">
-          <p>
-            Buraya dinamik olarak içerik girilecek.
-            <!-- Doğum yeri Ankara Polatlı olan Murat Baloğlu 1979 doğumludur. İlk hekimliğini Rizzoli Instutite /
+        <div class="subpage-bg" [innerHTML]="aboutMe?.context">
+          <!-- <p> -->
+          <!-- [innerHTML]="baboutMe.context"
+            {{aboutMe.context}} -->
+          <!-- Doğum yeri Ankara Polatlı olan Murat Baloğlu 1979 doğumludur. İlk hekimliğini Rizzoli Instutite /
             İtalya'da
             yapan Op. Dr. Murat Baloğlu, şuan Memorial Antalya Hastanesi'nde hekimlik yapmaktadır. Aynı zamanda
             Antalyaspor konsültan hekimidir. -->
-          </p>
+          <!-- </p> -->
           <!-- <h3>Ortopedi ve Travmatoloji doktoru Op. Dr. Murat Baloğlu’nun uzmanlık alanları;</h3> -->
           <!-- <ul>
             <li>- Robotik diz-kalça protez cerrahisi,</li>
