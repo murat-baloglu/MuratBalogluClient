@@ -14,12 +14,11 @@ body {
   scroll-behavior: initial !important;
 }
 
-
-ul {
+/* ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
+} */
 
 .brd-lblue {
   border: 2px solid #21CDD0 !important;
@@ -42,8 +41,6 @@ ul {
   border-radius: 5px;
 }
 
-
-
 img {
   max-width: 100%;
 }
@@ -57,7 +54,6 @@ section {
   padding: 40px 0 40px 0;
   min-height: 45.5vh;
 }
-
 
 @font-face {
   font-family: 'OPS';
@@ -209,10 +205,6 @@ body {
   margin-right: 15px;
 }
 
-
-
-
-
 .relative {
   position: relative;
 }
@@ -358,9 +350,6 @@ body {
   }
 }
 
-
-
-
 @media (min-width:1200px) {
   .navbar .container {
     padding-left: 0;
@@ -457,5 +446,4 @@ body {
   .navbar-brand img {
     max-width: 250px !important;
   }
-
 }

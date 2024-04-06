@@ -1,5 +1,17 @@
 .patients-comments {
   background: linear-gradient(315deg, rgba(0, 142, 178, 1) 47%, rgba(36, 209, 209, 1) 100%);
+  min-height: 72vh !important;
+}
+
+.cst-view {
+  bottom: -65px !important;
+  height: 40px;
+}
+
+@media (max-width:425px) {
+  .cst-view {
+    bottom: -46px !important;
+  }
 }
 
 .patients-comments .card {

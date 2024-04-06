@@ -99,7 +99,7 @@ footer {
   right: 30px;
   border-radius: 50%;
   background-color: var(--light-blue);
-  opacity: .5;
+  opacity: .6;
   cursor: pointer;
   z-index: 100;
 }
@@ -123,8 +123,8 @@ footer {
   bottom: 70px;
   right: 30px;
   border-radius: 50%;
-  background-color: #1ab464;
-  opacity: .5;
+  background-color: #0e70c5;
+  opacity: .6;
   cursor: pointer;
   z-index: 100;
 }
@@ -135,11 +135,12 @@ footer {
 
 .whatsapp-widget i {
   color: #fff;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .whatsapp-widget-panel {
-  background-color: #45a7425b;
+  /* background-color: #a8c2f1; */
+  background-color: var(--custom-blue);
   -webkit-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
@@ -173,7 +174,7 @@ footer {
 }
 
 .wwp-close:hover i {
-  color: #1ab464;
+  color: var(--custom-blue);
   transition: .5s;
 }
 
@@ -197,6 +198,7 @@ footer {
   justify-content: center;
   width: 100%;
   margin: 16px 0;
+  padding-left: 1rem;
 }
 
 .wwp-link ul li {
@@ -210,7 +212,7 @@ footer {
 }
 
 .wwp-link a:hover {
-  color: #1ab464;
+  color: var(--custom-blue);
   transition: .5s;
 }
 
@@ -222,8 +224,7 @@ footer {
 
 .wwp-link i {
   font-size: 35px;
-  color: #1ab464;
-  margin-left: 20px;
+  color: var(--custom-blue);
 }
 
 .acceptBtn {
@@ -239,4 +240,9 @@ footer {
 #cerezModal .btn-close,
 #kvkkModal .btn-close {
   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
 }

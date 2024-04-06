@@ -32,10 +32,14 @@
 }
 
 .social-media li i {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--custom-blue);
   margin-left: 10px;
   transition: .2s;
+}
+
+.social-media li i:hover {
+  color: var(--light-blue);
 }
 
 .select-language {
@@ -75,4 +79,10 @@
 
 .select-language .dropdown-menu a:hover {
   background: none !important
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
