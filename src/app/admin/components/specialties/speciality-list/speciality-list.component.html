@@ -28,12 +28,12 @@
                         <img style="cursor: pointer;" src={{speciality.path}} alt={{speciality.title}}
                             (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }@else {
-                        <img style="cursor: pointer;" src="assets/images/no-image.jpg"
+                        <img style="cursor: pointer;" src="assets/images/file-add-image.jpeg"
                             (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }
                     </div>
-                    <div class="spc-card-title">{{speciality.title}} </div>
-                    <div class="spc-card-desc">{{speciality.cardContext}} </div>
+                    <div class="spc-card-title">{{speciality.title}}</div>
+                    <div class="spc-card-desc">{{speciality.cardContext}}...</div>
 
                     <button type="button" class="btn btn-danger card-link btn-sm"
                         (click)="deleteSpeciality(speciality.id)">
