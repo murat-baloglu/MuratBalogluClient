@@ -1,24 +1,12 @@
 .patients-comments {
   background: linear-gradient(315deg, rgba(0, 142, 178, 1) 47%, rgba(36, 209, 209, 1) 100%);
-  min-height: 72vh !important;
-}
-
-.cst-view {
-  bottom: -65px !important;
-  height: 40px;
-}
-
-@media (max-width:425px) {
-  .cst-view {
-    bottom: -46px !important;
-  }
 }
 
 .patients-comments .card {
   background-color: #fff;
   min-height: 250px;
   padding: 40px;
-  min-height: 345px;
+  min-height: 367px;
 }
 
 .patients-comments .card-head {
@@ -73,6 +61,19 @@
 }
 
 @media (max-width: 767px) {
+  .patients-comments {
+    min-height: 72vh !important;
+  }
+
+  .cst-view {
+    bottom: -51px !important;
+    height: 40px;
+  }
+
+  .patients-comments .card {
+    min-height: 434px;
+  }
+
   .patients-comments .carousel-inner .carousel-item>div {
     display: none;
   }
@@ -90,6 +91,9 @@
 
 /* medium and up screens */
 @media (min-width: 768px) {
+  .patients-comments {
+    min-height: 68vh !important;
+  }
 
   .patients-comments .carousel-inner .carousel-item-end.active,
   .patients-comments .carousel-inner .carousel-item-next {

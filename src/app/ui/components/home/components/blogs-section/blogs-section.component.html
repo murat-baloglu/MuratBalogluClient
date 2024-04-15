@@ -15,7 +15,7 @@
 
     <div class="row mt-5">
       <!-- CARD ITEM -->
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-3" *ngFor="let blog of blogWithCardImage">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let blog of blogWithCardImage">
         <div class="blog-card">
           <div class="blog-card-img">
             @if (blog.blogImageFileId) {
@@ -24,8 +24,9 @@
             <img src="assets/images/no-image.jpg" alt={{blog.title}}>
             }
           </div>
-          <div class="blog-date"><i class="fa-solid fa-calendar-days"></i> {{blog.createdDate | date:
-            "dd.MM.YYYY"}}
+          <div class="blog-date">
+            <i class="fa-solid fa-calendar-days"></i>
+            {{blog.createdDate | date: "dd.MM.YYYY"}}
           </div>
           <div class="blog-card-title">{{blog.title}}</div>
           <div class="blog-card-desc">{{blog.cardContext}}...</div>
