@@ -7,7 +7,7 @@
 }
 
 .blog-card-img {
-    height: 140px;
+    height: 185px;
     overflow: hidden;
     border-radius: 10px;
     border: 3px solid #fff;
@@ -24,6 +24,7 @@
     font-family: "OPS Bold";
     font-size: .9rem;
     padding: 5px 0 0 0;
+    margin-top: 12px;
 }
 
 .blog-card-title {
@@ -31,8 +32,8 @@
     font-family: "OPS Bold";
     font-size: 1.25rem;
     line-height: 1.4rem;
-    margin: 16px 0;
-    min-height:45px;
+    margin: 10px 0 16px 0;
+    min-height: 45px;
 }
 
 .blog-card-desc {
@@ -40,6 +41,5 @@
     font-size: .95rem;
     line-height: 1.5rem;
     margin-bottom: 16px;
-    min-height:120px;
+    min-height: 120px;
 }
-

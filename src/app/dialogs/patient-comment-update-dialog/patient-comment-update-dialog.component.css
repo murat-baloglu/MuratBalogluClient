@@ -10,3 +10,11 @@
 /* .mdc-dialog__content{
     padding:0 24px!important
 } */
+
+.mat-mdc-dialog-actions {
+    padding: 0 0 8px 30px;
+}
+
+.mat-mdc-dialog-content {
+    padding: 20px 24px 0px 24px !important
+}
