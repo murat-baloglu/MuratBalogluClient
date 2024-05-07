@@ -9,6 +9,7 @@ import { FaqModule } from './faq/faq.module';
 import { PatientCommentsModule } from './patient-comments/patient-comments.module';
 import { SpecialtiesModule } from './specialties/specialties.module';
 import { VideosModule } from './videos/videos.module';
+import { RegisterModule } from './register/register.module';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import { VideosModule } from './videos/videos.module';
     FaqModule,
     PatientCommentsModule,
     SpecialtiesModule,
-    VideosModule
+    VideosModule,
+    RegisterModule
   ]
 })
 export class ComponentsModule { }
