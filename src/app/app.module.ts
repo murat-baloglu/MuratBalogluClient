@@ -24,8 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   providers: [
     provideClientHydration(),
-    // { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }    
-    { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }
+    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true } //Localde çalışırken bu end pointi kullan.
+    // { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true } //Production(canlıda) bu end pointi kullan.
   ],
   bootstrap: [AppComponent]
 })

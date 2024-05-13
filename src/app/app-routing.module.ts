@@ -31,6 +31,8 @@ import { AboutMeAddComponent } from "./admin/components/about-me/about-me-add/ab
 import { HomeAboutMeAddComponent } from "./admin/components/about-me/home-about-me-add/home-about-me-add.component";
 import { AboutMeImageAddComponent } from "./admin/components/about-me/about-me-image-add/about-me-image-add.component";
 import { RegisterComponent } from "./ui/components/register/register.component";
+import { LoginComponent } from "./ui/components/login/login.component";
+import { authGuard } from "./guards/common/auth.guard";
 
 const routes: Routes = [
   {
@@ -69,7 +71,8 @@ const routes: Routes = [
       { path: "uzmanliklari", component: SpecialtiesComponent },
       { path: "uzmanlik/:detailUrl", component: SpecialtiesDetailComponent },
       { path: "videolar", component: VideosComponent },
-      { path: "register", component: RegisterComponent }
+      { path: "register", component: RegisterComponent },
+      { path: "login", component: LoginComponent }
     ]
   }
 ];

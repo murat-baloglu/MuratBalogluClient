@@ -10,6 +10,7 @@ import { PatientCommentsModule } from './patient-comments/patient-comments.modul
 import { SpecialtiesModule } from './specialties/specialties.module';
 import { VideosModule } from './videos/videos.module';
 import { RegisterModule } from './register/register.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [],
@@ -24,7 +25,8 @@ import { RegisterModule } from './register/register.module';
     PatientCommentsModule,
     SpecialtiesModule,
     VideosModule,
-    RegisterModule
+    RegisterModule,
+    LoginModule
   ]
 })
 export class ComponentsModule { }
