@@ -54,7 +54,7 @@ const routes: Routes = [
       { path: "social-media-accounts", component: SocialMediaAccountsComponent },
       { path: "patient-comment-add", component: PatientCommentAddComponent },
       { path: "patient-comment-list", component: PatientCommentListComponent }
-    ]
+    ], canActivate: [authGuard]
   },
 
   {

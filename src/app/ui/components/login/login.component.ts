@@ -55,10 +55,11 @@ export class LoginComponent implements OnInit {
 
           this.spinnerService.hide();
 
-          this.alertifyService.message("Giriş başarılı. Hoşgeldiniz. İyi çalışmalar.", {
+          this.alertifyService.message("Giriş başarılı. Hoşgeldiniz.", {
             dismissOthers: true,
             messageType: MessageType.Success,
-            position: Position.TopCenter
+            position: Position.TopCenter,
+            delay: 4
           });
         }
 
@@ -69,6 +70,8 @@ export class LoginComponent implements OnInit {
           const returnUrl: string = params["returnUrl"];
           if (returnUrl) {
             this.router.navigate([returnUrl]);
+          } else {
+            this.router.navigate(["admin"]);
           }
         });
       },
