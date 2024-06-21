@@ -8,7 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BlogImageAddDialogComponent } from '../../../../dialogs/blog-image-add-dialog/blog-image-add-dialog.component';
 import { BlogWithCardImageModel } from '../../../../contracts/models/blog-with-card-image-model';
 import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
-import { BlogImageListDialogComponent } from '../../../../dialogs/blog-image-list-dialog/blog-image-list-dialog.component';
+import { _isAuthenticated } from '../../../../services/common/auth.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -38,11 +38,13 @@ export class BlogListComponent implements OnInit {
     });
   }
 
-  uploadBlogImages(id: string, title: string) {
-    const dialogRef = this.dialog.open(BlogImageListDialogComponent, {
-      data: { id: id, title: title }
-    });
-  }
+  // uploadBlogImages(id: string, title: string) {
+  //   const dialogRef = this.dialog.open(BlogImageListDialogComponent, {
+  //     data: { id: id, title: title }
+  //   });
+  // }
+
+  // uploadBlogImages(id: string, title: string) { }
 
   getBlogs() {
 
@@ -67,7 +69,6 @@ export class BlogListComponent implements OnInit {
   }
 
   getBlogsWithCardImage() {
-
     this.spinnerService.show();
 
     this.blogService.getBlogsWithCardImage().subscribe({
@@ -97,8 +98,10 @@ export class BlogListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result == DeleteState.Yes) {
+        this.spinnerService.show();
         this.blogService.deleteBlog(id).subscribe({
-          next: (data: any) => {
+          next: () => {
+            this.spinnerService.hide();
             this.alertifyService.message("Silme işlemi başarı ile gerçekleşmiştir.", {
               dismissOthers: true,
               messageType: MessageType.Success,
@@ -107,42 +110,20 @@ export class BlogListComponent implements OnInit {
             this.getBlogsWithCardImage();
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message(error.error, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight
-            });
+            if (error.status != 401) {
+              this.spinnerService.hide();
+              this.alertifyService.message(error.error, {
+                dismissOthers: true,
+                messageType: MessageType.Error,
+                position: Position.TopRight
+              });
+            }
           }
         });
       }
 
     });
 
-  }
-
-  //BlogModel parametereden gonderilecek.
-  updateBlog() {
-    const blogModel: BlogModel = new BlogModel();
-    blogModel.id = "954C61E2-82FC-4A9B-7AA4-08DC0FC9C2F2"
-    blogModel.title = "Title 6";
-    blogModel.context = "Context 6";
-
-    this.blogService.updateBlog(blogModel).subscribe({
-      next: (data: any) => {
-        this.alertifyService.message("Başarı ile güncellenmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopRight
-        });
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertifyService.message(error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
-        });
-      }
-    });
   }
 
   ngOnInit(): void {

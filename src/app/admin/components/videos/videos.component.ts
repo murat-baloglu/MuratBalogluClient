@@ -55,13 +55,15 @@ export class VideosComponent implements OnInit {
           });
         },
         error: (error: HttpErrorResponse) => {
-          this.spinnerService.hide();
+          if (error.status != 401) {
+            this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopRight
-          });
+            this.alertifyService.message(error.error, {
+              dismissOthers: true,
+              messageType: MessageType.Error,
+              position: Position.TopRight
+            });
+          }
         }
       });
     } else {
@@ -104,8 +106,10 @@ export class VideosComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result == DeleteState.Yes) {
+        this.spinnerService.show();
         this.videoService.deleteVideo(id).subscribe({
           next: (data: any) => {
+            this.spinnerService.hide();
             this.alertifyService.message("Silme işlemi başarı ile gerçekleşmiştir.", {
               dismissOthers: true,
               messageType: MessageType.Success,
@@ -114,11 +118,14 @@ export class VideosComponent implements OnInit {
             this.getVideos();
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message(error.error, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight
-            });
+            if (error.status != 401) {
+              this.spinnerService.hide();
+              this.alertifyService.message(error.error, {
+                dismissOthers: true,
+                messageType: MessageType.Error,
+                position: Position.TopRight
+              });
+            }
           }
         });
       }

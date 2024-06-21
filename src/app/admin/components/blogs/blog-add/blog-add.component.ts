@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BlogAddModel } from '../../../../contracts/models/blog-add-model';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { _isAuthenticated } from '../../../../services/common/auth.service';
 
 @Component({
   selector: 'app-blog-add',
@@ -80,13 +81,15 @@ export class BlogAddComponent implements OnInit {
           });
         },
         error: (error: HttpErrorResponse) => {
-          this.spinnerService.hide();
+          if (error.status != 401) {
+            this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopRight
-          });
+            this.alertifyService.message(error.error, {
+              dismissOthers: true,
+              messageType: MessageType.Error,
+              position: Position.TopRight
+            });
+          }
         }
       });
     }

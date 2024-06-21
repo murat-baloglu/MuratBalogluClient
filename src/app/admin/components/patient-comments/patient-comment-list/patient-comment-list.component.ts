@@ -55,8 +55,10 @@ export class PatientCommentListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
 
       if (result == DeleteState.Yes) {
+        this.spinnerService.show();
         this.patientCommentService.deletePatientComment(id).subscribe({
           next: (data: any) => {
+            this.spinnerService.hide();
             this.alertifyService.message(data.message, {
               dismissOthers: true,
               messageType: MessageType.Success,
@@ -65,11 +67,14 @@ export class PatientCommentListComponent implements OnInit {
             this.getPatientComments();
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message(error.error, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight
-            });
+            if (error.status != 401) {
+              this.spinnerService.hide();
+              this.alertifyService.message(error.error, {
+                dismissOthers: true,
+                messageType: MessageType.Error,
+                position: Position.TopRight
+              });
+            }
           }
         });
       }

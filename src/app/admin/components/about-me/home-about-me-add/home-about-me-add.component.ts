@@ -75,13 +75,15 @@ export class HomeAboutMeAddComponent implements OnInit {
           });
         },
         error: (error: HttpErrorResponse) => {
-          this.spinnerService.hide();
+          if (error.status != 401) {
+            this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopRight
-          });
+            this.alertifyService.message(error.error, {
+              dismissOthers: true,
+              messageType: MessageType.Error,
+              position: Position.TopRight
+            });
+          }
         }
       });
     }

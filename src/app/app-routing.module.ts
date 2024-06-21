@@ -37,23 +37,23 @@ import { authGuard } from "./guards/common/auth.guard";
 const routes: Routes = [
   {
     path: "admin", component: AdminLayoutComponent, children: [
-      { path: "", component: DashboardComponent }, //DashboardComponent burada Ui daki HomeComponent kontrolü için kullanılıyor.
-      { path: "blog-add", component: BlogAddComponent },
-      { path: "blog-list", component: BlogListComponent },
-      { path: "blog-update/:id", component: BlogUpdateComponent },
-      { path: "speciality-add", component: SpecialityAddComponent },
-      { path: "speciality-list", component: SpecialityListComponent },
-      { path: "speciality-update/:id", component: SpecialityUpdateComponent },
-      { path: "about-me-add", component: AboutMeAddComponent },
-      { path: "home-about-me-add", component: HomeAboutMeAddComponent },
-      { path: "about-me-image-add", component: AboutMeImageAddComponent },
-      { path: "contact", component: AdminContactComponent },
+      { path: "", component: DashboardComponent, canActivate: [authGuard] }, //DashboardComponent burada Ui daki HomeComponent kontrolü için kullanılıyor.
+      { path: "blog-add", component: BlogAddComponent, canActivate: [authGuard] },
+      { path: "blog-list", component: BlogListComponent, canActivate: [authGuard] },
+      { path: "blog-update/:id", component: BlogUpdateComponent, canActivate: [authGuard] },
+      { path: "speciality-add", component: SpecialityAddComponent, canActivate: [authGuard] },
+      { path: "speciality-list", component: SpecialityListComponent, canActivate: [authGuard] },
+      { path: "speciality-update/:id", component: SpecialityUpdateComponent, canActivate: [authGuard] },
+      { path: "about-me-add", component: AboutMeAddComponent, canActivate: [authGuard] },
+      { path: "home-about-me-add", component: HomeAboutMeAddComponent, canActivate: [authGuard] },
+      { path: "about-me-image-add", component: AboutMeImageAddComponent, canActivate: [authGuard] },
+      { path: "contact", component: AdminContactComponent, canActivate: [authGuard] },
       { path: "faq", component: AdminFaqComponent },
       { path: "languages", component: AdminLanguagesComponent },
-      { path: "videos", component: AdminVideosComponent },
-      { path: "social-media-accounts", component: SocialMediaAccountsComponent },
-      { path: "patient-comment-add", component: PatientCommentAddComponent },
-      { path: "patient-comment-list", component: PatientCommentListComponent }
+      { path: "videos", component: AdminVideosComponent, canActivate: [authGuard] },
+      { path: "social-media-accounts", component: SocialMediaAccountsComponent, canActivate: [authGuard] },
+      { path: "patient-comment-add", component: PatientCommentAddComponent, canActivate: [authGuard] },
+      { path: "patient-comment-list", component: PatientCommentListComponent, canActivate: [authGuard] }
     ], canActivate: [authGuard]
   },
 

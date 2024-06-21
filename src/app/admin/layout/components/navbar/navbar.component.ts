@@ -15,6 +15,7 @@ export class NavbarComponent {
   //Oturumu kapat/Çıkış Yap
   signOut() {
     localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     this.authService.identityCheck();
 
     //Oturum kapatıldığında anasayfaya yönlendir. Bunu link üzerinden yaptık. Bu şekildede yapılabilinir.

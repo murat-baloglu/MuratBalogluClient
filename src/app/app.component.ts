@@ -16,7 +16,7 @@ export class AppComponent {
     //this will only run in the browser, not the server.
     //SSR dan dolayi bu fonksiyonu kullandik. Kullanmadigimizda 'Local storage is not defined' hatasi veriyordu.
     afterNextRender(() => {
-      // Promise.resolve().then(() => authService.identityCheck()); Çalışıyor
+      // Promise.resolve().then(() => authService.identityCheck()); //Çalışıyor      
       this.authService.identityCheck();
       this.cd.detectChanges();
     });

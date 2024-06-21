@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertifyService, MessageType, Position } from '../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserAuthService } from '../../../services/common/models/user-auth.service';
-import { HttpErrorResponse } from '@angular/common/http';
-import { TokenResponse } from '../../../contracts/token/token-response';
 import { AuthService } from '../../../services/common/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -21,7 +18,6 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private alertifyService: AlertifyService,
     private spinnerService: NgxSpinnerService
   ) { }
 
@@ -40,52 +36,101 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-
-  login(data: { userNameOrEmail, password }) {
+  async loginAsync(data: { userNameOrEmail, password }) {
     this.submitted = true;
     if (this.loginForm.invalid)
       return;
 
     this.spinnerService.show();
 
-    this.userAuthService.login(data.userNameOrEmail, data.password).subscribe({
-      next: (data: TokenResponse) => {
-        if (data) {
-          localStorage.setItem("accessToken", data.token.accessToken);
-
-          this.spinnerService.hide();
-
-          this.alertifyService.message("Giriş başarılı. Hoşgeldiniz.", {
-            dismissOthers: true,
-            messageType: MessageType.Success,
-            position: Position.TopCenter,
-            delay: 4
-          });
-        }
-
-        this.authService.identityCheck();
-
-        //Eğer login olurken bir query string varsa, login olduktan sonra o sayfaya gidebilmek için query parametresini elde ederiz ve oraya gideriz.
-        this.activatedRoute.queryParams.subscribe(params => {
-          const returnUrl: string = params["returnUrl"];
-          if (returnUrl) {
-            this.router.navigate([returnUrl]);
-          } else {
-            this.router.navigate(["admin"]);
+    await this.userAuthService.loginAsync(data.userNameOrEmail, data.password, () => {
+      this.authService.identityCheck();
+      //Eğer login olurken bir query string varsa, login olduktan sonra o sayfaya gidebilmek için query parametresini elde ederiz ve oraya gideriz.
+      this.activatedRoute.queryParams.subscribe(params => {
+        const returnUrl: string = params["returnUrl"];
+        if (returnUrl) {
+          //Sayfa yenilemesi yapmasak açılır menüye tıkladığımızda site anasayfasına yönlendirme oluyordu. Buradaki if blogu bu yüzden kullanılmıştır.
+          if (returnUrl == "/admin") {
+            this.router.navigate([returnUrl]).then(() => {
+              // alertfy mesajın gösterilmesini istiyorsak bu yapıyı kullan
+              setTimeout(() => {
+                window.location.reload();
+              }, 1000);
+            });
           }
-        });
-      },
-      error: (error: HttpErrorResponse) => {
-        this.spinnerService.hide();
+          this.router.navigate([returnUrl]);
+        } else {
+          //Sayfa yenilemesi yapmasak açılır menüye tıkladığımızda site anasayfasına yönlendirme oluyordu. Buradaki else blogu bu yüzden kullanılmıştır.
+          this.router.navigate(["admin"]).then(() => {
+            // alertfy mesajın gösterilmesini istiyorsak bu yapıyı kullan
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          });
 
-        this.alertifyService.message(error.error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopCenter
-        });
-      }
+        }
+      });
+
+      this.spinnerService.hide();
     });
   }
+
+  // login(data: { userNameOrEmail, password }) {
+  //   this.submitted = true;
+  //   if (this.loginForm.invalid)
+  //     return;
+
+  //   this.spinnerService.show();
+  //   console.log("login start");
+  //   this.userAuthService.login(data.userNameOrEmail, data.password).subscribe({
+  //     next: (data: TokenResponse) => {
+  //       console.log("login next 1");
+  //       if (data) {
+  //         console.log("login next 2");
+  //         localStorage.setItem("accessToken", data.token.accessToken);
+  //         localStorage.setItem("refreshToken", data.token.refreshToken);
+
+  //         this.spinnerService.hide();
+
+  //         this.alertifyService.message("Giriş başarılı. Hoşgeldiniz.", {
+  //           dismissOthers: true,
+  //           messageType: MessageType.Success,
+  //           position: Position.TopCenter,
+  //           delay: 4
+  //         });
+  //         console.log("login next 3");
+  //       }
+  //       console.log("login next 4");
+  //       this.authService.identityCheck();
+  //       console.log("login next 5");
+  //       //Eğer login olurken bir query string varsa, login olduktan sonra o sayfaya gidebilmek için query parametresini elde ederiz ve oraya gideriz.
+  //       this.activatedRoute.queryParams.subscribe(params => {
+  //         const returnUrl: string = params["returnUrl"];
+  //         if (returnUrl) {
+  //           this.router.navigate([returnUrl]);
+  //           console.log("login next 6");
+  //         } else {
+  //           this.router.navigate(["admin"]).then(() => window.location.reload());
+  //           console.log("login next 7");
+  //         }
+  //       });
+  //     },
+  //     error: (error: HttpErrorResponse) => {
+  //       console.log("login error 1");
+  //       this.spinnerService.hide();
+  //       console.log("login error 2");
+
+  //       this.alertifyService.message(error.error.message, {
+  //         dismissOthers: true,
+  //         messageType: MessageType.Error,
+  //         position: Position.TopCenter,
+  //         delay: 4
+  //       });
+  //       console.log("login error 3");
+  //     }
+  //   });
+  //   console.log("login last");
+  // }
 
   ngOnInit(): void {
     this.createLoginForm();

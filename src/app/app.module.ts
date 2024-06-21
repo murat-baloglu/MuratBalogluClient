@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { UiModule } from './ui/ui.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
 
-export function tokenGetter(): Promise<string | null> {
-  return Promise.resolve().then(() => localStorage.getItem("accessToken"));
+export async function tokenGetter(): Promise<string | null> {
+  return await Promise.resolve().then(() => localStorage.getItem("accessToken"));
 }
 
 @NgModule({
@@ -33,14 +33,16 @@ export function tokenGetter(): Promise<string | null> {
         //Bununla dışında birde hedef sunucuyuda belirtmem gerekir.
         tokenGetter: tokenGetter,
         allowedDomains: ["drmuratbaloglu.com", "localhost:7015"]
+        // tokenGetter: () => localStorage.getItem("accessToken"),
         // allowedDomains: ["drmuratbaloglu.com"]
       }
     })
   ],
   providers: [
     provideClientHydration(),
-    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true } //Localde çalışırken bu end pointi kullan.
+    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.
     // { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true } //Production(canlıda) bu end pointi kullan.
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]
 })
