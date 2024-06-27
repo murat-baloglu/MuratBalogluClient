@@ -118,31 +118,6 @@ export class SpecialityListComponent implements OnInit {
 
   }
 
-  //SpecialityModel parametereden gonderilecek.
-  updateSpeciality() {
-    const specialityModel: SpecialityModel = new SpecialityModel();
-    specialityModel.id = "954C61E2-82FC-4A9B-7AA4-08DC0FC9C2F2"
-    specialityModel.title = "Title 6";
-    specialityModel.context = "Context 6";
-
-    this.specialityService.updateSpeciality(specialityModel).subscribe({
-      next: (data: any) => {
-        this.alertifyService.message("Başarı ile güncellenmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopRight
-        });
-      },
-      error: (error: HttpErrorResponse) => {
-        this.alertifyService.message(error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
-        });
-      }
-    });
-  }
-
   ngOnInit(): void {
     this.getSpecialtiesWithCardImage();
   }

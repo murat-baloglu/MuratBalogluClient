@@ -46,7 +46,7 @@ export class PatientCommentAddComponent implements OnInit {
           this.alertifyService.message("Hasta Yorumu başarılı bir şekilde eklenmiştir.", {
             dismissOthers: true,
             messageType: MessageType.Success,
-            position: Position.TopRight
+            position: Position.TopCenter
           });
         },
         error: (error: HttpErrorResponse) => {
@@ -56,7 +56,7 @@ export class PatientCommentAddComponent implements OnInit {
             this.alertifyService.message(error.error, {
               dismissOthers: true,
               messageType: MessageType.Error,
-              position: Position.TopRight
+              position: Position.TopCenter
             });
           }
         }

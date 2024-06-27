@@ -40,7 +40,7 @@ export class PatientCommentListComponent implements OnInit {
         this.alertifyService.message(error.error, {
           dismissOthers: true,
           messageType: MessageType.Error,
-          position: Position.TopRight
+          position: Position.TopCenter
         });
       },
     });
@@ -62,7 +62,7 @@ export class PatientCommentListComponent implements OnInit {
             this.alertifyService.message(data.message, {
               dismissOthers: true,
               messageType: MessageType.Success,
-              position: Position.TopRight
+              position: Position.TopCenter
             });
             this.getPatientComments();
           },
@@ -72,7 +72,7 @@ export class PatientCommentListComponent implements OnInit {
               this.alertifyService.message(error.error, {
                 dismissOthers: true,
                 messageType: MessageType.Error,
-                position: Position.TopRight
+                position: Position.TopCenter
               });
             }
           }

@@ -33,6 +33,7 @@ import { AboutMeImageAddComponent } from "./admin/components/about-me/about-me-i
 import { RegisterComponent } from "./ui/components/register/register.component";
 import { LoginComponent } from "./ui/components/login/login.component";
 import { authGuard } from "./guards/common/auth.guard";
+import { SpecialityCategoriesComponent } from "./admin/components/specialties/speciality-categories/speciality-categories.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: "speciality-add", component: SpecialityAddComponent, canActivate: [authGuard] },
       { path: "speciality-list", component: SpecialityListComponent, canActivate: [authGuard] },
       { path: "speciality-update/:id", component: SpecialityUpdateComponent, canActivate: [authGuard] },
+      { path: "speciality-categories", component: SpecialityCategoriesComponent, canActivate: [authGuard] },
       { path: "about-me-add", component: AboutMeAddComponent, canActivate: [authGuard] },
       { path: "home-about-me-add", component: HomeAboutMeAddComponent, canActivate: [authGuard] },
       { path: "about-me-image-add", component: AboutMeImageAddComponent, canActivate: [authGuard] },
@@ -69,6 +71,7 @@ const routes: Routes = [
       { path: "sikca-sorulan-sorular", component: FaqComponent },
       { path: "hasta-yorumlari", component: PatientCommentsComponent },
       { path: "uzmanliklari", component: SpecialtiesComponent },
+      { path: "uzmanliklari/:categoryUrl", component: SpecialtiesComponent },
       { path: "uzmanlik/:detailUrl", component: SpecialtiesDetailComponent },
       { path: "videolar", component: VideosComponent },
       { path: "register", component: RegisterComponent },

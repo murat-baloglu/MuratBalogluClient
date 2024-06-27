@@ -11,6 +11,7 @@ import { SpecialityImageAddDialogComponent } from './speciality-image-add-dialog
 import { SpecialityImageListDialogComponent } from './speciality-image-list-dialog/speciality-image-list-dialog.component';
 import { PatientCommentUpdateDialogComponent } from './patient-comment-update-dialog/patient-comment-update-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SpecialityCategoryUpdateDialogComponent } from './speciality-category-update-dialog/speciality-category-update-dialog.component';
 
 
 
@@ -22,7 +23,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BlogImageListDialogComponent,
     SpecialityImageAddDialogComponent,
     SpecialityImageListDialogComponent,
-    PatientCommentUpdateDialogComponent
+    PatientCommentUpdateDialogComponent,
+    SpecialityCategoryUpdateDialogComponent
   ],
   imports: [
     CommonModule,
