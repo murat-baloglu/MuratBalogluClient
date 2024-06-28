@@ -20,6 +20,34 @@
     <div class="container-fluid">
         <div class="row mt-0">
 
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Uzmanlık Kategorileri</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <div class="form-group">
+                        </div>
+                        <!-- select -->
+                        <div class="form-group">
+                            <label>Uzmanlık Kategorisi</label>
+                            <select class="custom-select" [(ngModel)]="categoryId"
+                                (change)="getSpecialtiesByCategory(categoryId)">
+                                <option [ngValue]="null">Tüm Uzmanlıklar</option>
+                                @for (specialityCategory of specialityCategories; track specialityCategory) {
+                                <option [value]="specialityCategory.id">{{specialityCategory.name}}</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <br>
+
             <!-- CARD ITEM -->
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let speciality of specialityWithCardImage">
                 <div class="spc-card">

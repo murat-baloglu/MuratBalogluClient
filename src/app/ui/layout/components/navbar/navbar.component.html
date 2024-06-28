@@ -22,9 +22,16 @@
             UZMANLIKLARI
           </a>
           <ul class="dropdown-menu">
-            @for (specialityCategory of specialityCategories; track specialityCategory) {
+            <!-- @for (specialityCategory of specialityCategories; track specialityCategory) {
             <li>
               <a class="dropdown-item" routerLink="uzmanliklari/{{specialityCategory.categoryUrl}}">
+                {{specialityCategory.name}}
+              </a>
+            </li>
+            } -->
+            @for (specialityCategory of specialityCategories; track specialityCategory) {
+            <li routerLink="uzmanliklari/{{specialityCategory.categoryUrl}}">
+              <a class="dropdown-item" routerLink="uzmanliklari">
                 {{specialityCategory.name}}
               </a>
             </li>

@@ -40,8 +40,8 @@ export async function tokenGetter(): Promise<string | null> {
   ],
   providers: [
     provideClientHydration(),
-    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.
-    // { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true } //Production(canlıda) bu end pointi kullan.
+    // { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.
+    { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }, //Production(canlıda) bu end pointi kullan.
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService, multi: true }
   ],
   bootstrap: [AppComponent]

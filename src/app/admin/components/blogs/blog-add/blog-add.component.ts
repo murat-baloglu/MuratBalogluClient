@@ -46,6 +46,11 @@ export class BlogAddComponent implements OnInit {
   }
 
   blogForm: FormGroup
+  submitted: boolean;
+
+  get component() {
+    return this.blogForm.controls;
+  }
 
   createBlogForm(): void {
     this.blogForm = this.formbuilder.group({
@@ -60,47 +65,42 @@ export class BlogAddComponent implements OnInit {
   }
 
   addBlog() {
+    this.submitted = true;
+    if (this.blogForm.invalid)
+      return;
+
+    this.spinnerService.show();
+
     const blogAddModel: BlogAddModel = new BlogAddModel();
     blogAddModel.title = this.blogForm.value.title;
     blogAddModel.cardContext = this.blogForm.value.cardContext;
     blogAddModel.context = this.blogForm.value.ckEditor;
 
-    if (this.blogForm.valid) {
-      this.spinnerService.show();
+    this.blogService.addBlog(blogAddModel).subscribe({
+      next: (data: any) => {
+        this.spinnerService.hide();
 
-      this.blogService.addBlog(blogAddModel).subscribe({
-        next: (data: any) => {
+        this.submitted = false;
+        this.createBlogForm();
+
+        this.alertifyService.message("Blog başarılı bir şekilde ile oluşturulmuştur.", {
+          dismissOthers: true,
+          messageType: MessageType.Success,
+          position: Position.TopCenter
+        });
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status != 401) {
           this.spinnerService.hide();
 
-          this.createBlogForm();
-
-          this.alertifyService.message("Blog başarılı bir şekilde ile oluşturulmuştur.", {
+          this.alertifyService.message(error.error, {
             dismissOthers: true,
-            messageType: MessageType.Success,
-            position: Position.TopRight
+            messageType: MessageType.Error,
+            position: Position.TopCenter
           });
-        },
-        error: (error: HttpErrorResponse) => {
-          if (error.status != 401) {
-            this.spinnerService.hide();
-
-            this.alertifyService.message(error.error, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight
-            });
-          }
         }
-      });
-    }
-    else {
-      this.alertifyService.message("Hiç bir alan boş bırakılamaz ve blog kartı içeriği en az 150, en fazla 200 karakter olmalıdır.", {
-        dismissOthers: true,
-        messageType: MessageType.Error,
-        position: Position.TopCenter,
-        delay: 7
-      });
-    }
+      }
+    });
 
   }
 

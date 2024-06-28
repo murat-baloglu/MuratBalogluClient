@@ -9,6 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
 import { SpecialityImageAddDialogComponent } from '../../../../dialogs/speciality-image-add-dialog/speciality-image-add-dialog.component';
 import { SpecialityImageListDialogComponent } from '../../../../dialogs/speciality-image-list-dialog/speciality-image-list-dialog.component';
+import { SpecialityCategoryModel } from '../../../../contracts/models/speciality-category-model';
 
 @Component({
   selector: 'app-speciality-list',
@@ -26,6 +27,8 @@ export class SpecialityListComponent implements OnInit {
 
   specialties: SpecialityModel[];
   specialityWithCardImage: SpecialityWithCardImageModel[];
+  specialityCategories: SpecialityCategoryModel[];
+  categoryId: string = null;
 
   addSpecialityImage(id: string, title: string): void {
     const dialogRef = this.dialog.open(SpecialityImageAddDialogComponent, {
@@ -81,6 +84,34 @@ export class SpecialityListComponent implements OnInit {
     });
   }
 
+  getSpecialtiesByCategoryIdWithCardImage(categoryId: string) {
+    this.spinnerService.show();
+
+    this.specialityService.getSpecialtiesByCategoryIdWithCardImage(categoryId).subscribe({
+      next: (data: SpecialityWithCardImageModel[]) => {
+        this.specialityWithCardImage = data;
+
+        this.spinnerService.hide();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.spinnerService.hide();
+
+        this.alertifyService.message(error.error, {
+          dismissOthers: true,
+          messageType: MessageType.Error,
+          position: Position.TopRight
+        });
+      },
+    });
+  }
+
+  getSpecialtiesByCategory(categoryId: string) {
+    if (categoryId)
+      this.getSpecialtiesByCategoryIdWithCardImage(categoryId);
+    else
+      this.getSpecialtiesWithCardImage();
+  }
+
   deleteSpeciality(id: string) {
 
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
@@ -118,8 +149,30 @@ export class SpecialityListComponent implements OnInit {
 
   }
 
+  getSpecialityCategories() {
+    this.spinnerService.show();
+
+    this.specialityService.getSpecialityCategories().subscribe({
+      next: (data: SpecialityCategoryModel[]) => {
+        this.specialityCategories = data;
+
+        this.spinnerService.hide();
+      },
+      error: (error: HttpErrorResponse) => {
+        this.spinnerService.hide();
+
+        this.alertifyService.message(error.error, {
+          dismissOthers: true,
+          messageType: MessageType.Error,
+          position: Position.TopRight
+        });
+      },
+    });
+  }
+
   ngOnInit(): void {
     this.getSpecialtiesWithCardImage();
+    this.getSpecialityCategories();
   }
 
 }
