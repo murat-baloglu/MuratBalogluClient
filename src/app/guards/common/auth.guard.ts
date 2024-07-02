@@ -16,7 +16,7 @@ export const authGuard: CanActivateFn = async (route: ActivatedRouteSnapshot, st
   //otantike değilse bu işlemleri yap
   if (!_isAuthenticated) {
     await router.navigate(["login"], { queryParams: { returnUrl: state.url } });
-    alertifyService.message("Yetkisiz Erişim. Zaman Aşımı. Lütfen tekrar giriş yapınız.", {
+    alertifyService.message("Yetkisiz Erişim yada Zaman Aşımı. Lütfen tekrar giriş yapınız.", {
       dismissOthers: true,
       messageType: MessageType.Warning,
       position: Position.TopCenter,
