@@ -3,12 +3,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Uzmanlıklarım > Uzmanlıklarımı Listele</h1>
+                <h1 class="m-0">Uzmanlıklarım > Tüm Uzmanlıklarım</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a routerLink="/admin">Anasayfa</a></li>
-                    <li class="breadcrumb-item active">Uzmanlıklarım > Uzmanlıklarımı Listele</li>
+                    <li class="breadcrumb-item active">Uzmanlıklarım > Tüm Uzmanlıklarım</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -49,7 +49,8 @@
             <br>
 
             <!-- CARD ITEM -->
-            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let speciality of specialityWithCardImage">
+            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 col-xxl-3"
+                *ngFor="let speciality of specialityWithCardImage">
                 <div class="spc-card">
                     <div class="spc-card-img">
                         @if (speciality.specialityImageFileId) {
@@ -57,7 +58,8 @@
                             (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }@else {
                         <!-- <img style="cursor: pointer;" src="assets/images/no-image.jpg" -->
-                        <img style="cursor: pointer;" src="assets/images/file-add-image.jpeg"
+                        <img style="width:60%; margin:0 auto; display: flex; cursor: pointer;"
+                            src="assets/images/file-add-image.jpeg"
                             (click)="addSpecialityImage(speciality.id, speciality.title)">
                         }
                     </div>

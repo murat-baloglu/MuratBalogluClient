@@ -17,27 +17,23 @@
 <!-- /.content-header -->
 
 <div id="accordion" class=" mx-2">
-    <div class="card card-primary collapse-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-      <div class="card-header" id="headingOne">
-        <h5 class="mb-0">
-          <div style="height:30px; font-size:18px; font-weight: normal;" >
-            Web sitenize Youtube üzerinden video eklerken izlenecek adımlar 
-          </div>
-        </h5>
-      </div>
-  
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body">
-            <img class="w-100" src="../../../../assets/images/youtube-video-linki.jpg" />
+    <div class="card card-primary collapse-btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false"
+        aria-controls="collapseOne">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <div style="height:30px; font-size:18px; font-weight: normal;">
+                    Web sitenize Youtube üzerinden video eklerken izlenecek adımlar
+                </div>
+            </h5>
         </div>
-      </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+                <img class="w-100" src="../../../../assets/images/youtube-video-linki.jpg" />
+            </div>
+        </div>
     </div>
-
-
-  </div>
-
-
-
+</div>
 
 <!-- form start -->
 <form [formGroup]="videoForm" (ngSubmit)="addVideo()">
@@ -83,34 +79,33 @@
             </div>
         </div> -->
         <div class="row mt-0">
-
-
             <div class="col-12">
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Eklenen Videolar</h3>
                     </div>
                     <div class="card-body">
-                        <!-- CARD ITEM -->
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let video of videos">
-                            <div class="video-card">
-                                <!-- <div [innerHTML]="safeHtml(video.link)"></div> -->
-                                <div [innerHTML]="video.link | safe"></div>
-                                <div class="video-title">
-                                    {{video.title}}
-                                </div>
-                                <div class="btn-group mb-3" role="group">
-                                    <button type="button" class="btn btn-danger btn-sm  py-1"
-                                        (click)="deleteVideo(video.id)"><i class="fas fa-trash me-2"></i>Sil</button>
+                        <div class="row">
+                            <!-- CARD ITEM -->
+                            <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4" *ngFor="let video of videos">
+                                <div class="video-card">
+                                    <!-- <div [innerHTML]="safeHtml(video.link)"></div> -->
+                                    <div [innerHTML]="video.link | safe"></div>
+                                    <div class="video-title">
+                                        {{video.title}}
+                                    </div>
+                                    <div class="btn-group mb-3" role="group">
+                                        <button type="button" class="btn btn-danger btn-sm  py-1"
+                                            (click)="deleteVideo(video.id)">
+                                            <i class="fas fa-trash me-2"></i>Sil
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </section>
