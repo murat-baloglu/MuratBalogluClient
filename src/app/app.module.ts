@@ -9,6 +9,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { HttpErrorHandlerInterceptorService } from './services/common/http-error-handler-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 export async function tokenGetter(): Promise<string | null> {
   return await Promise.resolve().then(() => localStorage.getItem("accessToken"));
@@ -25,6 +26,7 @@ export async function tokenGetter(): Promise<string | null> {
     UiModule,
     NgxSpinnerModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     HttpClientModule,
     JwtModule.forRoot({
       config: {

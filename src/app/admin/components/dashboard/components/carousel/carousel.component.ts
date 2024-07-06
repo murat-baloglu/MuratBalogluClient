@@ -7,6 +7,7 @@ import { CarouselImageModel } from '../../../../../contracts/models/carousel-ima
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent, DeleteState } from '../../../../../dialogs/delete-dialog/delete-dialog.component';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-carousel',
@@ -18,6 +19,7 @@ export class CarouselComponent implements OnInit {
   constructor(private homeService: HomeService,
     private alertifyService: AlertifyService,
     private spinnerService: NgxSpinnerService,
+    private toastrService: CustomToastrService,
     public dialog: MatDialog) { }
 
   @Output() fileUploadOptions: Partial<FileUploadOptions> = {

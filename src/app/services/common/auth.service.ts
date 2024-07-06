@@ -25,6 +25,22 @@ export class AuthService {
     _isAuthenticated = token != null && !expired;
   }
 
+  async identityCheckAsync(): Promise<void> {
+    const token: string = localStorage.getItem("accessToken");
+
+    //Token gerçek bir tokensa ve süresi dolmamışsa(expire değilse) kontrolü yapılıyor.
+    let expired: boolean;
+    try {
+      expired = this.jwtHelper.isTokenExpired(token);
+    }
+    catch {
+      expired = true;
+    }
+
+    //token null değilse ve expired olmamışsa
+    _isAuthenticated = token != null && !expired;
+  }
+
   get isAuthenticated(): boolean {
     return _isAuthenticated;
   }
