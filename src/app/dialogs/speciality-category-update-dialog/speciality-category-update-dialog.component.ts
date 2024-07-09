@@ -3,10 +3,10 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dial
 import { SpecialityCategoryModel } from '../../contracts/models/speciality-category-model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AlertifyService, MessageType, Position } from '../../services/admin/alertify.service';
 import { SpecialityService } from '../../services/common/models/speciality.service';
 import { ReloadService } from '../../services/common/reload.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-speciality-category-update-dialog',
@@ -20,7 +20,7 @@ export class SpecialityCategoryUpdateDialogComponent {
     public dialogRef: MatDialogRef<SpecialityCategoryUpdateDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: SpecialityCategoryModel,
     private formbuilder: FormBuilder,
     private spinnerService: NgxSpinnerService,
-    private alertifyService: AlertifyService,
+    private toastrService: CustomToastrService,
     private specialityService: SpecialityService,
     private reloadService: ReloadService
   ) { }
@@ -57,20 +57,20 @@ export class SpecialityCategoryUpdateDialogComponent {
 
         await this.reloadService.reloadAsync();
 
-        this.alertifyService.message("Uzmanlık kategorisi başarılı bir şekilde güncellenmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopCenter
+        this.toastrService.message("Güncelleme işlemi gerçekleşmiştir", "Başarılı", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
       error: (error: HttpErrorResponse) => {
         if (error.status != 401) {
           this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter
+          this.toastrService.message(error.error, "Hata!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 4000
           });
         }
       }

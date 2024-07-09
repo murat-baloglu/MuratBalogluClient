@@ -1,9 +1,9 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
-import { AlertifyService, MessageType, Position } from '../admin/alertify.service';
 import { UserAuthService } from './models/user-auth.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from './custom-toastr-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,9 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
 
   constructor(
-    private alertifyService: AlertifyService,
     private userAuthService: UserAuthService,
-    private spinnerService: NgxSpinnerService) { }
+    private spinnerService: NgxSpinnerService,
+    private toastrService: CustomToastrService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -23,11 +23,10 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
           this.userAuthService.refreshTokenLoginAsync(localStorage.getItem("refreshToken")).then(data => {
             this.spinnerService.hide();
 
-            this.alertifyService.message("Zaman Aşımı. Tekrar yetkilendirildiniz. Lütfen aynı işlemi tekrar deneyiniz.", {
-              dismissOthers: true,
-              messageType: MessageType.Warning,
-              position: Position.TopCenter,
-              delay: 6
+            this.toastrService.message("Lütfen aynı işlemi tekrar deneyiniz.", "Zaman Aşımı. Tekrar yetkilendirildiniz!", {
+              messageType: ToastrMessageType.Warning,
+              position: ToastrPosition.TopCenter,
+              timeOut: 6000
             });
           });
           break;
@@ -35,11 +34,10 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
         case HttpStatusCode.InternalServerError:
           this.spinnerService.hide();
 
-          this.alertifyService.message(error.error.message, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter,
-            delay: 6
+          this.toastrService.message(error.error.message, "Hata!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 6000
           });
           break;
 

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClientService } from '../http-client-service';
 import { TokenResponse } from '../../../contracts/token/token-response';
 import { Observable, firstValueFrom } from 'rxjs';
-import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../custom-toastr-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,8 @@ export class UserAuthService {
 
   constructor(
     private httpClientService: HttpClientService,
-    private alertifyService: AlertifyService,) { }
+    private toastrService: CustomToastrService
+  ) { }
 
   login(userNameOrEmail: string, password: string): Observable<TokenResponse> {
     return this.httpClientService.post<TokenResponse>({ controller: "auth", action: "login" }, { userNameOrEmail, password });
@@ -26,11 +27,10 @@ export class UserAuthService {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
       localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
-      this.alertifyService.message("Giriş başarılı. Hoşgeldiniz.", {
-        dismissOthers: true,
-        messageType: MessageType.Success,
-        position: Position.TopCenter,
-        delay: 2
+      this.toastrService.message("Hoşgeldiniz.", "Giriş başarılı.", {
+        messageType: ToastrMessageType.Success,
+        position: ToastrPosition.TopCenter,
+        timeOut: 2000
       });
     }
 

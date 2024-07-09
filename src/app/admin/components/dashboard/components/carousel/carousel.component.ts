@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { FileUploadOptions } from '../../../../../services/common/file-upload/file-upload.component';
 import { HomeService } from '../../../../../services/common/models/home.service';
-import { AlertifyService, MessageType, Position } from '../../../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CarouselImageModel } from '../../../../../contracts/models/carousel-image-model';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,7 +16,6 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../..
 export class CarouselComponent implements OnInit {
 
   constructor(private homeService: HomeService,
-    private alertifyService: AlertifyService,
     private spinnerService: NgxSpinnerService,
     private toastrService: CustomToastrService,
     public dialog: MatDialog) { }
@@ -45,10 +43,10 @@ export class CarouselComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });
@@ -64,18 +62,18 @@ export class CarouselComponent implements OnInit {
       if (result == DeleteState.Yes) {
         this.homeService.deleteCarouselImage(id, fileName).subscribe({
           next: (data: any) => {
-            this.alertifyService.message(data.message, {
-              dismissOthers: true,
-              messageType: MessageType.Success,
-              position: Position.TopRight
+            this.toastrService.message(data.message, "Başarılı", {
+              messageType: ToastrMessageType.Success,
+              position: ToastrPosition.TopCenter,
+              timeOut: 4000
             });
             this.getCarouselImages();
           },
           error: (error: HttpErrorResponse) => {
-            this.alertifyService.message(error.error, {
-              dismissOthers: true,
-              messageType: MessageType.Error,
-              position: Position.TopRight
+            this.toastrService.message(error.error, "Hata!", {
+              messageType: ToastrMessageType.Error,
+              position: ToastrPosition.TopCenter,
+              timeOut: 4000
             });
           }
         });

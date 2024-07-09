@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { SpecialityService } from '../../../../services/common/models/speciality.service';
-import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { SpecialityModel } from '../../../../contracts/models/speciality-model';
@@ -10,6 +9,7 @@ import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-d
 import { SpecialityImageAddDialogComponent } from '../../../../dialogs/speciality-image-add-dialog/speciality-image-add-dialog.component';
 import { SpecialityImageListDialogComponent } from '../../../../dialogs/speciality-image-list-dialog/speciality-image-list-dialog.component';
 import { SpecialityCategoryModel } from '../../../../contracts/models/speciality-category-model';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-speciality-list',
@@ -20,7 +20,7 @@ export class SpecialityListComponent implements OnInit {
 
   constructor(
     private specialityService: SpecialityService,
-    private alertifyService: AlertifyService,
+    private toastrService: CustomToastrService,
     private spinnerService: NgxSpinnerService,
     public dialog: MatDialog
   ) { }
@@ -54,10 +54,10 @@ export class SpecialityListComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });
@@ -75,10 +75,10 @@ export class SpecialityListComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });
@@ -96,10 +96,10 @@ export class SpecialityListComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });
@@ -125,20 +125,22 @@ export class SpecialityListComponent implements OnInit {
         this.specialityService.deleteSpeciality(id).subscribe({
           next: (data: any) => {
             this.spinnerService.hide();
-            this.alertifyService.message("Silme işlemi başarı ile gerçekleşmiştir.", {
-              dismissOthers: true,
-              messageType: MessageType.Success,
-              position: Position.TopRight
+
+            this.toastrService.message("Silme işlemi gerçekleşmiştir", "Başarılı", {
+              messageType: ToastrMessageType.Success,
+              position: ToastrPosition.TopCenter,
+              timeOut: 4000
             });
             this.getSpecialtiesWithCardImage();
           },
           error: (error: HttpErrorResponse) => {
             if (error.status != 401) {
               this.spinnerService.hide();
-              this.alertifyService.message(error.error, {
-                dismissOthers: true,
-                messageType: MessageType.Error,
-                position: Position.TopRight
+
+              this.toastrService.message(error.error, "Hata!", {
+                messageType: ToastrMessageType.Error,
+                position: ToastrPosition.TopCenter,
+                timeOut: 4000
               });
             }
           }
@@ -161,10 +163,10 @@ export class SpecialityListComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });

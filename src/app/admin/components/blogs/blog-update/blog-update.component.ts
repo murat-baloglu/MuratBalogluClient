@@ -1,11 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, Input, OnInit, PLATFORM_ID } from '@angular/core';
 import { BlogService } from '../../../../services/common/models/blog.service';
-import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { BlogModel } from '../../../../contracts/models/blog-model';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-blog-update',
@@ -17,7 +17,7 @@ export class BlogUpdateComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private blogService: BlogService,
-    private alertifyService: AlertifyService,
+    private toastrService: CustomToastrService,
     private spinnerService: NgxSpinnerService,
     private formbuilder: FormBuilder) {
 
@@ -84,20 +84,20 @@ export class BlogUpdateComponent implements OnInit {
       next: (data: any) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message("Blog başarılı bir şekilde ile güncellenmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopCenter
+        this.toastrService.message("Güncelleme işlemi gerçekleşmiştir", "Başarılı", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
       error: (error: HttpErrorResponse) => {
         if (error.status != 401) {
           this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter
+          this.toastrService.message(error.error, "Hata!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 4000
           });
         }
       }
@@ -112,10 +112,10 @@ export class BlogUpdateComponent implements OnInit {
         this.updateBlogForm();
       },
       error: (error: HttpErrorResponse) => {
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopCenter
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       }
     });

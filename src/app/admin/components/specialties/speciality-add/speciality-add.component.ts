@@ -1,12 +1,12 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SpecialityService } from '../../../../services/common/models/speciality.service';
 import { SpecialityAddModel } from '../../../../contracts/models/speciality-add-model';
 import { SpecialityCategoryModel } from '../../../../contracts/models/speciality-category-model';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-speciality-add',
@@ -18,7 +18,7 @@ export class SpecialityAddComponent implements OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private specialityService: SpecialityService,
-    private alertifyService: AlertifyService,
+    private toastrService: CustomToastrService,
     private spinnerService: NgxSpinnerService,
     private formbuilder: FormBuilder) {
 
@@ -86,20 +86,20 @@ export class SpecialityAddComponent implements OnInit {
         this.submitted = false;
         this.createSpecialityForm();
 
-        this.alertifyService.message("Uzmanlık başarılı bir şekilde oluşturulmuştur.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopCenter
+        this.toastrService.message("Yükleme işlemi gerçekleşmiştir", "Başarılı", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
       error: (error: HttpErrorResponse) => {
         if (error.status != 401) {
           this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter
+          this.toastrService.message(error.error, "Hata!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 4000
           });
         }
       }
@@ -119,10 +119,10 @@ export class SpecialityAddComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopRight
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });

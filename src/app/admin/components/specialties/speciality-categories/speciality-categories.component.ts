@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { SpecialityCategoryAddModel } from '../../../../contracts/models/speciality-category-add-model';
 import { SpecialityService } from '../../../../services/common/models/speciality.service';
-import { AlertifyService, MessageType, Position } from '../../../../services/admin/alertify.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SpecialityCategoryModel } from '../../../../contracts/models/speciality-category-model';
 import { SpecialityCategoryUpdateDialogComponent } from '../../../../dialogs/speciality-category-update-dialog/speciality-category-update-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent, DeleteState } from '../../../../dialogs/delete-dialog/delete-dialog.component';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-speciality-categories',
@@ -20,8 +20,8 @@ export class SpecialityCategoriesComponent implements OnInit {
   constructor(
     private formbuilder: FormBuilder,
     private specialityService: SpecialityService,
+    private toastrService: CustomToastrService,
     private spinnerService: NgxSpinnerService,
-    private alertifyService: AlertifyService,
     public dialog: MatDialog
   ) { }
 
@@ -59,20 +59,20 @@ export class SpecialityCategoriesComponent implements OnInit {
 
         this.getSpecialityCategories();
 
-        this.alertifyService.message("Uzmanlık kategorisi başarılı bir şekilde eklenmiştir.", {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopCenter
+        this.toastrService.message("Yükleme işlemi gerçekleşmiştir", "Başarılı", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
       error: (error: HttpErrorResponse) => {
         if (error.status != 401) {
           this.spinnerService.hide();
 
-          this.alertifyService.message(error.error, {
-            dismissOthers: true,
-            messageType: MessageType.Error,
-            position: Position.TopCenter
+          this.toastrService.message(error.error, "Hata!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 4000
           });
         }
       }
@@ -92,10 +92,10 @@ export class SpecialityCategoriesComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopCenter
+        this.toastrService.message(error.error, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 4000
         });
       },
     });
@@ -122,20 +122,23 @@ export class SpecialityCategoriesComponent implements OnInit {
         this.specialityService.deleteSpecialityCategory(id).subscribe({
           next: (data: any) => {
             this.spinnerService.hide();
-            this.alertifyService.message(data.message, {
-              dismissOthers: true,
-              messageType: MessageType.Success,
-              position: Position.TopCenter
+
+            this.toastrService.message(data.message, "Başarılı", {
+              messageType: ToastrMessageType.Success,
+              position: ToastrPosition.TopCenter,
+              timeOut: 4000
             });
+
             this.getSpecialityCategories();
           },
           error: (error: HttpErrorResponse) => {
             if (error.status != 401) {
               this.spinnerService.hide();
-              this.alertifyService.message(error.error, {
-                dismissOthers: true,
-                messageType: MessageType.Error,
-                position: Position.TopCenter
+
+              this.toastrService.message(error.error, "Hata!", {
+                messageType: ToastrMessageType.Error,
+                position: ToastrPosition.TopCenter,
+                timeOut: 4000
               });
             }
           }
