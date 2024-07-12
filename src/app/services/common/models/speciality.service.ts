@@ -36,6 +36,10 @@ export class SpecialityService {
     return this.httpClientService.get<SpecialityWithCardImageModel[]>({ controller: "specialties", action: "getspecialtieswithcardimage" });
   }
 
+  getLastNineSpecialityWithCardImage(): Observable<SpecialityWithCardImageModel[]> {
+    return this.httpClientService.get<SpecialityWithCardImageModel[]>({ controller: "specialties", action: "getlastninespecialitywithcardimage" });
+  }
+
   getSpecialtiesByCategoryWithCardImage(categoryUrl: string): Observable<SpecialityWithCardImageModel[]> {
     return this.httpClientService.get<SpecialityWithCardImageModel[]>({ controller: "specialties", action: "getspecialtiesbycategorywithcardimage" }, categoryUrl);
   }

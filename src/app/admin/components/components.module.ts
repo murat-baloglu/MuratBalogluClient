@@ -10,6 +10,7 @@ import { SpecialtiesModule } from './specialties/specialties.module';
 import { VideosModule } from './videos/videos.module';
 import { SocialMediaAccountsModule } from './social-media-accounts/social-media-accounts.module';
 import { PatientCommentsModule } from './patient-comments/patient-comments.module';
+import { NewsModule } from './news/news.module';
 
 
 
@@ -26,7 +27,8 @@ import { PatientCommentsModule } from './patient-comments/patient-comments.modul
     SpecialtiesModule,
     VideosModule,
     SocialMediaAccountsModule,
-    PatientCommentsModule
+    PatientCommentsModule,
+    NewsModule
   ]
 })
 export class ComponentsModule { }

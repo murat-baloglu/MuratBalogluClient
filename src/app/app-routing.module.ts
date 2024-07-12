@@ -34,6 +34,8 @@ import { RegisterComponent } from "./ui/components/register/register.component";
 import { LoginComponent } from "./ui/components/login/login.component";
 import { authGuard } from "./guards/common/auth.guard";
 import { SpecialityCategoriesComponent } from "./admin/components/specialties/speciality-categories/speciality-categories.component";
+import { NewsComponent } from "./ui/components/news/news.component";
+import { NewsComponent as AdminNewsComponent } from "./admin/components/news/news.component";
 
 const routes: Routes = [
   {
@@ -55,7 +57,8 @@ const routes: Routes = [
       { path: "videos", component: AdminVideosComponent, canActivate: [authGuard] },
       { path: "social-media-accounts", component: SocialMediaAccountsComponent, canActivate: [authGuard] },
       { path: "patient-comment-add", component: PatientCommentAddComponent, canActivate: [authGuard] },
-      { path: "patient-comment-list", component: PatientCommentListComponent, canActivate: [authGuard] }
+      { path: "patient-comment-list", component: PatientCommentListComponent, canActivate: [authGuard] },
+      { path: "news", component: AdminNewsComponent, canActivate: [authGuard] },
     ], canActivate: [authGuard]
   },
 
@@ -74,6 +77,7 @@ const routes: Routes = [
       { path: "uzmanliklari/:categoryUrl", component: SpecialtiesComponent },
       { path: "uzmanlik/:detailUrl", component: SpecialtiesDetailComponent },
       { path: "videolar", component: VideosComponent },
+      { path: "basinda-biz", component: NewsComponent },
       { path: "register", component: RegisterComponent },
       { path: "login", component: LoginComponent }
     ]
