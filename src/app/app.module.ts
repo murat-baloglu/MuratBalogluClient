@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from './admin/admin.module';
 import { UiModule } from './ui/ui.module';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -27,7 +27,6 @@ export async function tokenGetter(): Promise<string | null> {
     NgxSpinnerModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule,
     JwtModule.forRoot({
       config: {
         //Bu kütüphaneye diyorumki bak kardeşim benim mimaride kullandığım token budur. Sen bunu al. Bütün isteklerde bu token ı
@@ -44,7 +43,8 @@ export async function tokenGetter(): Promise<string | null> {
     provideClientHydration(),
     // { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.
     { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }, //Production(canlıda) bu end pointi kullan.
-    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService, multi: true },
+    provideHttpClient(withInterceptorsFromDi())
   ],
   bootstrap: [AppComponent]
 })
