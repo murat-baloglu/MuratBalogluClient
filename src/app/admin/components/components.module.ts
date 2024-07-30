@@ -11,6 +11,7 @@ import { VideosModule } from './videos/videos.module';
 import { SocialMediaAccountsModule } from './social-media-accounts/social-media-accounts.module';
 import { PatientCommentsModule } from './patient-comments/patient-comments.module';
 import { NewsModule } from './news/news.module';
+import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
 
 
 
@@ -28,7 +29,8 @@ import { NewsModule } from './news/news.module';
     VideosModule,
     SocialMediaAccountsModule,
     PatientCommentsModule,
-    NewsModule
+    NewsModule,
+    AuthorizeMenuModule
   ]
 })
 export class ComponentsModule { }

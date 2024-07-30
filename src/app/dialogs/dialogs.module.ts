@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SpecialityCategoryUpdateDialogComponent } from './speciality-category-update-dialog/speciality-category-update-dialog.component';
 import { NewsImageAddDialogComponent } from './news-image-add-dialog/news-image-add-dialog.component';
 import { NewsUpdateDialogComponent } from './news-update-dialog/news-update-dialog.component';
+import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 
@@ -28,14 +30,16 @@ import { NewsUpdateDialogComponent } from './news-update-dialog/news-update-dial
     PatientCommentUpdateDialogComponent,
     SpecialityCategoryUpdateDialogComponent,
     NewsImageAddDialogComponent,
-    NewsUpdateDialogComponent
+    NewsUpdateDialogComponent,
+    AuthorizeMenuDialogComponent
   ],
   imports: [
     CommonModule,
     MatDialogModule,
     MatButtonModule,
     FileUploadModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule
   ]
 })
 export class DialogsModule { }

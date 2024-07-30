@@ -36,6 +36,7 @@ import { authGuard } from "./guards/common/auth.guard";
 import { SpecialityCategoriesComponent } from "./admin/components/specialties/speciality-categories/speciality-categories.component";
 import { NewsComponent } from "./ui/components/news/news.component";
 import { NewsComponent as AdminNewsComponent } from "./admin/components/news/news.component";
+import { AuthorizeMenuComponent } from "./admin/components/authorize-menu/authorize-menu.component";
 
 const routes: Routes = [
   {
@@ -59,6 +60,7 @@ const routes: Routes = [
       { path: "patient-comment-add", component: PatientCommentAddComponent, canActivate: [authGuard] },
       { path: "patient-comment-list", component: PatientCommentListComponent, canActivate: [authGuard] },
       { path: "news", component: AdminNewsComponent, canActivate: [authGuard] },
+      { path: "authorize-menu", component: AuthorizeMenuComponent, canActivate: [authGuard] }
     ], canActivate: [authGuard]
   },
 
