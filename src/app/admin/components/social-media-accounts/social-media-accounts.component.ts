@@ -55,10 +55,10 @@ export class SocialMediaAccountsComponent implements OnInit {
           });
         },
         error: (error: HttpErrorResponse) => {
-          if (error.status != 401) {
+          if ((error.status != 401) && (error.status != 403) && (error.status != 500)) {
             this.spinnerService.hide();
 
-            this.toastrService.message(error.error, "Hata!", {
+            this.toastrService.message(error.error.message, "Hata!", {
               messageType: ToastrMessageType.Error,
               position: ToastrPosition.TopCenter,
               timeOut: 4000
@@ -90,7 +90,7 @@ export class SocialMediaAccountsComponent implements OnInit {
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.toastrService.message(error.error, "Hata!", {
+        this.toastrService.message(error.error.message, "Hata!", {
           messageType: ToastrMessageType.Error,
           position: ToastrPosition.TopCenter,
           timeOut: 4000

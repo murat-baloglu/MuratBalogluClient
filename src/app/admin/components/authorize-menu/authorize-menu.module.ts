@@ -4,6 +4,7 @@ import { AuthorizeMenuComponent } from './authorize-menu.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatTreeModule,
     MatIconModule,
     MatButtonModule

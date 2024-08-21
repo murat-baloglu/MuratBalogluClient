@@ -30,6 +30,6 @@ button {
     align-items: flex-start;
 }
 
-.demo-section+.demo-section {
+.demo-section {
     margin-top: 16px;
 }

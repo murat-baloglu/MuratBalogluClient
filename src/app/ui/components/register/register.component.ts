@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from '../../../entities/user';
 import { UserService } from '../../../services/common/models/user.service';
-import { AlertifyService, MessageType, Position } from '../../../services/admin/alertify.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CreateUserResponse } from '../../../contracts/user/create-user-response';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../services/common/custom-toastr-service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private alertifyService: AlertifyService,
+    private toastrService: CustomToastrService,
     private spinnerService: NgxSpinnerService
   ) { }
 
@@ -56,20 +56,19 @@ export class RegisterComponent implements OnInit {
       next: (data: CreateUserResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(data.message, {
-          dismissOthers: true,
-          messageType: MessageType.Success,
-          position: Position.TopCenter,
-          delay: 7
+        this.toastrService.message(data.message, "Başarılı", {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopCenter,
+          timeOut: 6000
         });
       },
       error: (error: HttpErrorResponse) => {
         this.spinnerService.hide();
 
-        this.alertifyService.message(error.error.message, {
-          dismissOthers: true,
-          messageType: MessageType.Error,
-          position: Position.TopCenter
+        this.toastrService.message(error.error.message, "Hata!", {
+          messageType: ToastrMessageType.Error,
+          position: ToastrPosition.TopCenter,
+          timeOut: 6000
         });
       }
     });

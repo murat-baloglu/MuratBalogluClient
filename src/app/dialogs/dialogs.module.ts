@@ -16,6 +16,10 @@ import { NewsImageAddDialogComponent } from './news-image-add-dialog/news-image-
 import { NewsUpdateDialogComponent } from './news-update-dialog/news-update-dialog.component';
 import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { RoleUpdateDialogComponent } from './role-update-dialog/role-update-dialog.component';
+import { MatListModule } from '@angular/material/list';
+import { AuthorizeUserDialogComponent } from './authorize-user-dialog/authorize-user-dialog.component';
+import { UserUpdateDialogComponent } from './user-update-dialog/user-update-dialog.component';
 
 
 
@@ -31,7 +35,10 @@ import { MatBadgeModule } from '@angular/material/badge';
     SpecialityCategoryUpdateDialogComponent,
     NewsImageAddDialogComponent,
     NewsUpdateDialogComponent,
-    AuthorizeMenuDialogComponent
+    AuthorizeMenuDialogComponent,
+    RoleUpdateDialogComponent,
+    AuthorizeUserDialogComponent,
+    UserUpdateDialogComponent    
   ],
   imports: [
     CommonModule,
@@ -39,7 +46,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     FileUploadModule,
     ReactiveFormsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatListModule
   ]
 })
 export class DialogsModule { }

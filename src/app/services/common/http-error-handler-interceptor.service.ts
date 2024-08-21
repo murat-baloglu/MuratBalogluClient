@@ -41,6 +41,16 @@ export class HttpErrorHandlerInterceptorService implements HttpInterceptor {
           });
           break;
 
+        case HttpStatusCode.Forbidden:
+          this.spinnerService.hide();
+
+          this.toastrService.message(error.error.message, "Bu işlemi yapma yetkiniz yok!", {
+            messageType: ToastrMessageType.Error,
+            position: ToastrPosition.TopCenter,
+            timeOut: 6000
+          });
+          break;
+
         // default:
         //   this.alertifyService.message("default", {
         //     dismissOthers: true,

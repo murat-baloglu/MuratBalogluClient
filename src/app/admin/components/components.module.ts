@@ -12,6 +12,8 @@ import { SocialMediaAccountsModule } from './social-media-accounts/social-media-
 import { PatientCommentsModule } from './patient-comments/patient-comments.module';
 import { NewsModule } from './news/news.module';
 import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
+import { RolesModule } from './roles/roles.module';
+import { UsersModule } from './users/users.module';
 
 
 
@@ -30,7 +32,9 @@ import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
     SocialMediaAccountsModule,
     PatientCommentsModule,
     NewsModule,
-    AuthorizeMenuModule
+    AuthorizeMenuModule,
+    RolesModule,
+    UsersModule
   ]
 })
 export class ComponentsModule { }

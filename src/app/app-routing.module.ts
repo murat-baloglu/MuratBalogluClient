@@ -29,7 +29,6 @@ import { BlogUpdateComponent } from "./admin/components/blogs/blog-update/blog-u
 import { SpecialityUpdateComponent } from "./admin/components/specialties/speciality-update/speciality-update.component";
 import { AboutMeAddComponent } from "./admin/components/about-me/about-me-add/about-me-add.component";
 import { HomeAboutMeAddComponent } from "./admin/components/about-me/home-about-me-add/home-about-me-add.component";
-import { AboutMeImageAddComponent } from "./admin/components/about-me/about-me-image-add/about-me-image-add.component";
 import { RegisterComponent } from "./ui/components/register/register.component";
 import { LoginComponent } from "./ui/components/login/login.component";
 import { authGuard } from "./guards/common/auth.guard";
@@ -37,6 +36,8 @@ import { SpecialityCategoriesComponent } from "./admin/components/specialties/sp
 import { NewsComponent } from "./ui/components/news/news.component";
 import { NewsComponent as AdminNewsComponent } from "./admin/components/news/news.component";
 import { AuthorizeMenuComponent } from "./admin/components/authorize-menu/authorize-menu.component";
+import { RolesComponent } from "./admin/components/roles/roles.component";
+import { UsersComponent } from "./admin/components/users/users.component";
 
 const routes: Routes = [
   {
@@ -51,7 +52,7 @@ const routes: Routes = [
       { path: "speciality-categories", component: SpecialityCategoriesComponent, canActivate: [authGuard] },
       { path: "about-me-add", component: AboutMeAddComponent, canActivate: [authGuard] },
       { path: "home-about-me-add", component: HomeAboutMeAddComponent, canActivate: [authGuard] },
-      { path: "about-me-image-add", component: AboutMeImageAddComponent, canActivate: [authGuard] },
+      // { path: "about-me-image-add", component: AboutMeImageAddComponent, canActivate: [authGuard] },
       { path: "contact", component: AdminContactComponent, canActivate: [authGuard] },
       { path: "faq", component: AdminFaqComponent },
       { path: "languages", component: AdminLanguagesComponent },
@@ -60,7 +61,9 @@ const routes: Routes = [
       { path: "patient-comment-add", component: PatientCommentAddComponent, canActivate: [authGuard] },
       { path: "patient-comment-list", component: PatientCommentListComponent, canActivate: [authGuard] },
       { path: "news", component: AdminNewsComponent, canActivate: [authGuard] },
-      { path: "authorize-menu", component: AuthorizeMenuComponent, canActivate: [authGuard] }
+      { path: "authorize-menu", component: AuthorizeMenuComponent, canActivate: [authGuard] },
+      { path: "roles", component: RolesComponent, canActivate: [authGuard] },
+      { path: "users", component: UsersComponent, canActivate: [authGuard] }
     ], canActivate: [authGuard]
   },
 

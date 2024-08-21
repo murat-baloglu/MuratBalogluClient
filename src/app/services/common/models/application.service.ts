@@ -10,11 +10,20 @@ export class ApplicationService {
 
   constructor(private httpClientService: HttpClientService) { }
 
-  async getAuthorizeDefinitionEndpointsAsync(): Promise<Menu[]> {
+  async getAuthorizeDefinitionEndpointsAsync(successCallBack?: () => void, errorCallback?: (error) => any): Promise<Menu[]> {
     const observable: Observable<Menu[]> = this.httpClientService.get<Menu[]>({
       controller: "applicationservices"
     });
 
-    return await firstValueFrom(observable);
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(() => successCallBack()).catch(error => errorCallback(error));
+
+    return await promiseData;
+
+    // const observable: Observable<Menu[]> = this.httpClientService.get<Menu[]>({
+    //   controller: "applicationservices"
+    // });
+
+    // return await firstValueFrom(observable);    
   }
 }
