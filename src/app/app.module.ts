@@ -33,7 +33,7 @@ export async function tokenGetter(): Promise<string | null> {
         //authorization olarak header a yerleştir. Araya interceptor olarak sen bunu değerlendir.
         //Bununla dışında birde hedef sunucuyuda belirtmem gerekir.
         tokenGetter: tokenGetter,
-        allowedDomains: ["drmuratbaloglu.com", "localhost:7015"]
+        allowedDomains: ["localhost:7015"]
         // tokenGetter: () => localStorage.getItem("accessToken"),
         // allowedDomains: ["drmuratbaloglu.com"]
       }
@@ -41,9 +41,7 @@ export async function tokenGetter(): Promise<string | null> {
   ],
   providers: [
     provideClientHydration(),
-    // { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.
-    { provide: "baseUrl", useValue: "https://drmuratbaloglu.com/api", multi: true }, //Production(canlıda) bu end pointi kullan.
-    // { provide: "baseUrl", useValue: "https://muratbaloglu.net/api", multi: true }, //Development(canlıda) bu end pointi kullan.
+    { provide: "baseUrl", useValue: "https://localhost:7015/api", multi: true }, //Localde çalışırken bu end pointi kullan.  
     { provide: HTTP_INTERCEPTORS, useClass: HttpErrorHandlerInterceptorService, multi: true },
     provideHttpClient(withInterceptorsFromDi(), withFetch())
   ],
