@@ -31,8 +31,6 @@ export class UsersComponent implements OnInit {
 
     this.userService.getUsers().subscribe({
       next: (data: UserModel[]) => {
-        console.log(data);
-
         this.users = data;
 
         this.spinnerService.hide();
